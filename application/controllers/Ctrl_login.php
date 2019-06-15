@@ -20,7 +20,7 @@ class Ctrl_login extends CI_Controller {
      public function load_page()
     {
          $data1['error']="";
-        $this->load->view('new_login',$data1);
+        $this->load->view('login',$data1);
     }
 
     public function check()
@@ -35,7 +35,7 @@ class Ctrl_login extends CI_Controller {
         {
 //           echo '<script>window.alert("Invalid Username/Password");window.location.href="'.base_url().'";</script>';
             $data1['error']="Wrong UserId/Password!";
-            $this->load->view('new_login',$data1);
+            $this->load->view('login',$data1);
         }
         else{
             if ($logintype=="student") {
