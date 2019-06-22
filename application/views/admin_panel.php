@@ -1,298 +1,237 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-if(!isset($_SESSION['user_id'])){
-  redirect(base_url());
-}
-?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec Feedback | Mailbox</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href="<?=base_url();?>bootstrap/css/bootstrap.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?=base_url();?>icon/fontawesome/css/font-awesome.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="<?=base_url();?>icon/ionicon/css/ionicons.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?=base_url();?>dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-  folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?=base_url();?>dist/css/skins/_all-skins.min.css">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <title>KJSCE Feedback System | Admin</title>
+    <!-- Icons-->
+    <link href="<?=base_url();?>assets/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/flag-icon.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/fontawesome.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/simple-line-icons.css"
+        rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="<?=base_url();?>assets/css/style.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    // Shared ID
+    gtag('config', 'UA-118965717-3');
+    // Bootstrap ID
+    gtag('config', 'UA-118965717-5');
+    </script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
-    <?php $this->load->view('header'); ?>
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <div class="row">
-          <div class="col-xs-12">
-            <?php
-            /*$attr = array('class' => 'form-horizontal' ,'method' => 'POST');
-            echo form_open('Ctrl_admin/generate',$attr);
-            echo '<input type="submit" value="Generate">';
-            echo '</form>';*/
-            ?>
-            <select name="Faculty" id="faculty_select">
-              <option value="0">Select Faculty</option>
-              <?php
-              foreach ($facl_list as $rawData) {
-                $faculty = $rawData->NameOfFaculty;
-                $facultyid = $rawData->Fid;
-                echo "<option value=\"$facultyid\">$faculty</option>";
-              }
-              ?>
-            </select>
-            <select name="class" id="class_select">
-              <option value="0">Select Class</option>
-            </select>
-            <select name="divion" id="div_select">
-              <option value="0">Select Division</option>
-            </select>
-            <select name="subject" id="sub_select">
-              <option value="0">Select Subject</option>
-            </select>
-            <select name="thpr" id="thpr_select">
-              <option value="0">TH/PR</option>
-              <option value="theory">Theory</option>
-              <option value="practical">Practal</option>
-            </select>
-            <button type="button" name="button" id="genresult">Display Data</button>
-            <button type="button" name="button" id="print">Print Report</button>
-            <a class="btn btn-danger" href="./Ctrl_admin/admin2">Staff Wise Display</a>
-          </div>
-        </div>
-        <h3 class="box-title col-xs-11">Select Fields and Click Generate</h3>
-        <div class="row" id="printdiv">
-          <div class="col-xs-6">
-            <div class="box-box-danger">
-              <div class="box-header with-border">
-              </div>
-              <div class="box-body" id="out">
-                <div id="rep">
-                  <canvas id="barChart" style="height:500px"></canvas>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+    <?php $this->load->view('navbar');?>
+    <div class="app-body">
+        <?php $this->load->view('sidebar');?>
+
+        <main class="main" style="overflow: hidden;">
+
+            <div class="container-fluid mt-4">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-primary">
+                                <div class="card-body pb-0">
+                                    <div class="btn-group float-right">
+                                        <button class="btn btn-transparent dropdown-toggle p-0" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-settings"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-value">9.823</div>
+                                    <div>Members online</div>
+                                </div>
+                                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                                    <canvas class="chart" id="card-chart1" height="70"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-->
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-info">
+                                <div class="card-body pb-0">
+                                    <button class="btn btn-transparent p-0 float-right" type="button">
+                                        <i class="icon-location-pin"></i>
+                                    </button>
+                                    <div class="text-value">9.823</div>
+                                    <div>Members online</div>
+                                </div>
+                                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                                    <canvas class="chart" id="card-chart2" height="70"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-->
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-warning">
+                                <div class="card-body pb-0">
+                                    <div class="btn-group float-right">
+                                        <button class="btn btn-transparent dropdown-toggle p-0" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-settings"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-value">9.823</div>
+                                    <div>Members online</div>
+                                </div>
+                                <div class="chart-wrapper mt-3" style="height:70px;">
+                                    <canvas class="chart" id="card-chart3" height="70"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-->
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-danger">
+                                <div class="card-body pb-0">
+                                    <div class="btn-group float-right">
+                                        <button class="btn btn-transparent dropdown-toggle p-0" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-settings"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-value">9.823</div>
+                                    <div>Members online</div>
+                                </div>
+                                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                                    <canvas class="chart" id="card-chart4" height="70"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-->
+                    </div>
+                    <!-- /.row-->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h4 class="card-title mb-0">Traffic</h4>
+                                    <div class="small text-muted">November 2017</div>
+                                </div>
+                                <!-- /.col-->
+                                <div class="col-sm-7 d-none d-md-block">
+                                    <button class="btn btn-primary float-right" type="button">
+                                        <i class="icon-cloud-download"></i>
+                                    </button>
+                                    <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
+                                        <label class="btn btn-outline-secondary">
+                                            <input id="option1" type="radio" name="options" autocomplete="off"> Day
+                                        </label>
+                                        <label class="btn btn-outline-secondary active">
+                                            <input id="option2" type="radio" name="options" autocomplete="off"
+                                                checked=""> Month
+                                        </label>
+                                        <label class="btn btn-outline-secondary">
+                                            <input id="option3" type="radio" name="options" autocomplete="off"> Year
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- /.col-->
+                            </div>
+                            <!-- /.row-->
+                            <div class="chart-wrapper" style="height:300px;margin-top:40px;">
+                                <canvas class="chart" id="main-chart" height="300"></canvas>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row text-center">
+                                <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                                    <div class="text-muted">Visits</div>
+                                    <strong>29.703 Users (40%)</strong>
+                                    <div class="progress progress-xs mt-2">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 40%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                                    <div class="text-muted">Unique</div>
+                                    <strong>24.093 Users (20%)</strong>
+                                    <div class="progress progress-xs mt-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                                    <div class="text-muted">Pageviews</div>
+                                    <strong>78.706 Views (60%)</strong>
+                                    <div class="progress progress-xs mt-2">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 60%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                                    <div class="text-muted">New Users</div>
+                                    <strong>22.123 Users (80%)</strong>
+                                    <div class="progress progress-xs mt-2">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                                    <div class="text-muted">Bounce Rate</div>
+                                    <strong>40.15%</strong>
+                                    <div class="progress progress-xs mt-2">
+                                        <div class="progress-bar" role="progressbar" style="width: 40%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
-              </div>
             </div>
-            <br />
-            <div class="text-center">
-              <h2 id="chart-name"></h1>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div class="" id="questions">
-              <p style="font-size:16px">Questions List</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /.content -->
+        </main>
+
     </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 2.3.2
-      </div>
-      <strong>Copyright &copy; 2015-2016 <a href="http://www.shahandanchor.com">SAKEC(IT dept)</a>.</strong> All rights
-      reserved.
+    <footer class="app-footer">
+        <div class="text-center">
+            <a href="#">KJSCE</a>
+            <span>&copy; 2019 All rights reserved.</span>
+        </div>
     </footer>
-
-    <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
-    immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
-  </div>
-  <!-- ./wrapper -->
-
-  <!-- jQuery 2.1.4 -->
-  <script src=" <?=base_url();?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
-  <!-- Bootstrap 3.3.5 -->
-  <script src=" <?=base_url();?>bootstrap/js/bootstrap.min.js"></script>
-  <!-- Slimscroll -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
-  <style>
-  canvas {
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-  }
-  .ques {
-    font-size: 20px;
-    word-wrap: break-word;
-  }
-  </style>
-  <script src=" <?=base_url();?>plugins/slimScroll/jquery.slimscroll.min.js"></script>
-  <!-- FastClick -->
-  <script src=" <?=base_url();?>plugins/fastclick/fastclick.js"></script>
-  <!-- AdminLTE App -->
-  <script src=" <?=base_url();?>dist/js/app.min.js"></script>
-  <script src="<?=base_url();?>plugins/printer/printThis.js" charset="utf-8"></script>
-  <script>
-  $(document).ready(function(){
-    $("#print").on('click',function(){
-      var img = new Image;
-      img.src = ($("#barChart")[0]).toDataURL("image/png");
-      var tmp = $("#out").html();
-      $("#rep").html("<img src=\""+($("#barChart")[0]).toDataURL("image/png")+"\"></img>");
-      $("#printdiv").printThis();
-    });
-    $(".treeview").removeClass('active');
-    $(".treeview").eq(0).addClass('active');
-    $("#faculty_select").on('change',function(){
-      //alert("select");
-      $.ajax({
-        url:"<?=base_url();?>/index.php/ctrl_admin/getc/"+$("#faculty_select").val(),
-        type:"POST",
-        async: false,
-        success:function(result){
-          //alert(result);
-          if(result != '0'){
-            $("#class_select").html("<option value=\"0\">Select Class</option>"+result);
-          }
-          else{
-            alert("Faculty Doesn't Teach to any class");
-          }
-        }
-      });
-    });
-    $("#div_select").on('change',function(){
-      $.ajax({
-        url:"<?=base_url();?>/index.php/ctrl_admin/getsub/"+$("#faculty_select").val()+"/"+$("#class_select").val()+"/"+$("#div_select").val(),
-        type:"POST",
-        async: false,
-        success:function(result){
-          if(result != '0'){
-            $("#sub_select").html("<option value=\"0\">Select Subject</option>" + result);
-          }
-          else{
-            alert("Faculty Doesn't Teach to any class");
-          }
-        }
-      });
-    });
-    $("#sub_select").on('change',function(){
-      $.ajax({
-        url:"<?=base_url();?>/index.php/ctrl_admin/checkthpr/"+$("#faculty_select").val()+"/"+$("#class_select").val()+"/"+$("#div_select").val()+"/"+$("#sub_select").val(),
-        type:"POST",
-        async: false,
-        success:function(result){
-          if(result != '0'){
-            $("#thpr_select").html(result);
-          }
-          else{
-            alert("Faculty Doesn't Teach to any class");
-          }
-        }
-      });
-    });
-    $("#class_select").on('change',function() {
-      $.ajax({
-        url:"<?=base_url();?>/index.php/ctrl_admin/getdiv/"+$("#faculty_select").val()+"/"+$("#class_select").val(),
-        type:"POST",
-        async: false,
-        success:function(result){
-          if(result != '0'){
-            $("#div_select").html("<option value=\"0\">Select Division</option>"+result);
-          }
-          else{
-            alert("Faculty Doesn't Teach to any class");
-          }
-        }
-      });
-    });
-    var barChartData = {
-        labels: [],
-        datasets: [{
-            label: 'Percentage',
-            data: [],
-            backgroundColor:'rgba(255, 159, 64, 1)'
-        }]
-    };
-    $("#genresult").on('click',function(){
-      $("#out").html("<div id=\"rep\"><canvas id=\"barChart\" style=\"height:500px\"></canvas></div>");
-      var ctx = document.getElementById("barChart").getContext("2d");
-      window.myBar = new Chart(ctx, {
-        type: 'bar',
-        data: barChartData,
-        options: {
-          scales: {
-            xAxes:[{
-              barThickness:50
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero:true,
-                max:100,
-                stepSize:10
-              }
-            }]
-          }
-        }
-      });
-      var tmp = $("#class_select").val();
-      if(tmp == '1' || tmp == '2') yr = "FE";
-      if(tmp == '3' || tmp == '4') yr = "SE";
-      if(tmp == '5' || tmp == '6') yr = "TE";
-      if(tmp == '7' || tmp == '8') yr = "BE";
-      if($("#thpr_select").val() == 1) str = "<?=base_url();?>/index.php/ctrl_admin/gendatath/"+$("#faculty_select").val()+"/"+$("#class_select").val()+"/"+$("#div_select").val()+"/"+$("#sub_select").val();
-      if($("#thpr_select").val() == 2) str = "<?=base_url();?>/index.php/ctrl_admin/gendatapr/"+$("#faculty_select").val()+"/"+$("#class_select").val()+"/"+$("#div_select").val()+"/"+$("#sub_select").val();
-      $.ajax({
-        url:str,
-        type:"POST",
-        async: false,
-        success:function(result){
-          if(result != '0'){
-            var json = jQuery.parseJSON(result);
-            var count = [];
-            var data = [];
-            for(key in json){
-              data.push(json[key]);
-              count.push(key.toString());
-            }
-            barChartData.labels = count;
-            barChartData.datasets[0].data = data;
-            barChartData.datasets[0].label = $("#faculty_select option:selected").text();
-            window.myBar.update();
-            $("#chart-name").html(yr+"-"+$("#div_select").val()+" "+$("#sub_select").val()+" "+$("#thpr_select option:selected").text());
-            str=undefined;
-          }
-          else{
-            alert("Faculty Doesn't Teach to any class");
-          }
-        }
-      });
-      if($("#thpr_select").val() == 1)str = "<?=base_url();?>/index.php/ctrl_admin/getq";
-      if($("#thpr_select").val() == 2)str = "<?=base_url();?>/index.php/ctrl_admin/getq_pr";
-      $.ajax({
-        url:str,
-        type:"POST",
-        async: false,
-        success:function(result){
-          if(result != '0'){
-            $("#questions").html("<p style=\"font-size:16px\">Questions List</p>"+result);
-            url=undefined;
-          }
-          else{
-            alert("Faculty Doesn't Teach to any class");
-          }
-        }
-      });
-    });
-  })
-  </script>
-
+    <!-- CoreUI and necessary plugins-->
+    <script src="<?=base_url();?>assets/js/jquery-3.4.1.min.js"></script>
+    <script src="<?=base_url();?>assets/js/popper.min.js"></script>
+    <script src="<?=base_url();?>assets/js/bootstrap.min.js"></script>
+    <script src="<?=base_url();?>assets/js/pace.min.js"></script>
+    <script src="<?=base_url();?>assets/js/perfect-scrollbar.min.js">
+    </script>
+    <script src="<?=base_url();?>assets/js/coreui.min.js"></script>
+    <!-- Plugins and scripts required by this view-->
+    <script src="<?=base_url();?>assets/js/Chart.min.js"></script>
+    <script
+        src="<?=base_url();?>assets/js/custom-tooltips.min.js">
+    </script>
+    <script src="<?=base_url();?>assets/js/main.js"></script>
 </body>
+
 </html>
