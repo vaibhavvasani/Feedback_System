@@ -79,6 +79,7 @@ class Process extends CI_Model
         foreach ($data as $key => $value) {
             $data[$key] = ($data[$key] * 100) / ($count[$key] * 4);
         }
+        // var_dump($data);
         return $data;
     }
     public function gendatapr($fname, $sem, $div, $course)
@@ -91,13 +92,26 @@ class Process extends CI_Model
         $const['D'] = 1;
         $data = array();
         $count = array();
-        foreach ($res->result() as $row) {
-            $data[$row->Question_id] += $row->benchmark * $const[$row->ans_opt];
-            $count[$row->Question_id] += $row->benchmark;
+
+        // var_dump($res->result());
+        $result = $res->result();
+        // var_dump($result);
+
+        for ($i = 0; $i < sizeof($result); $i++)
+        {
+            $generatedData = get_object_vars($result[$i]);
+            $data[$generatedData['Question_id']] += $generatedData['benchmark'] * $const[$generatedData['ans_opt']];
+            $count[$generatedData['Question_id']] += $generatedData['benchmark'];
         }
+        // foreach ( $res->result()as $row) {
+        //     $data[$row->Question_id] += $row->benchmark * $const[$row->ans_opt];
+        //     $count[$row->Question_id] += $row->benchmark;
+        // }
         foreach ($data as $key => $value) {
             $data[$key] = ($data[$key] * 100) / ($count[$key] * 4);
         }
+
+        // var_dump($data);
         return $data;
     }
     public function caltotalth($fname, $sem, $div, $course)
