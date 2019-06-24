@@ -11,6 +11,7 @@
 		{
 		    $response = array();
 		    
+		    
 		    $this->db->select('*');
 		    $query = $this->db->get($table);
 		    $response = $query->result_array();

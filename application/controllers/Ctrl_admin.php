@@ -12,6 +12,11 @@ class Ctrl_admin extends CI_Controller
             redirect(base_url());
         }
     }
+
+
+
+
+    
     public function getalldiv($sem)
     {
         $res = $this->db->query("Select Distinct divi from load_mat where sem='$sem'");
@@ -240,5 +245,14 @@ class Ctrl_admin extends CI_Controller
 
         fclose($file);
         exit;
+    }
+
+    public function addFaculty() {
+
+    } 
+
+    public function addStudent()
+    {
+    	
     }
 }
