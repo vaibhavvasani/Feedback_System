@@ -176,9 +176,9 @@
             </div>
             <br />
             <div class="text-center">
-              <h2 id="chart-name"></h1>
-              </div>
+                <h2 id="chart-name"></h1>
             </div>
+          </div>
             <div class="col-xs-7">
               <div class="" id="questions">
                 <!--<p style="font-size:16px">Questions List</p>-->
@@ -194,7 +194,7 @@
         </main>
 
     </div>
-    <footer class="app-footer">
+    <footer class="app-footer text-center">
         <div class="text-center">
             <a href="#">KJSCE</a>
             <span>&copy; 2019 All rights reserved.</span>
@@ -214,6 +214,208 @@
         src="<?=base_url();?>assets/js/custom-tooltips.min.js">
     </script>
     <script src="<?=base_url();?>assets/js/main.js"></script>
+    
+    <script>
+        $(function() {
+            // Get class of faculty
+            $("#faculty_select").on('change',function() {
+            
+                $.ajax({
+                  url:"<?=base_url();?>/index.php/ctrl_admin/getc/"+$("#faculty_select").val(),
+                  type:"POST",
+                  async: false,
+                  success:function(result){
+                    ////alert(result);
+                    if(result != '0'){
+                      $("#class_select").html(result);
+                    }
+                    else{
+                      alert("Faculty Doesn't Teach to any class");
+                    }
+                  }
+                });
+            });
+
+            // Get divisions of class
+            $("#class_select").on('change',function() {
+                $.ajax({
+                  url:"<?=base_url();?>/index.php/ctrl_admin/getdiv/"+$("#faculty_select").val()+"/"+$("#class_select").val(),
+                  type:"POST",
+                  async: false,
+                  success:function(result){
+                    if(result != '0'){
+                      $("#div_select").html(result);
+                    }
+                    else{
+                      alert("Faculty Doesn't Teach to any class");
+                    }
+                  }
+                });
+            });
+
+            // Get subjects of a division
+            $("#div_select").on('change',function(){
+                $.ajax({
+                  url:"<?=base_url();?>/index.php/ctrl_admin/getsub/"+$("#faculty_select").val()+"/"+$("#class_select").val()+"/"+$("#div_select").val(),
+                  type:"POST",
+                  async: false,
+                  success:function(result){
+                    if(result != '0'){
+                      $("#sub_select").html(result);
+                    }
+                    else{
+                      alert("Faculty Doesn't Teach to any class");
+                    }
+                  }
+                });
+            });
+
+            // Get subject type (TH or PR)
+            $("#sub_select").on('change',function() {
+                $.ajax({
+                  url:"<?=base_url();?>/index.php/ctrl_admin/checkthpr/"+$("#faculty_select").val()+"/"+$("#class_select").val()+"/"+$("#div_select").val()+"/"+$("#sub_select").val(),
+                  type:"POST",
+                  async: false,
+                  success:function(result){
+                    if(result != '0'){
+                      $("#thpr_select").html(result);
+                    }
+                    else{
+                      alert("Faculty Doesn't Teach to any class");
+                    }
+                  }
+                });
+            });
+
+            // Generate Chart
+            var barChartData = {
+            labels: [],
+            datasets: [{
+              label: 'Percentage',
+              data: [],
+              backgroundColor:'rgba(255, 159, 64, 1)'
+            }]
+          };
+          $("#genresult").on('click',function(){
+            $(".charts").empty();
+            $(this).attr('selected', true);
+            $(this).trigger("change");
+            $("#class_select > option").each(function(){
+              //alert($(this).text());
+              $(this).attr('selected', true);
+              $(this).trigger("change");
+              $("#div_select > option").each(function(){
+                //alert($(this).text());
+                $(this).attr('selected', true);
+                $(this).trigger("change");
+                $("#sub_select > option").each(function(){
+                  //alert($(this).text());
+                  $(this).attr('selected', true);
+                  $(this).trigger("change");
+                  $("#thpr_select > option").each(function(){
+                    //alert($(this).text());
+                    $(this).attr('selected', true);
+                    $(this).trigger("change");
+                    $(".charts").append('<div class="box-body"> <canvas style="height:500px"></canvas></div><br /><div class="text-center"><h2 class="chart-name"></h1></div><br /><br /><br /><br />');
+                    //alert($(".charts").html());
+                    barChartData = {
+                      labels: [],
+                      datasets: [{
+                        label: 'Percentage',
+                        data: [],
+                        backgroundColor:'rgba(255, 159, 64, 1)'
+                      }]
+                    };
+                    var ctx = $("canvas").last().get(0).getContext("2d");
+                    window.myBar = new Chart(ctx, {
+                      type: 'bar',
+                      data: barChartData,
+                      options: {
+                        scales: {
+                          xAxes:[{
+                            barThickness:50
+                          }],
+                          yAxes: [{
+                            ticks: {
+                              beginAtZero:true,
+                              max:100,
+                              stepSize:10
+                            }
+                          }]
+                        }
+                      }
+                    });
+                    var tmp = $("#class_select").val();
+                    if(tmp == '1' || tmp == '2') yr = "FE";
+                    if(tmp == '3' || tmp == '4') yr = "SE";
+                    if(tmp == '5' || tmp == '6') yr = "TE";
+                    if(tmp == '7' || tmp == '8') yr = "BE";
+                    if($("#thpr_select").val() == 1) str = "<?=base_url();?>/index.php/ctrl_admin/gendatath/"+$("#faculty_select").val()+"/"+$("#class_select").val()+"/"+$("#div_select").val()+"/"+$("#sub_select").val();
+                    if($("#thpr_select").val() == 2) str = "<?=base_url();?>/index.php/ctrl_admin/gendatapr/"+$("#faculty_select").val()+"/"+$("#class_select").val()+"/"+$("#div_select").val()+"/"+$("#sub_select").val();
+                    $.ajax({
+                      url:str,
+                      type:"POST",
+                      async: false,
+                      success:function(result){
+                        if(result != '0'){
+                          var json = jQuery.parseJSON(result);
+                          var count = [];
+                          var data = [];
+                          for(key in json){
+                            data.push(json[key]);
+                            count.push(key.toString());
+                          }
+                          barChartData.labels = count;
+                          barChartData.datasets[0].data = data;
+                          barChartData.datasets[0].label = $("#faculty_select option:selected").text();
+                          window.myBar.update();
+                          $(".chart-name").last().html(yr+"-"+$("#div_select").val()+" "+$("#sub_select").val()+" "+$("#thpr_select option:selected").text());
+                          str=undefined;
+                        }
+                        else{
+                          alert("Faculty Doesn't Teach to any class");
+                        }
+                      }
+                    });
+                  });
+                });
+              });
+            });
+            str = "<?=base_url();?>/index.php/ctrl_admin/getq";
+            $("#questions").empty();
+            $.ajax({
+              url:str,
+              type:"POST",
+              async: false,
+              success:function(result){
+                if(result != '0'){
+                  $("#questions").append("<p style=\"font-size:16px\">Questions List(Theory)</p>"+result);
+                  url=undefined;
+                }
+                else{
+                  alert("Faculty Doesn't Teach to any class");
+                }
+              }
+            });
+            str = "<?=base_url();?>/index.php/ctrl_admin/getq_pr";
+            $.ajax({
+              url:str,
+              type:"POST",
+              async: false,
+              success:function(result){
+                if(result != '0'){
+                  $("#questions").append("<p style=\"font-size:16px\">Questions List(Practical)</p>"+result);
+                  url=undefined;
+                }
+                else{
+                  alert("Faculty Doesn't Teach to any class");
+                }
+              }
+            });
+          });
+        });
+    </script>
+
 </body>
 
 </html>
