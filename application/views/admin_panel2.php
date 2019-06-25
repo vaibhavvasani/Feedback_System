@@ -169,7 +169,26 @@
           </div>
         </div>
         <!--<h3 class="box-title col-xs-11">Select Staff and Click Generate</h3>-->
+            
+          
+        
+        
+        <br><br>
         <div class="row" id="printdiv">
+                                <div class="col-xs-6">
+                                    <div class="box-box-danger">
+                                        <div class="box-header with-border">
+                                        </div>
+                                        <div class="box-body">
+                                            <div id="rep">
+                                                
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="row" id="printdiv"style="margin: 5px">
+                                                            <div class="col-sm-5">
+                                                                <h4 class="card-title mb-0">Faculty Chart</h4>
+                                                            </div>
+                                                            <div class="row" id="printdiv">
           <div class="col-xs-7 charts">
             <div class="box-body">
               <canvas style="height:500px"></canvas>
@@ -185,6 +204,15 @@
               </div>
             </div>
           </div>
+          
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                             
+
+                                                           
+
         </section>
         <!-- /.content -->
       </div>
@@ -214,7 +242,8 @@
         src="<?=base_url();?>assets/js/custom-tooltips.min.js">
     </script>
     <script src="<?=base_url();?>assets/js/main.js"></script>
-    
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
     <script>
         $(function() {
             // Get class of faculty
@@ -294,6 +323,7 @@
               label: 'Percentage',
               data: [],
               backgroundColor:'rgba(255, 159, 64, 1)'
+              
             }]
           };
           $("#genresult").on('click',function(){
@@ -323,7 +353,7 @@
                       datasets: [{
                         label: 'Percentage',
                         data: [],
-                        backgroundColor:'rgba(255, 159, 64, 1)'
+                        backgroundColor:'#0066cc'
                       }]
                     };
                     var ctx = $("canvas").last().get(0).getContext("2d");
@@ -340,6 +370,8 @@
                               beginAtZero:true,
                               max:100,
                               stepSize:10
+                              
+
                             }
                           }]
                         }

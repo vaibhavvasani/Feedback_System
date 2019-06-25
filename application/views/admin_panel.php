@@ -155,8 +155,7 @@ echo '</form>';*/
                                     </select>
                                     <select name="class" id="class_select"
                                         style="margin: 5px; width: 140px; height: 38px; Border: none;">
-                                        <!-- <option value="0">Select Class</option> -->
-                                    </select>
+                                        <option value="0">Select Class</option>                                    </select>
                                     <select name="divion" id="div_select"
                                         style="margin: 5px; width: 150px; height: 38px; Border: none;">
                                         <option value="0">Select Division</option>
@@ -167,15 +166,18 @@ echo '</form>';*/
                                     </select>
                                     <select name="thpr" id="thpr_select"
                                         style="margin: 5px; width: 120px; height: 38px; Border: none;">
+                                        <option value="0">Select TH/PR</option>
                                     </select>
                                     <button type="button" name="button" id="genresult" class="w3-btn w3-blue"
                                         style="margin: 5px; margin-left:650px; margin-top: 30px">Display Data</button>
                                     <button type="button" name="button" id="print" class="w3-btn w3-blue"
                                         style="margin: 5px; margin-top: 30px">Print Report</button>
-                                    <a class="w3-btn w3-red" href="./Ctrl_admin/admin2" style="margin-top: 30px">Staff
+                                    <a class="w3-btn w3-red" href="./Ctrl_admin/admin2" style="margin-top: 25px">Staff
                                         Wise Display</a>
                                 </div>
                             </div>
+                            <br> <!--add spacing between ---->
+
                             <!--<h3 class="box-title col-xs-11">Select Fields and Click Generate</h3>-->
                             <div class="row" id="printdiv">
                                 <div class="col-xs-6">
@@ -191,14 +193,14 @@ echo '</form>';*/
                                                             <div class="col-sm-5">
                                                                 <h4 class="card-title mb-0">Faculty Chart</h4>
                                                             </div>
-                                                            <!-- /.col-->
+                                                            <!-- /.col sm 5-->
                                                             <div class="col-sm-12 d-none d-md-block">
                                                                 <div id="out">
                                                                     <canvas id="barChart" style="height:480px"></canvas>
                                                                 </div>
 
                                                             </div>
-                                                            <!-- /.col-->
+                                                            <!-- /.col sm-12 d-->
                                                         </div>
                                                         <!-- /.row-->
                                                         <div class="chart-wrapper"
@@ -216,7 +218,7 @@ echo '</form>';*/
                                     </div>
                                     <div class="col-xs-6">
                                         <div class="" id="questions">
-                                            <!--<p style="font-size:16px">Questions List</p>-->
+                                            <p style="font-size:16px">Questions List</p>
                                         </div>
                                     </div>
                                 </div>
