@@ -12,8 +12,9 @@
     <link href="<?=base_url();?>assets/css/coreui-icons.min.css" rel="stylesheet">
     <link href="<?=base_url();?>assets/css/flag-icon.min.css" rel="stylesheet">
     <link href="<?=base_url();?>assets/css/fontawesome.min.css" rel="stylesheet">
-    <link href="<?=base_url();?>assets/css/simple-line-icons.css"
-        rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/simple-line-icons.css"rel="stylesheet">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Main styles for this application-->
     <link href="<?=base_url();?>assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url();?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
@@ -48,7 +49,6 @@
                                     <div class="btn-group float-right">
                                         <button class="btn btn-transparent dropdown-toggle p-0" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="icon-settings"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="#">Action</a>
@@ -68,17 +68,25 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="card text-white bg-info">
                                 <div class="card-body pb-0">
-                                    <button class="btn btn-transparent p-0 float-right" type="button">
-                                        <i class="icon-location-pin"></i>
-                                    </button>
+                                    <div class="btn-group float-right">
+                                        <button class="btn btn-transparent dropdown-toggle p-0" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
                                     <div class="text-value">9.823</div>
                                     <div>Members online</div>
                                 </div>
                                 <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                                    <canvas class="chart" id="card-chart2" height="70"></canvas>
+                                    <canvas class="chart" id="card-chart1" height="70"></canvas>
                                 </div>
                             </div>
                         </div>
+                       
                         <!-- /.col-->
                         <div class="col-sm-6 col-lg-3">
                             <div class="card text-white bg-warning">
@@ -86,7 +94,6 @@
                                     <div class="btn-group float-right">
                                         <button class="btn btn-transparent dropdown-toggle p-0" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="icon-settings"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="#">Action</a>
@@ -109,7 +116,6 @@
                                     <div class="btn-group float-right">
                                         <button class="btn btn-transparent dropdown-toggle p-0" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="icon-settings"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="#">Action</a>
@@ -350,6 +356,7 @@
                     //alert($(".charts").html());
                     barChartData = {
                       labels: [],
+                   
                       datasets: [{
                         label: 'Percentage',
                         data: [],
@@ -359,11 +366,13 @@
                     var ctx = $("canvas").last().get(0).getContext("2d");
                     window.myBar = new Chart(ctx, {
                       type: 'bar',
+ 
                       data: barChartData,
                       options: {
                         scales: {
                           xAxes:[{
                             barThickness:50
+                            
                           }],
                           yAxes: [{
                             ticks: {

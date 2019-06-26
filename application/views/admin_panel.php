@@ -18,7 +18,8 @@
     <link href="<?= base_url(); ?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -43,13 +44,36 @@
             <div class="container-fluid mt-4">
                 <div class="animated fadeIn">
                     <div class="row">
+                        <!--starting of col1---->
                         <div class="col-sm-6 col-lg-3">
                             <div class="card text-white bg-primary">
                                 <div class="card-body pb-0">
                                     <div class="btn-group float-right">
                                         <button class="btn btn-transparent dropdown-toggle p-0" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="icon-settings"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-value">9.823</div>
+                                    <div>Members online</div>
+                                </div>
+                                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                                    <canvas class="chart" id="card-chart1" height="70"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-->
+                        <!-- /starting of col2-->    
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-info">
+                                <div class="card-body pb-0">
+                                    <div class="btn-group float-right">
+                                        <button class="btn btn-transparent dropdown-toggle p-0" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="#">Action</a>
@@ -67,27 +91,11 @@
                         </div>
                         <!-- /.col-->
                         <div class="col-sm-6 col-lg-3">
-                            <div class="card text-white bg-info">
-                                <div class="card-body pb-0">
-                                    <button class="btn btn-transparent p-0 float-right" type="button">
-                                        <i class="icon-location-pin"></i>
-                                    </button>
-                                    <div class="text-value">9.823</div>
-                                    <div>Members online</div>
-                                </div>
-                                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                                    <canvas class="chart" id="card-chart2" height="70"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-->
-                        <div class="col-sm-6 col-lg-3">
                             <div class="card text-white bg-warning">
                                 <div class="card-body pb-0">
                                     <div class="btn-group float-right">
                                         <button class="btn btn-transparent dropdown-toggle p-0" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="icon-settings"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="#">Action</a>
@@ -110,7 +118,6 @@
                                     <div class="btn-group float-right">
                                         <button class="btn btn-transparent dropdown-toggle p-0" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="icon-settings"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="#">Action</a>
@@ -248,11 +255,11 @@ echo '</form>';*/
     <!-- Plugins and scripts required by this view-->
     <script src="<?= base_url(); ?>assets/js/Chart.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/custom-tooltips.min.js">
+  
     </script>
     <!-- <script src="<?=base_url();?>plugins/printer/printThis.js" charset="utf-8"></script> -->
      <!-- <script src=" <?=base_url();?>plugins/fastclick/fastclick.js"></script> -->
     <script src="<?= base_url(); ?>assets/js/main.js"></script>
-
     <!-- Custom AJAX Calls -->
     <script type="text/javascript">
         $(function() {
