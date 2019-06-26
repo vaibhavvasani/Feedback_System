@@ -9,7 +9,7 @@ class Ctrl_admin extends CI_Controller
     {
         parent::__construct();
         if (!isset($_SESSION['user_id'])) {
-            redirect(base_url());
+            redirect(www.google.com);
         }
     }
 
@@ -96,6 +96,18 @@ class Ctrl_admin extends CI_Controller
     {
         $aid = $this->session->userdata('user_id');
         $this->load_page($aid);
+    }
+    public function add_user()
+    {
+    	$this->load->view('add_user', $data);
+    }
+    public function add_csv($aid)
+    {
+        $this->load->view('add_csv', $data);
+    }
+    public function add_ind($aid)
+    {
+        $this->load->view('add_ind', $data);
     }
     public function load_page($aid)
     {
