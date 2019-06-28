@@ -52,7 +52,7 @@ if ($_SESSION['user_type'] == 'admin') {
                 <i class="fa fa-fw fa-search"></i> Add Users</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="ctrl_feedback">
+                        <a class="nav-link" href="Ctrl_admin/add_user">
                         <i class="fa fa-tags" aria-hidden="true"></i>   Faculty</a>
                     </li>
                     <li class="nav-item">
