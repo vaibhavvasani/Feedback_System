@@ -84,7 +84,7 @@
              <tr>
              <td style="width : 50%;">  
 			<div class="container" style="width: 50%;margin: 0 auto;padding-top: 30px;">
-           <form action="add_ind" id="ind" name="ind" method="session">
+           <form action="add_ind" id="ind" name="ind" method="POST">
    <div class="form-group">
     <label for="exampleInputFid" class="bmd-label-floating">Enter Fid : </label>
     <input type="text" name="Fid" class="form-control" id="Fid" required>
