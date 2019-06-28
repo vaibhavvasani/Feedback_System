@@ -105,9 +105,15 @@ class Ctrl_admin extends CI_Controller
     {
         $this->load->view('add_csv', $data);
     }
-    public function add_ind($aid)
+    public function add_ind()
     {
-        $this->load->view('add_ind', $data);
+    	$Fid=$_POST['Fid'];
+    	$UserId=$_POST['UserId'];
+    	$AName=$_POST['AName'];
+    	$APwd=$_POST['APwd'];
+    	$_POST = array(); //to remove data from POST
+    	$aquery="INSERT INTO admin (Fid, UserId, AName, APwd) VALUES ('$Fid','$UserId','$AName', '$APwd')";
+    	$this->db->query($aquery); 	
     }
     public function load_page($aid)
     {
