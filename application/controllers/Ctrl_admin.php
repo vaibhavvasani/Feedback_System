@@ -97,23 +97,82 @@ class Ctrl_admin extends CI_Controller
         $aid = $this->session->userdata('user_id');
         $this->load_page($aid);
     }
-    public function add_user()
+    public function add_admin()
     {
-    	$this->load->view('add_user', $data);
+    	if(isset($_POST['Fid']))
+    	{
+    		$Fid=$_POST['Fid'];
+    		$UserId=$_POST['UserId'];
+    		$AName=$_POST['AName'];
+    		$APwd=$_POST['APwd'];
+    		$_POST = array(); //to remove data from POST
+    		$this->db->select('Fid');
+			$this->db->from('admin');
+			$this->db->where('Fid', $Fid);
+			$this->db->limit(1);
+			$Fidquery = $this->db->get();
+			$this->db->select('UserId');
+			$this->db->from('admin');
+			$this->db->where('UserId', $UserId);
+			$this->db->limit(1);
+			$Uidquery = $this->db->get();
+		
+    		if($Fidquery->num_rows() == 1)
+    		{
+    			$resp = 'Sorry ! Fid already exist';
+    			$succ=0;
+    		}
+    		else if($Uidquery->num_rows() == 1)
+    		{	
+    			$resp = 'Sorry ! User Id already exist';
+    			$succ=0;
+    		}
+    		else
+    		{
+    			$aquery="INSERT INTO admin (Fid, UserId, AName, APwd) VALUES ('$Fid','$UserId','$AName', '$APwd')";
+    			$this->db->query($aquery);
+    			$resp = 'Admin added';
+    			$succ=1;
+    		}
+    		$_POST['resp']=$resp;
+    		$_POST['success']=$succ;
+    	}
+    	$this->load->view('add_admin', $data);
     }
-    public function add_csv($aid)
+    public function add_faculty()
     {
-        $this->load->view('add_csv', $data);
+    	if(isset($_POST['Fid']))
+    	{
+    		$Fid=$_POST['Fid'];
+    		$abbre=$_POST['abbre'];
+    		$FName=$_POST['FName'];
+    		$FPwd=$_POST['FPwd'];
+    		$_POST = array(); //to remove data from POST
+    		$this->db->select('Fid');
+			$this->db->from('list_faculty');
+			$this->db->where('Fid', $Fid);
+			$this->db->limit(1);
+			$Fidquery = $this->db->get();
+    		if($Fidquery->num_rows() == 1)
+    		{
+    			$resp = 'Sorry ! Fid already exist';
+    			$succ=0;
+    		}
+    		else
+    		{
+    			$aquery="INSERT INTO list_faculty (Fid, NameOfFaculty, abbre, Fpwd) VALUES ('$Fid','$FName','$abbre', '$FPwd')";
+    			$this->db->query($aquery);
+    			$resp = 'Faculty added';
+    			$succ=1;
+    		}
+    		$_POST['resp']=$resp;
+    		$_POST['success']=$succ;
+    	}
+        $this->load->view('add_faculty', $data);
     }
-    public function add_ind()
+    public function add_students()
     {
-    	$Fid=$_POST['Fid'];
-    	$UserId=$_POST['UserId'];
-    	$AName=$_POST['AName'];
-    	$APwd=$_POST['APwd'];
-    	$_POST = array(); //to remove data from POST
-    	$aquery="INSERT INTO admin (Fid, UserId, AName, APwd) VALUES ('$Fid','$UserId','$AName', '$APwd')";
-    	$this->db->query($aquery); 	
+    	$this->load->view('add_students', $data);
     }
     public function load_page($aid)
     {
