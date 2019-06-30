@@ -88,15 +88,15 @@
               echo form_open('Ctrl_admin/add_faculty',$attr); ?>
    <div class="form-group">
     <label for="exampleInputFid" class="bmd-label-floating">Enter Fid : </label>
-    <input type="text" name="Fid" class="form-control" id="Fid" required>
+    <input type="text" name="Fid" class="form-control" id="Fid" pattern=".{4,}" oninvalid="this.setCustomValidity('Please enter your 4 digit Fid')" oninput="setCustomValidity('')" required>
   </div>
   <div class="form-group">
     <label for="exampleInputName" class="bmd-label-floating">Enter Name : </label>
-    <input type="text" name="FName" class="form-control" id="FName" required>
+    <input type="text" name="FName" class="form-control" id="FName" oninvalid="this.setCustomValidity('Please enter Faculty Name')" oninput="setCustomValidity('')" required>
   </div>
   <div class="form-group">
     <label for="exampleInputName" class="bmd-label-floating">Select Gender : </label>
-    <select name="abbre" class="form-control" id="abbre" required>
+    <select name="abbre" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select gender')" oninput="setCustomValidity('')" required>
     <option value="" selected>Choose Gender</option>
     <option value="Male">Male</option>
     <option value="Female">Female</option>
@@ -104,7 +104,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword" class="bmd-label-floating">Enter Password : </label>
-    <input type="password" name="FPwd" class="form-control" id="FPwd" required>
+    <input type="password" name="FPwd" class="form-control" id="FPwd" pattern=".{8,15}" oninvalid="this.setCustomValidity('Please enter 8-15 digit password ')" oninput="setCustomValidity('')" required>
   </div>
   
 						  
