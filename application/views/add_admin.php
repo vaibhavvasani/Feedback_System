@@ -88,19 +88,19 @@
               echo form_open('Ctrl_admin/add_admin',$attr); ?>
    <div class="form-group">
     <label for="exampleInputFid" class="bmd-label-floating">Enter Fid : </label>
-    <input type="text" name="Fid" class="form-control" id="Fid" required>
+    <input type="text" name="Fid" class="form-control" id="Fid" pattern=".{4,4}" oninvalid="this.setCustomValidity('Please enter your 4 digit Fid')" oninput="setCustomValidity('')" required>
   </div>
 <div class="form-group">
     <label for="exampleInputUsername" class="bmd-label-floating">Enter Username : </label>
-    <input type="text" name="UserId" class="form-control" id="UserId" required>
+    <input type="text" name="UserId" class="form-control" id="UserId" pattern=".{4,}" oninvalid="this.setCustomValidity('Please enter 4-10 digit username')" oninput="setCustomValidity('')" required>
   </div>
   <div class="form-group">
     <label for="exampleInputName" class="bmd-label-floating">Enter Name : </label>
-    <input type="text" name="AName" class="form-control" id="AName" required>
+    <input type="text" name="AName" class="form-control" id="AName" oninvalid="this.setCustomValidity('Please enter Faculty Name')" oninput="setCustomValidity('')" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword" class="bmd-label-floating">Enter Password : </label>
-    <input type="password" name="APwd" class="form-control" id="APwd" required>
+    <input type="password" name="APwd" class="form-control" id="APwd" pattern=".{8,15}" oninvalid="this.setCustomValidity('Please enter 8-15 digit password ')" oninput="setCustomValidity('')" required>
   </div>
   
 						  
