@@ -172,6 +172,52 @@ class Ctrl_admin extends CI_Controller
     }
     public function add_students()
     {
+    	if(isset($_POST['reg_no']))
+    	{
+    		$reg_no=$_POST['reg_no'];
+    		$Sid=$_POST['Sid'];
+    		$FName=$_POST['FName'];
+    		$LName=$_POST['LName'];
+    		$MName=$_POST['MName'];
+    		$Branch=$_POST['Branch'];
+    		$Year=$_POST['Year'];
+    		$Sem=$_POST['Sem'];
+    		$div=$_POST['div'];
+    		$batch=$_POST['batch'];
+    		$password=$_POST['password'];
+    		
+    		$_POST = array(); //to remove data from POST
+    		$this->db->select('reg_no');
+			$this->db->from('list_of_student');
+			$this->db->where('reg_no', $reg_no);
+			$this->db->limit(1);
+			$reg_noquery = $this->db->get();
+			$this->db->select('Sid');
+			$this->db->from('list_of_student');
+			$this->db->where('Sid', $Sid);
+			$this->db->limit(1);
+			$Sidquery = $this->db->get();
+		
+    		if($reg_noquery->num_rows() == 1)
+    		{
+    			$resp = 'Sorry ! Reg Number already exist';
+    			$succ=0;
+    		}
+    		else if($Sidquery->num_rows() == 1)
+    		{	
+    			$resp = 'Sorry ! Sid already exist';
+    			$succ=0;
+    		}
+    		else
+    		{
+    			$aquery="INSERT INTO list_of_student VALUES ($reg_no, '$Sid', '$FName', '$LName', '$MName', '$Branch',$Year,$Sem,$div, '$batch', '$password')";
+    			$this->db->query($aquery);
+    			$resp = 'Student added';
+    			$succ=1;
+    		}
+    		$_POST['resp']=$resp;
+    		$_POST['success']=$succ;
+    	}
     	$this->load->view('add_students', $data);
     }
     public function load_page($aid)
@@ -322,14 +368,5 @@ class Ctrl_admin extends CI_Controller
 
         fclose($file);
         exit;
-    }
-
-    public function addFaculty() {
-
-    } 
-
-    public function addStudent()
-    {
-    	
     }
 }
