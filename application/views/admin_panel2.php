@@ -169,9 +169,13 @@
               <option value="theory">Theory</option>
               <option value="practical">Practal</option>
             </select>
-            <button type="button" name="button" id="genresult" class="w3-btn w3-blue" style="margin: 5px">Generate Data</button>
-            <button type="button" name="button" id="print" style="margin: 5px" class="w3-btn w3-blue">Print Report</button>
-            <a class="w3-btn w3-red" href="../" style="margin: 5px">Subject Wise Display</a>
+            <button type="button" name="button" id="genresult" class="btn btn-primary"
+                                        style=" margin-left:40px;width:10em;height:2.8em;">Generate Data </button>
+                                    <button type="button" name="button" id="print"class="btn btn-primary"
+                                        style="width:10em;height:2.8em">Print Report </button>
+                                    <a class="btn btn-outline-danger "style="width:13em;height:2.8em;    background-color: #f86c6b;
+    padding-top: 8px;color:white;"href="../"> Subject Wise Display</a>
+ 
           </div>
         </div>
         <!--<h3 class="box-title col-xs-11">Select Staff and Click Generate</h3>-->
@@ -248,7 +252,6 @@
         src="<?=base_url();?>assets/js/custom-tooltips.min.js">
     </script>
     <script src="<?=base_url();?>assets/js/main.js"></script>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
     <script>
         $(function() {

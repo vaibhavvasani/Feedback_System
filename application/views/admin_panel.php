@@ -175,11 +175,12 @@ echo '</form>';*/
                                         style="margin: 5px; width: 120px; height: 38px; Border: none;">
                                         <option value="0">Select TH/PR</option>
                                     </select>
-                                    <button type="button" name="button" id="genresult" class="w3-btn w3-blue"
-                                        style="margin: 5px; margin-left:650px; margin-top: 30px">Display Data</button>
-                                    <button type="button" name="button" id="print" class="w3-btn w3-blue"
-                                        style="margin: 5px; margin-top: 30px">Print Report</button>
-                                    <a class="w3-btn w3-red" href="./Ctrl_admin/admin2" style="margin-top: 25px">Staff
+                                    <button type="button" name="button" id="genresult" class="btn btn-primary"
+                                        style=" margin-left:650px; margin-top: 20px;width:10em;height:2.8em">Display Data</button>
+                                    <button type="button" name="button" id="print"class="btn btn-primary"
+                                        style=" margin-top: 20px;width:10em;height:2.8em">Print Report</button>
+                                    <a class="btn btn-outline-danger "style="margin-top:20px;width:13em;height:2.8em;    background-color: #f86c6b;
+    padding-top: 8px;color:white;" href="./Ctrl_admin/admin2">Staff
                                         Wise Display</a>
                                 </div>
                             </div>

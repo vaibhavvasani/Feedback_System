@@ -10,23 +10,17 @@
     <title>KJSCE Feedback System | Admin</title>
     <!-- Icons-->
    
-    <link href="<?= base_url(); ?>assets/css/coreui-icons.min.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/css/flag-icon.min.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/css/fontawesome.min.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/css/simple-line-icons.css" rel="stylesheet">
-    <!-- Main styles for this application-->
+    <link href="<?=base_url();?>assets/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/flag-icon.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/fontawesome.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/simple-line-icons.css"rel="stylesheet">
     
-     <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?=base_url();?>bootstrap/css/bootstrap.min.css">
-    <link href="<?= base_url(); ?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Main styles for this application-->
+    <link href="<?=base_url();?>assets/css/style.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?=base_url();?>icon/fontawesome/css/font-awesome.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="<?=base_url();?>icon/ionicon/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?=base_url();?>dist/css/AdminLTE.min.css">
+   
   <!--jquery -->
   <script src="<?=base_url();?>dist/js/jquery-3.3.1.slim.min.js"></script>
   
@@ -87,7 +81,7 @@
            <?php $attr = array('name' => 'form1','method' => 'POST');
               echo form_open('Ctrl_admin/add_admin',$attr); ?>
    <div class="form-group">
-    <label for="exampleInputFid" class="bmd-label-floating">Enter Fid : </label>
+    <label for="exampleInputFid" class="bmd-label-floating">Enter Admin-ID : </label>
     <input type="text" name="Fid" class="form-control" id="Fid" pattern=".{4,4}" oninvalid="this.setCustomValidity('Please enter your 4 digit Fid')" oninput="setCustomValidity('')" required>
   </div>
 <div class="form-group">
@@ -174,7 +168,10 @@
     </script>
     <script src="<?= base_url(); ?>assets/js/coreui.min.js"></script>
     <!-- Plugins and scripts required by this view-->
-    </script>
+    <script src="<?= base_url(); ?>assets/js/Chart.min.js"></script>
+    <script src="<?= base_url(); ?>assets/js/custom-tooltips.min.js"></script>
+    <!-- Plugins and scripts required by this view-->
+    
     <!-- <script src="<?=base_url();?>plugins/printer/printThis.js" charset="utf-8"></script> -->
      <!-- <script src=" <?=base_url();?>plugins/fastclick/fastclick.js"></script> -->
     <script src="<?= base_url(); ?>assets/js/main.js"></script>
