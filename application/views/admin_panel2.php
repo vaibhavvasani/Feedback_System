@@ -19,6 +19,10 @@
     <link href="<?=base_url();?>assets/css/style.css" rel="stylesheet">
     <link href="<?=base_url();?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+
     <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -145,7 +149,7 @@
             echo '<input type="submit" value="Generate">';
             echo '</form>';*/
             ?>
-            <select name="Faculty" id="faculty_select" style="margin: 5px; width: 400px; height: 38px; Border: none;">
+            <select name="Faculty" id="faculty_select" class="faculty_select" style="margin: 5px; width: 400px; height: 38px; Border: none;">
               <option value="0">Select Faculty</option>
               <?php
               foreach ($facl_list as $rawData) {
@@ -253,8 +257,14 @@
     </script>
     <script src="<?=base_url();?>assets/js/main.js"></script>
 
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
     <script>
         $(function() {
+
+          $('.faculty_select').select2();
+
             // Get class of faculty
             $("#faculty_select").on('change',function() {
             

@@ -1,21 +1,29 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Ctrl_login extends CI_Controller {
-    function __construct() {
-			parent::__construct();
-            if(isset($_SESSION['user_id'])){
-                if($_SESSION['user_type']=='student')
-                    redirect('Ctrl_feedback');
-                else if($_SESSION['user_type']=='faculty')
-                    redirect('Ctrl_faculty_chart');
-                else if($_SESSION['user_type']=='admin')
-                    redirect('Ctrl_admin');
-            }
-		}
+    function __construct() 
+    {
+        parent::__construct();
+        if(isset($_SESSION['user_id']))
+        {
+            if($_SESSION['user_type']=='student')
+                redirect('Ctrl_feedback');
+            else if($_SESSION['user_type']=='faculty')
+                redirect('Ctrl_faculty_chart');
+            else if($_SESSION['user_type']=='admin')
+                redirect('Ctrl_admin');
+        }
+    }
+    
     public function index()
 	{
         $this->load_page();
-	}
+    }
+    
+    public function load_forgot_password() 
+    {
+        $this->load->view('forgot_password');
+    }
 
      public function load_page()
     {

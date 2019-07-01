@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
     
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -149,7 +152,7 @@ echo form_open('Ctrl_admin/generate',$attr);
 echo '<input type="submit" value="Generate">';
 echo '</form>';*/
                                     ?>
-                                    <select name="Faculty" id="faculty_select"
+                                    <select name="Faculty" id="faculty_select" class="faculty_select"
                                         style="margin: 5px; width: 470px; height: 38px; Border: none;">
                                         <option value="0">Select Faculty</option>
                                         <?php
@@ -261,6 +264,10 @@ echo '</form>';*/
     <!-- <script src="<?=base_url();?>plugins/printer/printThis.js" charset="utf-8"></script> -->
      <!-- <script src=" <?=base_url();?>plugins/fastclick/fastclick.js"></script> -->
     <script src="<?= base_url(); ?>assets/js/main.js"></script>
+
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
     <!-- Custom AJAX Calls -->
     <script type="text/javascript">
         $(function() {
@@ -272,6 +279,12 @@ echo '</form>';*/
             //   $("#rep").html("<img src=\""+($("#barChart")[0]).toDataURL("image/png")+"\"></img>");
             //   $("#printdiv").printThis();
             // });
+
+            $('#faculty_select').select2();
+            $('#class_select').select2();
+            $('#div_select').select2();
+            $('#sub_select').select2();
+            $('#thpr_select').select2();
 
             // Get Classes for a faculty
             $("#faculty_select").on('change',function() {

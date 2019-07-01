@@ -10,28 +10,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href="<?=base_url();?>bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?=base_url();?>icon/fontawesome/css/font-awesome.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?=base_url();?>icon/ionicon/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?=base_url();?>dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?=base_url();?>dist/css/login_form.css">
 
 </head>
 <body class="hold-transition login-page set-full-height">
 <div class="login-box">
-  <!-- <div class="login-logo">
-    <a href="index.php"><b>KJSCE Feedback</b></a>
-  </div> -->
-  <!-- /.login-logo -->
-
     <?php $attr = array('name' => 'form1','method' => 'POST');
               echo form_open('ctrl_login/check',$attr); ?>
         <div class="form-group has-feedback">
             <div class="row">
-                <div class="col-xs-4">
+                <div class="col-4">
                   <!-- Admin -->
                   <label class="custom-radio-btn">
                     <input type="radio" name="per" id="per" value="admin" />
@@ -43,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 
                   <!-- Student -->
-                <div class="col-xs-4">
+                <div class="col-4">
                   <label class="custom-radio-btn">
                     <input type="radio" name="per" id="per" value="student" />
                     <span class="custom-radio-outer">
@@ -59,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <!-- <input type="radio" id="per" name="per" value="admin" checked> -->
 
                   <!-- Faculty -->
-                <div class="col-xs-4">
+                <div class="col-4">
                   <label class="custom-radio-btn">
                     <input type="radio" name="per" id="per" value="faculty" />
                     <span class="custom-radio-outer">
@@ -73,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <input type="radio" id="per" name="per" value="faculty"> -->
             </div>
       <div class="title text-center" style="padding-top: 2rem; padding-bottom: 1.3rem;">
-        <p class="h3 font-weight-bold">Enter your credentials</p>
+        <p class="h4 font-weight-bold">Enter your credentials</p>
       </div>
       <br>
       <div class="group username">
@@ -90,21 +84,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	  </div>
       <div class="row text-center">
-        <div class="col-xs-8">
+        <div class="col-8">
           <b><?php echo $error ?></b>
         </div>
-        <!-- /.col -->
-
-        <button type="submit" name="login" class="button buttonBlue font-weight-bold">Login
+        
+        <button type="submit" name="login" class="button buttonBlue font-weight-bold mx-auto">Login
 			    <div class="ripples buttonRipples">
             <span class="ripplesCircle"></span>
           </div>
 		    </button>
         <!-- /.col -->
       </div>
-    <div class="text-center">
-      <a href="#" class="display-5" style="color: #303F9F;">I forgot my password</a><br>
-    </div>
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
@@ -112,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- jQuery 2.1.4 -->
 <script src="<?=base_url();?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="<?=base_url();?>bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=base_url();?>assets/js/bootstrap.min.js"></script>
 
 <script src="<?=base_url();?>dist/js/login_form.js"></script>
 </body>
