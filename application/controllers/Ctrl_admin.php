@@ -9,7 +9,7 @@ class Ctrl_admin extends CI_Controller
     {
         parent::__construct();
         if (!isset($_SESSION['user_id'])) {
-            redirect(www.google.com);
+            redirect(base_url());
         }
     }
 
