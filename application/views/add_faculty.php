@@ -122,7 +122,7 @@
 		?>
         </div>
         </td>
-        <td style="width : 50%;">
+        <td style="width : 50%;position: fixed;top: 50%;left: 50%;">
         <?php $attr = array('name' => 'form2','method' => 'POST','id' => 'csv');
               echo form_open('Ctrl_admin/add_admin',$attr); ?>
         <center><div class="container" style="margin: 0 auto;padding-top: 30px;">
