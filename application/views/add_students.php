@@ -79,8 +79,11 @@
 			<div class="container" style="width: 50%;margin: 0 auto;padding-top: 30px;">
            <?php $attr = array('name' => 'form1','method' => 'POST');
               echo form_open('Ctrl_admin/add_students',$attr); ?>
+       <div class="inner-width"style="font-size: 20px;text-transform: uppercase;display: inline-block;border-bottom: 4px solid;padding-bottom:0px;color: #333;text-align: center;margin-bottom:20px">
+                <p>Student-Login</p>
+    </div>
    <div class="form-group">
-    <label for="exampleInputFid" class="bmd-label-floating">Enter Reg number : </label>
+    <label for="exampleInputFid" class="bmd-label-floating">Enter Registration no. : </label>
     <input type="number" name="reg_no" class="form-control" id="reg_no" pattern=".{3,7}" oninvalid="this.setCustomValidity('Please enter your 3-7 digit Reg No')" oninput="setCustomValidity('')" required>
   </div>
   <div class="form-group">

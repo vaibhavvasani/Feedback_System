@@ -80,6 +80,9 @@
 			<div class="container" style="width: 50%;margin: 0 auto;padding-top: 30px;">
            <?php $attr = array('name' => 'form1','method' => 'POST');
               echo form_open('Ctrl_admin/add_faculty',$attr); ?>
+   <div class="inner-width"style="font-size: 20px;text-transform: uppercase;display: inline-block;border-bottom: 4px solid;padding-bottom:0px;color: #333;text-align: center;margin-bottom:20px">
+                <p>Faculty-Login</p>
+    </div>
    <div class="form-group">
     <label for="exampleInputFid" class="bmd-label-floating">Enter Faculty-ID : </label>
     <input type="text" name="Fid" class="form-control" id="Fid" pattern=".{4,}" oninvalid="this.setCustomValidity('Please enter your 4 digit Fid')" oninput="setCustomValidity('')" required>

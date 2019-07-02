@@ -178,7 +178,7 @@
                                     <button type="button" name="button" id="print"class="btn btn-primary"
                                         style="width:10em;height:2.8em">Print Report </button>
                                     <a class="btn btn-outline-danger "style="width:13em;height:2.8em;    background-color: #f86c6b;
-    padding-top: 8px;color:white;"href="../"> Subject Wise Display</a>
+    padding-top: 8px;color:white;background: #fc2340;"href="../"> Subject Wise Display</a>
  
           </div>
         </div>

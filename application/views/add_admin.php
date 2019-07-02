@@ -80,6 +80,9 @@
 			<div class="container" style="width: 50%;margin: 0 auto;padding-top: 30px;">
            <?php $attr = array('name' => 'form1','method' => 'POST');
               echo form_open('Ctrl_admin/add_admin',$attr); ?>
+    <div class="inner-width"style="font-size: 20px;text-transform: uppercase;display: inline-block;border-bottom: 4px solid;padding-bottom:0px;color: #333;text-align: center;margin-bottom:20px">
+                <p>Admin-Login</p>
+    </div>
    <div class="form-group">
     <label for="exampleInputFid" class="bmd-label-floating">Enter Admin-ID : </label>
     <input type="text" name="Fid" class="form-control" id="Fid" pattern=".{4,4}" oninvalid="this.setCustomValidity('Please enter your 4 digit Fid')" oninput="setCustomValidity('')" required>
@@ -99,7 +102,7 @@
   
 						  
 
-               <button class="button new btn-lg round" style="width:80%;background-color: #83919c;" align="center" type="submit"><span></span><b style="color : #fafafa;"> Add </b></button>
+               <button class="button new btn-lg round" style="width:80%;background-color: #83919c;text-align:center" type="submit"><span></span><b style="color : #fafafa;"> Add </b></button>
         
 </form>
 		<?php 

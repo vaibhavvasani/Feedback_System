@@ -182,8 +182,8 @@ echo '</form>';*/
                                         style=" margin-left:650px; margin-top: 20px;width:10em;height:2.8em">Display Data</button>
                                     <button type="button" name="button" id="print"class="btn btn-primary"
                                         style=" margin-top: 20px;width:10em;height:2.8em">Print Report</button>
-                                    <a class="btn btn-outline-danger "style="margin-top:20px;width:13em;height:2.8em;    background-color: #f86c6b;
-    padding-top: 8px;color:white;" href="./Ctrl_admin/admin2">Staff
+                                    <a class="btn btn-red "style="margin-top:20px;width:13em;height:2.8em;    background-color: #f86c6b;
+    padding-top: 8px;color:white;background: #fc2340;" href="./Ctrl_admin/admin2">Staff
                                         Wise Display</a>
                                 </div>
                             </div>
@@ -280,7 +280,7 @@ echo '</form>';*/
             //   $("#printdiv").printThis();
             // });
 
-            $('#faculty_select').select2();
+            $('#faculty_select').select2(); 
             $('#class_select').select2();
             $('#div_select').select2();
             $('#sub_select').select2();
