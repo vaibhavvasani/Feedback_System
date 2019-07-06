@@ -137,6 +137,75 @@ class Ctrl_admin extends CI_Controller
     		$_POST['resp']=$resp;
     		$_POST['success']=$succ;
     	}
+    	elseif(isset($_POST['uploadcsv']))
+    	{
+    		$count=0;
+    		$_POST['duplicate']=0;
+        	$fil=$_FILES['csvadmin']['tmp_name'];
+        	$type = explode(".",$_FILES['csvadmin']['name']);
+        	if(strtolower(end($type)) == 'csv')
+        	{
+        		$fp = fopen($fil,'r');
+        		$_POST['resp']='Record added';
+            	$_POST['success']='21';
+        		while($csv_line = fgetcsv($fp,1024))
+        		{
+        			if(count($csv_line)==4)
+        			{
+            			$count++;
+            			if($count == 1)
+            			{
+                			continue;
+            			}//keep this if condition if you want to remove the first row
+            			for($i = 0, $j = count($csv_line); $i < $j; $i++)
+            			{
+                			$insert_csv = array();
+                			$insert_csv['Fid'] = $csv_line[0];//remove if you want to have primary key,
+                			$insert_csv['UserId'] = $csv_line[1];
+                			$insert_csv['AName'] = $csv_line[2];
+                			$insert_csv['APwd'] = $csv_line[3];
+            			}
+            			$i++;
+            			$data = array(
+                			'Fid' => $insert_csv['Fid'] ,
+                			'UserId' => $insert_csv['UserId'],
+                			'AName' => $insert_csv['AName'],
+                			'Apwd' => $insert_csv['APwd']
+               			);
+               			$this->db->select('Fid');
+						$this->db->from('admin');
+						$this->db->where('Fid', $insert_csv['Fid']);
+						$this->db->limit(1);
+						$Fidquery = $this->db->get();
+						$this->db->select('UserId');
+						$this->db->from('admin');
+						$this->db->where('UserId', $insert_csv['UserId']);
+						$this->db->limit(1);
+						$Uidquery = $this->db->get();
+						
+						if($Fidquery->num_rows() == 1 or $Uidquery->num_rows() == 1)
+						{
+							$_POST['duplicate']++;
+						}
+						else
+						{
+            				$data['crane_features']=$this->db->insert('admin', $data);
+            			}
+            		}
+            		else
+            		{
+            			$_POST['resp']='number of column is not 4';
+            			$_POST['success']='20';
+            		}
+        		}
+        		fclose($fp);
+        	}
+        	else
+        	{
+        		$_POST['resp']='file is not in csv extension';
+            	$_POST['success']='20';
+        	}
+    	}
     	$this->load->view('add_admin', $data);
     }
     public function add_faculty()
@@ -167,6 +236,69 @@ class Ctrl_admin extends CI_Controller
     		}
     		$_POST['resp']=$resp;
     		$_POST['success']=$succ;
+    	}
+    	elseif(isset($_POST['uploadcsv']))
+    	{
+    		$count=0;
+    		$_POST['duplicate']=0;
+        	$fil=$_FILES['csvfac']['tmp_name'];
+        	$type = explode(".",$_FILES['csvfac']['name']);
+        	if(strtolower(end($type)) == 'csv')
+        	{
+        		$fp = fopen($fil,'r');
+        		$_POST['resp']='Record added';
+            	$_POST['success']='21';
+        		while($csv_line = fgetcsv($fp,1024))
+        		{
+        			if(count($csv_line)==4)
+        			{
+            			$count++;
+            			if($count == 1)
+            			{
+                			continue;
+            			}//keep this if condition if you want to remove the first row
+            			for($i = 0, $j = count($csv_line); $i < $j; $i++)
+            			{
+                			$insert_csv = array();
+                			$insert_csv['Fid'] = $csv_line[0];//remove if you want to have primary key,
+                			$insert_csv['FName'] = $csv_line[1];
+                			$insert_csv['abbre'] = $csv_line[2];
+                			$insert_csv['FPwd'] = $csv_line[3];
+            			}
+            			$i++;
+            			$data = array(
+                			'Fid' => $insert_csv['Fid'] ,
+                			'NameOfFaculty' => $insert_csv['FName'],
+                			'Abbre' => $insert_csv['abbre'],
+                			'Fpwd' => $insert_csv['FPwd']
+               			);
+               			$this->db->select('Fid');
+						$this->db->from('list_faculty');
+						$this->db->where('Fid', $insert_csv['Fid']);
+						$this->db->limit(1);
+						$Fidquery = $this->db->get();
+						if($Fidquery->num_rows() == 1)
+						{
+							$_POST['duplicate']++;
+						}
+						else
+						{
+            				$data['crane_features']=$this->db->insert('list_faculty', $data);
+            			}
+            		}
+            		else
+            		{
+            			$_POST['resp']='number of column is not 4';
+            			$_POST['success']='20';
+            		}
+        		}
+        		fclose($fp);
+        	}
+        	else
+        	{
+        		$_POST['resp']='file is not in csv extension';
+            	$_POST['success']='20';
+        	}
     	}
         $this->load->view('add_faculty', $data);
     }
@@ -369,4 +501,18 @@ class Ctrl_admin extends CI_Controller
         fclose($file);
         exit;
     }
+    function import()
+ {
+  $file_data = $this->csvimport->get_array($_FILES["file"]["tmp_name"]);
+  foreach($file_data as $row)
+  {
+   $data[] = array(
+    'Fid' => $row["Fid"],
+          'UserId'  => $row["UserId"],
+          'AName'   => $row["AName"],
+          'APwd'   => $row["APwd"]
+   );
+  }
+  $this->csv_import_model->insert($data);
+ }
 }
