@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+?>
 <head>
     <base href="./">
     <meta charset="utf-8">
@@ -64,6 +66,7 @@
       });
   });
   
+  
 });
     </script>
 </head>
@@ -102,7 +105,7 @@
   
 						  
 
-               <button class="button new btn-lg round" style="width:80%;background-color: #83919c;text-align:center" type="submit"><span></span><b style="color : #fafafa;"> Add </b></button>
+               <button name="submit" class="button new btn-lg round" style="width:80%;background-color: #83919c;text-align:center" type="submit"><span></span><b style="color : #fafafa;"> Add </b></button>
         
 </form>
 		<?php 
@@ -122,19 +125,19 @@
         </div>
         </td>
         <td style="width : 50%;position: fixed;top: 50%;left: 50%;">
-        <?php $attr = array('name' => 'form2','method' => 'POST','id' => 'csv');
+        <?php $attr = array('name' => 'formcsv','method' => 'POST','id' => 'formcsv','accept' => '.csv','enctype' => 'multipart/form-data');
               echo form_open('Ctrl_admin/add_admin',$attr); ?>
         <center><div class="container">
         <div class="col-lg-6 col-sm-6 col-12">
             <div class="input-group">
                 <label class="input-group-btn">
                     <span class="btn btn-primary">
-                        Browse&hellip; <input type="file" name="filename" style="display: none;" required>
+                        Browse&hellip; <input type="file" id="csvadmin" name="csvadmin" style="display: none;" required>
                     </span>
                 </label>
-                <input type="text" value="Upload csv here" class="form-control" readonly>
+                <input type="text" name="uploadcsv" value="Upload csv here" class="form-control" readonly>
             </div>
-<button class="button new btn-lg round" style="width:80%;background-color: #83919c;" align="center" type="submit"><span></span><b style="color: #fafafa;">Add</b></button>
+<button class="button new btn-lg round" name="submitcsv" style="width:80%;background-color: #83919c;" align="center" type="submit"><span></span><b style="color: #fafafa;">Add</b></button>
         </div></center>
         </form>
         <?php 
@@ -142,7 +145,9 @@
 			{
 				if($_POST['success']==21)
 				{
+					$dup=$_POST['duplicate'];
 					print "<p style='color:green;'>$resp</p>";
+					print "<p style='color:red;'> duplicate records are $dup</p>";
 				}
 				else if($_POST['success']==20)
 				{

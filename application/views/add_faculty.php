@@ -133,10 +133,10 @@
             <div class="input-group">
                 <label class="input-group-btn">
                     <span class="btn btn-primary">
-                        Browse&hellip; <input type="file" name="filename" style="display: none;" required>
+                        Browse&hellip; <input type="file" name="csvfac" style="display: none;" required>
                     </span>
                 </label>
-                <input type="text" value="Upload csv here" class="form-control" readonly>
+                <input type="text" name="uploadcsv" value="Upload csv here" class="form-control" readonly>
             </div>
 <button class="button new btn-lg round" style="width:80%;background-color: #83919c;" align="center" type="submit"><span></span><b style="color: #fafafa;">Add</b></button>
         </div></center>
