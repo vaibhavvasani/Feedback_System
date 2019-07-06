@@ -65,6 +65,10 @@ if ($_SESSION['user_type'] == 'admin') {
                         <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_admin/add_students">
                             Students</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_admin/loadTTMatrixPage">
+                            Timetable</a>
+                    </li>
                 </ul>
             </li>
 <?php 

@@ -8,15 +8,15 @@ class Ctrl_admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Admin'); // Load Admin Model
         if (!isset($_SESSION['user_id'])) {
             redirect(base_url());
         }
+
+        // Load CSV Import library
+        $this->load->library('csvimport');
     }
 
-
-
-
-    
     public function getalldiv($sem)
     {
         $res = $this->db->query("Select Distinct divi from load_mat where sem='$sem'");
@@ -352,6 +352,80 @@ class Ctrl_admin extends CI_Controller
     	}
     	$this->load->view('add_students', $data);
     }
+
+    public function uploadTimetable()
+    {
+        // var_dump($_POST);
+    	if(isset($_POST['uploadcsv']))
+    	{
+            $count=0;
+            $this->load->model('Admin');
+    		$_POST['duplicate']=0;
+        	$fil=$_FILES['timetable']['tmp_name'];
+        	$type = explode(".",$_FILES['timetable']['name']);
+        	if(strtolower(end($type)) == 'csv')
+        	{
+        		$fp = fopen($fil,'r');
+        		$_POST['resp']='Record added';
+            	$_POST['success']='21';
+        		while($csv_line = fgetcsv($fp,1024))
+        		{
+        			
+                    $count++;
+                    if($count == 1)
+                    {
+                        continue;
+                    }//keep this if condition if you want to remove the first row
+                    for($i = 0, $j = count($csv_line); $i < $j; $i++)
+                    {
+                        $insert_csv = array();
+                        $insert_csv['Fid'] = $csv_line[0];//remove if you want to have primary key,
+                        $insert_csv['F_name'] = $csv_line[1];
+                        $insert_csv['Sem'] = $csv_line[2];
+                        $insert_csv['Divi'] = $csv_line[3];
+                        $insert_csv['course'] = $csv_line[4];
+                        $insert_csv['Theory'] = $csv_line[5] == 'Y' ? 1 : 0;
+                        $insert_csv['Prac'] = $csv_line[6] == 'Y' ? 1 : 0;
+                        $insert_csv['A1'] = $csv_line[7] == 'Y' ? 1 : 0;
+                        $insert_csv['A2'] = $csv_line[8] == 'Y' ? 1 : 0;
+                        $insert_csv['A3'] = $csv_line[9] == 'Y' ? 1 : 0;
+                        $insert_csv['A4'] = $csv_line[10] == 'Y' ? 1 : 0;
+                        $insert_csv['B1'] = $csv_line[11] == 'Y' ? 1 : 0;
+                        $insert_csv['B2'] = $csv_line[12] == 'Y' ? 1 : 0;
+                        $insert_csv['B3'] = $csv_line[13] == 'Y' ? 1 : 0;
+                        $insert_csv['B4'] = $csv_line[14] == 'Y' ? 1 : 0;
+                    }
+                    $i++;
+                    $data = array(
+                        'Fid' => $insert_csv["Fid"],
+                        'F_name'  => $insert_csv["F_name"],
+                        'Sem'   => $insert_csv["Sem"],
+                        'Divi'   => $insert_csv["Divi"],
+                        'course'   => $insert_csv["course"],
+                        'Theory'   => $insert_csv["Theory"],
+                        'Prac'   => $insert_csv["Prac"],
+                        'A1'   => $insert_csv["A1"],
+                        'A2'   => $insert_csv["A2"],
+                        'A3'   => $insert_csv["A3"],
+                        'A4'   => $insert_csv["A4"],
+                        'B1'   => $insert_csv["B1"],
+                        'B2'   => $insert_csv["B2"],
+                        'B3'   => $insert_csv["B3"],
+                        'B4'   => $insert_csv["B4"]
+                    );
+
+                    $this->Admin->insert($data);
+        		}
+        		fclose($fp);
+        	}
+            else
+            {
+                $_POST['resp']='file is not in csv extension';
+                $_POST['success']='20';
+            }
+        }
+    }
+
     public function load_page($aid)
     {
         $this->load->model('process');
@@ -501,18 +575,43 @@ class Ctrl_admin extends CI_Controller
         fclose($file);
         exit;
     }
+
+    public function loadTTMatrixPage() 
+    {
+        $this->load->view('uploadTTMatrix');
+    }
+
     function import()
- {
-  $file_data = $this->csvimport->get_array($_FILES["file"]["tmp_name"]);
-  foreach($file_data as $row)
-  {
-   $data[] = array(
-    'Fid' => $row["Fid"],
-          'UserId'  => $row["UserId"],
-          'AName'   => $row["AName"],
-          'APwd'   => $row["APwd"]
-   );
-  }
-  $this->csv_import_model->insert($data);
- }
+    {
+        
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = '*';
+        $this->load->library('upload', $config);
+
+        var_dump($_FILES);
+        $fil=$_FILES["timetable"]["tmp_name"];
+        $file_data = $this->csvimport->get_array($fil);
+        var_dump($file_data);
+        // foreach($file_data as $row)
+        // {
+        //     $data[] = array(
+        //         'Fid' => $row["Faculty ID"],
+        //         'F_name'  => $row["Faculty Name"],
+        //         'Sem'   => $row["Semester"],
+        //         'Divi'   => $row["Division"],
+        //         'course'   => $row["Department"],
+        //         'Theory'   => $row["Theory"],
+        //         'Prac'   => $row["Practicals"],
+        //         'A1'   => $row["A1"],
+        //         'A2'   => $row["A2"],
+        //         'A3'   => $row["A3"],
+        //         'A4'   => $row["A4"],
+        //         'B1'   => $row["B1"],
+        //         'B2'   => $row["B2"],
+        //         'B3'   => $row["B3"],
+        //         'B4'   => $row["B4"]
+        //     );
+        // }
+        // $this->Admin->insert($data);
+    }
 }

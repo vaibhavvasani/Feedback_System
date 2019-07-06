@@ -18,6 +18,11 @@
 		 
 		    return $response;
 		}
+
+		function insert($data)
+		{
+			$this->db->insert('load_mat_1', $data);
+		}
 	}
 
 ?>
