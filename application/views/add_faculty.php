@@ -85,7 +85,7 @@
     </div>
    <div class="form-group">
     <label for="exampleInputFid" class="bmd-label-floating">Enter Faculty-ID : </label>
-    <input type="text" name="Fid" class="form-control" id="Fid" pattern=".{4,}" oninvalid="this.setCustomValidity('Please enter your 4 digit Fid')" oninput="setCustomValidity('')" required>
+    <input type="text" name="Fid" class="form-control" id="Fid" pattern=".{4,4}" oninvalid="this.setCustomValidity('Please enter your 4 digit Fid')" oninput="setCustomValidity('')" required>
   </div>
   <div class="form-group">
     <label for="exampleInputName" class="bmd-label-floating">Enter Name : </label>
@@ -126,7 +126,7 @@
         </div>
         </td>
         <td style="width : 50%;position: fixed;top: 50%;left: 50%;">
-        <?php $attr = array('name' => 'form2','method' => 'POST','id' => 'csv');
+        <?php $attr = array('name' => 'formcsv','method' => 'POST','id' => 'formcsv','accept' => '.csv','enctype' => 'multipart/form-data');
               echo form_open('Ctrl_admin/add_admin',$attr); ?>
         <center><div class="container">
         <div class="col-lg-6 col-sm-6 col-12">
@@ -146,7 +146,9 @@
 			{
 				if($_POST['success']==21)
 				{
+					$count=$_POST['count'];
 					print "<p style='color:green;'>$resp</p>";
+					print "<p style='color:green;'>Number of records added are $count</p>";
 				}
 				else if($_POST['success']==20)
 				{

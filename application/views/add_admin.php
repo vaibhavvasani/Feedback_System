@@ -145,9 +145,9 @@
 			{
 				if($_POST['success']==21)
 				{
-					$dup=$_POST['duplicate'];
+					$count=$_POST['count'];
 					print "<p style='color:green;'>$resp</p>";
-					print "<p style='color:red;'> duplicate records are $dup</p>";
+					print "<p style='color:green;'>Number of records added are $count</p>";
 				}
 				else if($_POST['success']==20)
 				{
