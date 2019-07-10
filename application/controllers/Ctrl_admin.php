@@ -303,10 +303,10 @@ class Ctrl_admin extends CI_Controller
         exit;
     }
 
-    public function loadTTMatrixPage() 
-    {
-        $this->load->view('uploadTTMatrix');
-    }
+    // public function loadTTMatrixPage() 
+    // {
+    //     $this->load->view('uploadTTMatrix');
+    // }
 
     function import()
     {
