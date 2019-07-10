@@ -113,6 +113,7 @@ class Ctrl_admin extends CI_Controller
     }
     public function add_faculty()
     {
+        // var_dump("dsahdsja");
     	if(isset($_POST['Fid']))
     	{
     		$this->load->model("add_data");
@@ -120,6 +121,7 @@ class Ctrl_admin extends CI_Controller
     	}
     	elseif(isset($_POST['uploadcsv']))
     	{
+            // var_dump("sadsa");
     		$this->load->model("add_data");
     		$this->add_data->addfacultycsv();
     	}

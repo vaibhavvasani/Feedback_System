@@ -68,15 +68,14 @@ class Ctrl_login extends CI_Controller {
     {
         $post = $this->input->post();
         $this->load->model('process');
-        $data=$this->process->chk_login($post);
+        $data = $this->process->changePassword($post);
         $this->load->helper('url');
         $logintype=$post['per'];
 
-        if($data==null)
+        if($data)
         {
-//           echo '<script>window.alert("Invalid Username/Password");window.location.href="'.base_url().'";</script>';
-            // $data1['error']="Wrong UserId/Password!";
-            $this->load->view('login');
+            $data1['error'] = "Password Updated!";
+            $this->load->view('login',$data1);
         }
     }
 }

@@ -392,6 +392,39 @@ class Process extends CI_Model
         }
     }
 
+    public function changePassword($post)
+    {
+        $logintype = $post['per'];
+        if ($logintype == "student") {
+            $userid = "Sid";
+            $pwd = "password";
+            $tbl_name = "list_of_student"; // Table name
+        } else if ($logintype == "faculty") {
+            $userid = "Fid";
+            $pwd = "Fpwd";
+            $tbl_name = "list_faculty"; // Table name
+        } else if ($logintype == "admin") {
+            $userid = "UserId";
+            $pwd = "Apwd";
+            $tbl_name = "admin"; // Table name
+        }
+
+        // Define $myusername and $mypassword
+        $myusername = $post['username'];
+        $mypassword = $post['password'];
+
+        // To protect MySQL injection (more detail about MySQL injection)
+        $myusername = stripslashes($myusername);
+        // $mypassword = stripslashes($mypassword);
+        $mypassword = md5($mypassword);
+        // var_dump($mypassword);
+
+        $query = $this->db->query("UPDATE $tbl_name SET " . $pwd . "='$mypassword' WHERE " . $userid . "='$myusername'");
+        
+        // var_dump($query->result());
+        return $query;
+    }
+
     public function getChartValues($fid, $opt, $qid)
     {
         $query = $this->db->query("select count(*) as res,Sid from feedback_th where Question_id=" . $qid . " and Ans_opt='" . $opt . "' and Fid='" . $fid . "'");

@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="hold-transition login-page set-full-height">
 <div class="login-box">
     <?php $attr = array('name' => 'form1','method' => 'POST');
-              echo form_open('ctrl_login/check',$attr); ?>
+              echo form_open('ctrl_login/changePassword',$attr); ?>
         <div class="form-group has-feedback">
             <div class="row">
                 <div class="col-4">
