@@ -318,8 +318,29 @@ class add_data extends CI_Model
     }
     function addtt()
     {
-    	$Fid=$_POST['Faculty ID'];
-		$FName=$_POST['Faculty Name'];
+    	if (!($this->db->table_exists('timetable')))
+    	{
+    		$maketable="CREATE TABLE `timetable` (
+			  `Fid` varchar(4) NOT NULL,
+			  `FName` varchar(30) NOT NULL,
+			  `Semester` int(1) NOT NULL,
+			  `Division` varchar(1) NOT NULL,
+			  `Department` varchar(5) NOT NULL,
+			  `Theory` varchar(1) NOT NULL,
+			  `Practicals` varchar(1) NOT NULL,
+			  `A1` varchar(1) NOT NULL,
+			  `A2` varchar(1) NOT NULL,
+			  `A3` varchar(1) NOT NULL,
+			  `A4` varchar(1) NOT NULL,
+			  `B1` varchar(1) NOT NULL,
+			  `B2` varchar(1) NOT NULL,
+			  `B3` varchar(1) NOT NULL,
+			  `B4` varchar(1) NOT NULL
+			)";
+			$this->db->query($maketable);
+    	}
+    	$Fid=$_POST['Fid'];
+		$FName=$_POST['FName'];
 		$Semester=$_POST['Semester'];
 		$Division=$_POST['Division'] == 'A' ? 1 : 2;
 		$Department=$_POST['Department'];
@@ -356,6 +377,27 @@ class add_data extends CI_Model
     }
     function addttcsv()
     {
+    	// if (!($this->db->table_exists('timetable')))
+    	// {
+    	// 	$maketable="CREATE TABLE `timetable` (
+		// 	  `Fid` varchar(4) NOT NULL,
+		// 	  `FName` varchar(30) NOT NULL,
+		// 	  `Semester` int(1) NOT NULL,
+		// 	  `Division` varchar(1) NOT NULL,
+		// 	  `Department` varchar(5) NOT NULL,
+		// 	  `Theory` varchar(1) NOT NULL,
+		// 	  `Practicals` varchar(1) NOT NULL,
+		// 	  `A1` varchar(1) NOT NULL,
+		// 	  `A2` varchar(1) NOT NULL,
+		// 	  `A3` varchar(1) NOT NULL,
+		// 	  `A4` varchar(1) NOT NULL,
+		// 	  `B1` varchar(1) NOT NULL,
+		// 	  `B2` varchar(1) NOT NULL,
+		// 	  `B3` varchar(1) NOT NULL,
+		// 	  `B4` varchar(1) NOT NULL
+		// 	)";
+		// 	$this->db->query($maketable);
+    	// }	
     	$count=0;
 		$_POST['count']=0;
 		$fil=$_FILES['csvtt']['tmp_name'];
