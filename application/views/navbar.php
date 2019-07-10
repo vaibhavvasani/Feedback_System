@@ -38,7 +38,7 @@
                 </div>
                 <a class="dropdown-item" href="#">
                     <i class="fa fa-user"></i> Profile</a>
-                <a class="dropdown-item" href="Ctrl_feedback/logout">
+                <a class="dropdown-item" href="<?=base_url();?>index.php/Ctrl_feedback/logout">
                     <i class="fa fa-lock"></i> Logout</a>
             </div>
         </li>

@@ -61,8 +61,23 @@ class Ctrl_login extends CI_Controller {
                 $this->session->set_userdata($arr);
                 redirect('Ctrl_admin');
             }
-
        }
+    }
+
+    public function changePassword() 
+    {
+        $post = $this->input->post();
+        $this->load->model('process');
+        $data=$this->process->chk_login($post);
+        $this->load->helper('url');
+        $logintype=$post['per'];
+
+        if($data==null)
+        {
+//           echo '<script>window.alert("Invalid Username/Password");window.location.href="'.base_url().'";</script>';
+            // $data1['error']="Wrong UserId/Password!";
+            $this->load->view('login');
+        }
     }
 }
 

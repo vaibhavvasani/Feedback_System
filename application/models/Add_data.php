@@ -11,7 +11,7 @@ class add_data extends CI_Model
         		'Fid'=>$_POST['Fid'],
         		'UserId'=>$_POST['UserId'],
         		'AName'=>$_POST['AName'],
-        		'APwd'=>$_POST['APwd']
+        		'APwd'=>md5($_POST['APwd'])
     		);
     		$this->db->select('Fid');
 			$this->db->from('admin');
@@ -76,7 +76,7 @@ class add_data extends CI_Model
             			'Fid' => $insert_csv['Fid'] ,
             			'UserId' => $insert_csv['UserId'],
             			'AName' => $insert_csv['AName'],
-            			'Apwd' => $insert_csv['APwd']
+						'Apwd' => md5($insert_csv['APwd'])
                		);
                		$this->db->select('Fid');
 					$this->db->from('admin');
@@ -114,7 +114,7 @@ class add_data extends CI_Model
     	$Fid=$_POST['Fid'];
 		$abbre=$_POST['abbre'];
 		$FName=$_POST['FName'];
-		$FPwd=$_POST['FPwd'];
+		$FPwd=md5($_POST['FPwd']);
 		$_POST = array(); //to remove data from POST
 		$this->db->select('Fid');
 		$this->db->from('list_faculty');
@@ -169,7 +169,7 @@ class add_data extends CI_Model
 						'Fid' => $insert_csv['Fid'] ,
 						'NameOfFaculty' => $insert_csv['FName'],
 						'Abbre' => $insert_csv['abbre'],
-						'Fpwd' => $insert_csv['FPwd']
+						'Fpwd' => md5($insert_csv['FPwd'])
 					);
 					$this->db->select('Fid');
 					$this->db->from('list_faculty');
@@ -208,7 +208,7 @@ class add_data extends CI_Model
 		$Sem=$_POST['Sem'];
 		$div=$_POST['div'];
 		$batch=$_POST['batch'];
-		$password=$_POST['password'];
+		$password=md5($_POST['password']);
 		
 		$_POST = array(); //to remove data from POST
 		$this->db->select('reg_no');
@@ -289,7 +289,7 @@ class add_data extends CI_Model
 						'Sem' => $insert_csv['Sem'],
 						'div' => $insert_csv['div'] ,
 						'batch' => $insert_csv['batch'],
-						'password' => $insert_csv['password']
+						'password' => md5($insert_csv['password'])
 					);
 					$this->db->select('reg_no');
 					$this->db->from('list_of_student');

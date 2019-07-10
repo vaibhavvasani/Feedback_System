@@ -46,11 +46,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     Student
                   </label>
                 </div>
-                  <!-- <label for="per">Student</label>
-                  <input type="radio" id="per" name="per" value="student"> -->
-
-                  <!-- <label for="per">Admin</label> -->
-                  <!-- <input type="radio" id="per" name="per" value="admin" checked> -->
 
                   <!-- Faculty -->
                 <div class="col-4">
@@ -62,9 +57,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     Faculty
                   </label>
                 </div>
-
-                  <!-- <label for="per">Faculty</label>
-                  <input type="radio" id="per" name="per" value="faculty"> -->
             </div>
       <div class="title text-center" style="padding-top: 2rem; padding-bottom: 1.3rem;">
         <p class="h4 font-weight-bold">Enter your credentials</p>
@@ -80,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<input type="password" id="password" name="password" class="text-dark" required>
       <span class="highlight"></span>
       <span class="bar"></span>
-			<label>Password</label>
+			<label>Enter New Password</label>
 		</div>
 	  </div>
       <div class="row text-center">

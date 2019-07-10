@@ -379,8 +379,12 @@ class Process extends CI_Model
         // To protect MySQL injection (more detail about MySQL injection)
         $myusername = stripslashes($myusername);
         $mypassword = stripslashes($mypassword);
+        // $mypassword = md5($mypassword);
+        // var_dump($mypassword);
 
         $query = $this->db->query("SELECT * FROM $tbl_name WHERE " . $userid . "='$myusername' and " . $pwd . "='$mypassword'");
+        
+        // var_dump($query->result());
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {
@@ -417,5 +421,5 @@ class Process extends CI_Model
         //$d = array('Fid' => $fid,'Question_id' => $post['Qid'],'Ans_opt' => $post[$radio] ,'User_typ' => 'IT');
         //$this->db->insert('feedback_pr', $data);
     }
-
+    
 }
