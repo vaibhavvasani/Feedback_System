@@ -5,7 +5,7 @@
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="fa fa-star" aria-hidden="true"></i>
- &nbsp&nbsp Test</a>
+ &nbsp;&nbsp; Test</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
@@ -23,7 +23,7 @@ if ($_SESSION['user_type'] == 'admin') {
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
- &nbsp&nbsp Backups</a>
+ &nbsp;&nbsp; Backups</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_admin/export_feedback_pr">
@@ -51,7 +51,7 @@ if ($_SESSION['user_type'] == 'admin') {
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="fa fa-user" aria-hidden="true"></i>
- &nbsp&nbsp Add Users</a>
+ &nbsp;&nbsp; Add Users</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_admin/add_admin">
@@ -71,13 +71,24 @@ if ($_SESSION['user_type'] == 'admin') {
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;Timetable</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url(); ?>index.php/Timetable">
+                            Update</a>
+                    </li>
+                </ul>
+            </li>
 <?php 
 }
 ?>
 
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="fa fa-commenting"></i> &nbsp&nbsp Feedback</a>
+                    <i class="fa fa-commenting"></i> &nbsp;&nbsp; Feedback</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link" href="ctrl_feedback">

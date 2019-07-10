@@ -302,39 +302,4 @@ class Ctrl_admin extends CI_Controller
         fclose($file);
         exit;
     }
-
-
-    function import()
-    {
-        
-        $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = '*';
-        $this->load->library('upload', $config);
-
-        var_dump($_FILES);
-        $fil=$_FILES["timetable"]["tmp_name"];
-        $file_data = $this->csvimport->get_array($fil);
-        var_dump($file_data);
-        // foreach($file_data as $row)
-        // {
-        //     $data[] = array(
-        //         'Fid' => $row["Faculty ID"],
-        //         'F_name'  => $row["Faculty Name"],
-        //         'Sem'   => $row["Semester"],
-        //         'Divi'   => $row["Division"],
-        //         'course'   => $row["Department"],
-        //         'Theory'   => $row["Theory"],
-        //         'Prac'   => $row["Practicals"],
-        //         'A1'   => $row["A1"],
-        //         'A2'   => $row["A2"],
-        //         'A3'   => $row["A3"],
-        //         'A4'   => $row["A4"],
-        //         'B1'   => $row["B1"],
-        //         'B2'   => $row["B2"],
-        //         'B3'   => $row["B3"],
-        //         'B4'   => $row["B4"]
-        //     );
-        // }
-        // $this->Admin->insert($data);
-    }
 }

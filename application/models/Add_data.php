@@ -318,24 +318,24 @@ class add_data extends CI_Model
     }
     function addtt()
     {
-    	$Fid=$_POST['Fid'];
-		$FName=$_POST['FName'];
+    	$Fid=$_POST['Faculty ID'];
+		$FName=$_POST['Faculty Name'];
 		$Semester=$_POST['Semester'];
-		$Division=$_POST['Division'];
+		$Division=$_POST['Division'] == 'A' ? 1 : 2;
 		$Department=$_POST['Department'];
-		$Theory=$_POST['Theory'];
-		$Practicals=$_POST['Practicals'];
-		$A1=$_POST['A1'];
-		$A2=$_POST['A2'];
-		$A3=$_POST['A3'];
-		$A4=$_POST['A4'];
-		$B1=$_POST['B1'];
-		$B2=$_POST['B2'];
-		$B3=$_POST['B3'];
-		$B4=$_POST['B4'];
+		$Theory=$_POST['Theory']  == 'Y' ? 1 : 0;
+		$Practicals=$_POST['Practicals']  == 'Y' ? 1 : 0;
+		$A1=$_POST['A1']  == 'Y' ? 1 : 0;
+		$A2=$_POST['A2']  == 'Y' ? 1 : 0;
+		$A3=$_POST['A3']  == 'Y' ? 1 : 0;
+		$A4=$_POST['A4']  == 'Y' ? 1 : 0;
+		$B1=$_POST['B1']  == 'Y' ? 1 : 0;
+		$B2=$_POST['B2']  == 'Y' ? 1 : 0;
+		$B3=$_POST['B3']  == 'Y' ? 1 : 0;
+		$B4=$_POST['B4']  == 'Y' ? 1 : 0;
 		$_POST = array(); //to remove data from POST
 		$this->db->select('Fid');
-		$this->db->from('timetable');
+		$this->db->from('load_mat_1');
 		$this->db->where('Fid', $Fid);
 		$this->db->limit(1);
 		$Fidquery = $this->db->get();
@@ -346,7 +346,7 @@ class add_data extends CI_Model
 		}
 		else
 		{
-			$aquery="INSERT INTO timetable VALUES ('$Fid','$FName',$Semester,'$Division','$Department','$Theory','$Practicals','$A1','$A2','$A3','$A4','$B1','$B2','$B3','$B4')";
+			$aquery="INSERT INTO load_mat_1 VALUES ('$Fid','$FName',$Semester,'$Division','$Department','$Theory','$Practicals','$A1','$A2','$A3','$A4','$B1','$B2','$B3','$B4')";
 			$this->db->query($aquery);
 			$resp = 'timetable added';
 			$succ=1;
@@ -377,26 +377,26 @@ class add_data extends CI_Model
 					for($i = 0, $j = count($csv_line); $i < $j; $i++)
 					{
 						$insert_csv = array();
-						$insert_csv['Fid'] = $csv_line[0];//remove if you want to have primary key,
-						$insert_csv['FName'] = $csv_line[1];
+						$insert_csv['Faculty ID'] = $csv_line[0];//remove if you want to have primary key,
+						$insert_csv['Faculty Name'] = $csv_line[1];
 						$insert_csv['Semester'] = $csv_line[2];
-						$insert_csv['Division'] = $csv_line[3];
+						$insert_csv['Division'] = $csv_line[3] == 'A' ? 1 : 2;
 						$insert_csv['Department'] = $csv_line[4];//remove if you want to have primary key,
-						$insert_csv['Theory'] = $csv_line[5];
-						$insert_csv['Practicals'] = $csv_line[6];
-						$insert_csv['A1'] = $csv_line[7];
-						$insert_csv['A2'] = $csv_line[8];//remove if you want to have primary key,
-						$insert_csv['A3'] = $csv_line[9];
-						$insert_csv['A4'] = $csv_line[10];
-						$insert_csv['B1'] = $csv_line[11];
-						$insert_csv['B2'] = $csv_line[12];//remove if you want to have primary key,
-						$insert_csv['B3'] = $csv_line[13];
-						$insert_csv['B4'] = $csv_line[14];
+						$insert_csv['Theory'] = $csv_line[5] == 'Y' ? 1 : 0;
+						$insert_csv['Practicals'] = $csv_line[6] == 'Y' ? 1 : 0;
+						$insert_csv['A1'] = $csv_line[7] == 'Y' ? 1 : 0;
+						$insert_csv['A2'] = $csv_line[8] == 'Y' ? 1 : 0;//remove if you want to have primary key,
+						$insert_csv['A3'] = $csv_line[9] == 'Y' ? 1 : 0;
+						$insert_csv['A4'] = $csv_line[10] == 'Y' ? 1 : 0;
+						$insert_csv['B1'] = $csv_line[11] == 'Y' ? 1 : 0;
+						$insert_csv['B2'] = $csv_line[12] == 'Y' ? 1 : 0;//remove if you want to have primary key,
+						$insert_csv['B3'] = $csv_line[13] == 'Y' ? 1 : 0;
+						$insert_csv['B4'] = $csv_line[14] == 'Y' ? 1 : 0;
 					}
 					$i++;
 					$data = array(
-						'Fid' => $insert_csv['Fid'] ,
-						'FName' => $insert_csv['FName'],
+						'Fid' => $insert_csv['Faculty ID'] ,
+						'FName' => $insert_csv['Faculty Name'],
 						'Semester' => $insert_csv['Semester'],
 						'Division' => $insert_csv['Division'],
 						'Department' => $insert_csv['Department'] ,
@@ -419,7 +419,7 @@ class add_data extends CI_Model
 					
 					if($Fidquery->num_rows() == 0)
 					{
-						$data['crane_features']=$this->db->insert('timetable', $data);
+						$data['crane_features']=$this->db->insert('load_mat_1', $data);
 						$_POST['count']++;
 					}
 				}
