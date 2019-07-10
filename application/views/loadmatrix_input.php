@@ -22,7 +22,7 @@ table, th{
 	
 		<?php 
 			$attr = array('class' => 'register','method' => 'POST');
-			echo form_open('Welcome/updateLoadMat',$attr);
+			echo form_open('Timetable/updateLoadMat',$attr);
 		?>
         <!-- <form action=<?php echo base_url(); ?>"updateLoadMat/updateLoadMat1/" class="register" method="POST"> -->
            						
