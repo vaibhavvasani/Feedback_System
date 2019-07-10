@@ -128,18 +128,40 @@
         <td style="width : 50%;position: fixed;top: 50%;left: 50%;">
         <?php $attr = array('name' => 'formcsv','method' => 'POST','id' => 'formcsv','accept' => '.csv','enctype' => 'multipart/form-data');
               echo form_open('Ctrl_admin/add_admin',$attr); ?>
-        <center><div class="container">
+        <center>
+            
+        <div class="container">
         <div class="col-lg-6 col-sm-6 col-12">
-            <div class="input-group">
+            <div class="input-group" >
                 <label class="input-group-btn">
-                    <span class="btn btn-primary">
+                    <span class="btn btn-primary" style="margin-right:20px;width:10em;height:2.8em;">
                         Browse&hellip; <input type="file" name="csvfac" style="display: none;" required>
                     </span>
                 </label>
-                <input type="text" name="uploadcsv" value="Upload csv here" class="form-control" readonly>
+                <input type="text"style="padding:10px" name="uploadcsv" value="Upload csv here.." class="form-control" readonly>
             </div>
-<button class="button new btn-lg round" style="width:80%;background-color: #83919c;" align="center" type="submit"><span></span><b style="color: #fafafa;">Add</b></button>
-        </div></center>
+<button class="button new btn-lg round" style="width:80%;background-color: #83919c;" type="submit"><span></span><b style="color: #fafafa;">Add</b></button>
+        </div>
+    
+    
+        <br><br>
+        <div class="col-lg-6 col-sm-6 col-12">
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary" style="width:10em;height:2.8em;margin-right:20px">
+                        Browse&hellip; <input type="file" name="csvfac" style="display: none;" required>
+                    </span>
+                </label>
+                <input type="text"style="width:350px;margin-bottom:10px" name="uploadcsv"value="Upload Attendance CSV here" class="form-control" readonly>
+            </div>
+<button class="button new btn-lg round" style="width:80%;background-color: #83919c;" type="submit"><span></span><b style="color: #fafafa;">Add</b></button>
+        </div>
+    
+    
+    
+    
+    
+    </center>
         </form>
         <?php 
 			if(isset($_POST['success']))
