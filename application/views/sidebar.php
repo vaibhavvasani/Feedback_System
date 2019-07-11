@@ -91,6 +91,11 @@ if ($_SESSION['user_type'] == 'admin') {
                 <a class="nav-link" href="#">
                 <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;Attendance</a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_admin/table">
+                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Class Feedback</a>
+            </li>
 <?php 
 }
 ?>
