@@ -8,21 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
     <title>KJSCE Feedback System | Faculty</title>
-    <!-- Icons-->
-    <link rel="stylesheet" href="http://localhost/Feedback_System/bootstrap/css/bootstrap.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="http://localhost/Feedback_System/icon/fontawesome/css/font-awesome.css">
-  <!-- Ionicons -->
-    <link rel="stylesheet" href="http://localhost/Feedback_System/icon/ionicon/css/ionicons.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="http://localhost/Feedback_System/dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="http://localhost/Feedback_System/dist/css/skins/_all-skins.min.css">
-
-  <!---admin-panel css-->
-
-      <link href="<?= base_url(); ?>assets/css/coreui-icons.min.css" rel="stylesheet">
+    
+     <!-- Icons-->
+   
+     <link href="<?= base_url(); ?>assets/css/coreui-icons.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/flag-icon.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/fontawesome.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/simple-line-icons.css" rel="stylesheet">
@@ -33,10 +22,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Select2 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
-  
-    
     <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -56,27 +41,26 @@
     <div class="app-body">
         <?php $this->load->view('sidebar'); ?>
 <div class="top"style="margin-left: 20px;">
-         <div class="content-wrapper">
+         <div class="content-wrapper"style="padding:20px;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-
           <?php
           for($i=0;$i<(count($Question));$i=$i+2)
           {
-            echo '<div class="row" style="margin-left: 200px">';
+            echo '<div class="row">';
             echo '<div class="col-xs-6">';
 
                 echo '<div class="box box-danger">';
                 echo '<div class="box-header with-border">';
-                echo '<h3 class="box-title col-xs-11">'.$Question[$i]->Qid.' '.$Question[$i]->Ques.'</h3>';
+                echo '<h3 class="box-title col-xs-6">'.$Question[$i]->Qid.' '.$Question[$i]->Ques.'</h3>';
 
               echo '<div class="box-tools pull-right">';
                 echo '<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>';
                 echo '</button>';
               echo '</div>';
             echo '</div>';
-            echo '<div class="box-body">';
-              echo '<canvas id="pieChart'.$i.'" style="height:250px"></canvas>';
+            echo '<div class="box-body" style="display: block;">';
+              echo '<canvas id="pieChart'.$i.'" style="height: 265px !important; width: 530px !important;"></canvas>';
             echo '</div>';
 
           echo '</div>';
@@ -95,9 +79,9 @@
                 echo '</button>';
               echo '</div>';
             echo '</div>';
-            echo '<div class="box-body">';
+            echo '<div class="box-body"style="display: block;">';
               $a =$i+1;
-              echo '<canvas id="pieChart'.$a.'" style="height:250px"></canvas>';
+              echo '<canvas id="pieChart'.$a.'" style="height: 265px !important; width: 530px !important;"></canvas>';
             echo '</div>';
 
           echo '</div>';
@@ -122,92 +106,57 @@
             <span>&copy; 2019 All rights reserved.</span>
         </div>
     </footer>
-    <!-- CoreUI and necessary plugins-->
-   
-  
-    <!-- old script cdn --- >
-
-    <!-- Select2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
-
-<!--  ADDED -------------------->
-<!-- Bootstrap 3.3.5 -->
-<!-- Slimscroll -->
-<!--Charts-->
-
-
-    <script src=" <?=base_url();?>plugins/chartjs/Chart.min.js"></script>
-    <!-- FastClick -->
-    <script src=" <?=base_url();?>plugins/fastclick/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src=" <?=base_url();?>dist/js/app.min.js"></script>
-    <script src=" <?=base_url();?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
-
-    <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
-
-        <!-- Custom AJAX Calls -->
-
-
+    
+<!-- CoreUI and necessary plugins-->
+  <script src="<?= base_url(); ?>assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/popper.min.js"></script>
+    <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/pace.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/perfect-scrollbar.min.js">
     </script>
     <script src="<?= base_url(); ?>assets/js/coreui.min.js"></script>
     <!-- Plugins and scripts required by this view-->
-    <script src="<?= base_url(); ?>assets/js/Chart.min.js"></script>
-    <script src="<?= base_url(); ?>assets/js/custom-tooltips.min.js"></script>
-
+    <script src="<?= base_url(); ?>plugins/chartjs/Chart.min.js"></script>
+    <script src="<?= base_url(); ?>assets/js/custom-tooltips.min.js">
+  
+    </script>
     <!-- <script src="<?=base_url();?>plugins/printer/printThis.js" charset="utf-8"></script> -->
      <!-- <script src=" <?=base_url();?>plugins/fastclick/fastclick.js"></script> -->
-
-
     <script src="<?= base_url(); ?>assets/js/main.js"></script>
-    <script src=" http://localhost/sakec_feedback/dist/js/app.min.js"></script>
+    
 
-
-<script>
-$(document).ready(function(){
-    $(".treeview").removeClass('active');
-    $(".treeview").eq(4).addClass('active');
-});
-</script>
 <script type="text/javascript">
 $(function () {
-    /* ChartJS
-     * -------
-     * Here we will create a few charts using ChartJS
-     */
-
-      //-------------
-    //- PIE CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
-var pieChartCanvas = $("#pieChart0").get(0).getContext("2d");
+  <?php
+   for($i=0;$i<(count($Question));$i++)
+   {
+       $q = $i+1;
+    echo 'var pieChartCanvas = $("#pieChart'.$i.'").get(0).getContext("2d");
     var pieChart = new Chart(pieChartCanvas);
     var PieData = [
       {
-        value: "0",
+        value: "'.${"A".$q}["0"]->res.'",
         color: "#f56954",
         highlight: "#f56954",
-        label: "Excellent"
+        label: "'.$Question[$i]->opt_a.'"
       },
       {
-        value: "0",
+        value: "'.${"B".$q}["0"]->res.'",
         color: "#00a65a",
         highlight: "#00a65a",
-        label: "Very Good"
+        label: "'.$Question[$i]->opt_b.'"
       },
       {
-        value: "0",
+        value: "'.${"C".$q}["0"]->res.'",
         color: "#f39c12",
         highlight: "#f39c12",
-        label: "Good"
+        label: "'.$Question[$i]->opt_c.'"
       },
       {
-        value: "0",
+        value: "'.${"D".$q}["0"]->res.'",
         color: "#00c0ef",
         highlight: "#00c0ef",
-        label: "Average"
+        label: "'.$Question[$i]->opt_d.'"
       }
     ];
     var pieOptions = {
@@ -236,215 +185,10 @@ var pieChartCanvas = $("#pieChart0").get(0).getContext("2d");
     };
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);var pieChartCanvas = $("#pieChart1").get(0).getContext("2d");
-    var pieChart = new Chart(pieChartCanvas);
-    var PieData = [
-      {
-        value: "0",
-        color: "#f56954",
-        highlight: "#f56954",
-        label: "Excellent"
-      },
-      {
-        value: "0",
-        color: "#00a65a",
-        highlight: "#00a65a",
-        label: "Very Good"
-      },
-      {
-        value: "0",
-        color: "#f39c12",
-        highlight: "#f39c12",
-        label: "Good"
-      },
-      {
-        value: "0",
-        color: "#00c0ef",
-        highlight: "#00c0ef",
-        label: "Average"
-      }
-    ];
-    var pieOptions = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke: true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor: "#fff",
-      //Number - The width of each segment stroke
-      segmentStrokeWidth: 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps: 100,
-      //String - Animation easing effect
-      animationEasing: "easeOutBounce",
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate: true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale: false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive: true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio: true,
-      //String - A legend template
-      legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-    };
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);var pieChartCanvas = $("#pieChart2").get(0).getContext("2d");
-    var pieChart = new Chart(pieChartCanvas);
-    var PieData = [
-      {
-        value: "0",
-        color: "#f56954",
-        highlight: "#f56954",
-        label: "Excellent"
-      },
-      {
-        value: "0",
-        color: "#00a65a",
-        highlight: "#00a65a",
-        label: "Very Good"
-      },
-      {
-        value: "0",
-        color: "#f39c12",
-        highlight: "#f39c12",
-        label: "Good"
-      },
-      {
-        value: "0",
-        color: "#00c0ef",
-        highlight: "#00c0ef",
-        label: "Average"
-      }
-    ];
-    var pieOptions = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke: true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor: "#fff",
-      //Number - The width of each segment stroke
-      segmentStrokeWidth: 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps: 100,
-      //String - Animation easing effect
-      animationEasing: "easeOutBounce",
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate: true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale: false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive: true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio: true,
-      //String - A legend template
-      legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-    };
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);var pieChartCanvas = $("#pieChart3").get(0).getContext("2d");
-    var pieChart = new Chart(pieChartCanvas);
-    var PieData = [
-      {
-        value: "0",
-        color: "#f56954",
-        highlight: "#f56954",
-        label: "Excellent"
-      },
-      {
-        value: "0",
-        color: "#00a65a",
-        highlight: "#00a65a",
-        label: "Very Good"
-      },
-      {
-        value: "0",
-        color: "#f39c12",
-        highlight: "#f39c12",
-        label: "Good"
-      },
-      {
-        value: "0",
-        color: "#00c0ef",
-        highlight: "#00c0ef",
-        label: "Average"
-      }
-    ];
-    var pieOptions = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke: true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor: "#fff",
-      //Number - The width of each segment stroke
-      segmentStrokeWidth: 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps: 100,
-      //String - Animation easing effect
-      animationEasing: "easeOutBounce",
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate: true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale: false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive: true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio: true,
-      //String - A legend template
-      legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-    };
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);var pieChartCanvas = $("#pieChart4").get(0).getContext("2d");
-    var pieChart = new Chart(pieChartCanvas);
-    var PieData = [
-      {
-        value: "0",
-        color: "#f56954",
-        highlight: "#f56954",
-        label: "Excellent"
-      },
-      {
-        value: "0",
-        color: "#00a65a",
-        highlight: "#00a65a",
-        label: "Very Good"
-      },
-      {
-        value: "0",
-        color: "#f39c12",
-        highlight: "#f39c12",
-        label: "Good"
-      },
-      {
-        value: "0",
-        color: "#00c0ef",
-        highlight: "#00c0ef",
-        label: "Average"
-      }
-    ];
-    var pieOptions = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke: true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor: "#fff",
-      //Number - The width of each segment stroke
-      segmentStrokeWidth: 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps: 100,
-      //String - Animation easing effect
-      animationEasing: "easeOutBounce",
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate: true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale: false,
-      //Boolean - whether to make the chart responsive to window resiz…
+    pieChart.Doughnut(PieData, pieOptions);';
+   }
+?>
+  });
 </script>
 </body>
-
 </html>
