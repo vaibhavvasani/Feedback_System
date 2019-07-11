@@ -9799,6 +9799,7 @@ button.bg-dark:focus {
 
 .text-center {
   text-align: center !important;
+  position: fixed; left: 0;  bottom: 0;   width: 100%;
 }
 
 @media (min-width: 576px) {

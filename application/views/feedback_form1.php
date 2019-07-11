@@ -89,8 +89,8 @@ if(!isset($_SESSION['user_id'])){
 					echo 'Thank you! Your feedback has already been submitted.';
 				  }
 				  else{
-					echo "Question No: ".$Question[$counter['0']->count1]->Qid ."<br/>" ;
-					echo "<b>".$Question[$counter['0']->count1]->Ques." ?</b> <br/>";
+					echo "<b>Question No: ".$Question[$counter['0']->count1]->Qid ."</b><br/>" ;
+					echo "<br/><b>".$Question[$counter['0']->count1]->Ques." ?</b> <br/>";
 				  }
 				}
 				?>
@@ -280,8 +280,8 @@ if(!isset($_SESSION['user_id'])){
 	</div>
 	</div>
 	<br><br>
-    <footer class="app-footer">
-        <div class="text-center">
+    <footer class="app-footer" style="position: fixed; left: 0;  bottom: 0;   width: 100%; padding : 20px;">
+        <div>
             <a href="#">KJSCE</a>
             <span>&copy; 2019 All rights reserved.</span>
         </div>

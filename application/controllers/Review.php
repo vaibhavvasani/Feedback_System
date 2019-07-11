@@ -9,16 +9,23 @@ class review extends CI_Controller{
   }
   public function index(){
     $this->load->model('rproc');
+	$data = array();
     if($this->rproc->checkfeedback() == 0){
-      echo "Please fill Theory and Practical Feedback first!";
-      return;
+	  echo '<script language="javascript">';
+      echo 'alert("Please fill Theory and Practical Feedback first!")';
+	  echo '</script>';
+  	  header("Refresh: 0.1; URL=".base_url()."index.php/ctrl_feedback");
     }
     else if($this->rproc->checkip($this->session->user_id) != 0){
-      echo "You already gave the review Thank you";
-      return;
+	  echo '<script language="javascript">';
+      echo 'alert("You already gave the review Thank you")';
+	  echo '</script>';
+	  header("Refresh: 0.1; URL=".base_url()."index.php/ctrl_feedback");
     }
-    $data['rows'] = $this->rproc->getlist($this->session->user_id);
-    $this->load->view('review',$data);
+	else {
+		$data['rows'] = $this->rproc->getlist($this->session->user_id);
+		$this->load->view('review',$data);
+	}
   }
   public function savereview(){
     try {
