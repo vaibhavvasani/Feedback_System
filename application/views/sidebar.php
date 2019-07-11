@@ -86,6 +86,11 @@ if ($_SESSION['user_type'] == 'admin') {
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;Attendance</a>
+            </li>
 <?php 
 }
 ?>
