@@ -57,38 +57,47 @@ if(!isset($_SESSION['user_id'])){
         <?php $this->load->view('sidebar'); ?>
         <main class="main" style="overflow: hidden;">
             <div class="container-fluid mt-4">
-		<div class="content-wrapper pl-5" style="margin-left: 0px;">
+		<div class="content-wrapper" style="margin-left: 0px;">
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 				<h1>
 				Feedback Form - Review
 				</h1>
 				</section>
-
+				<br>
 				<!-- Main content -->
-			<section class="content-header">
-			</section>
+			<div class="col-md-12">
+			<div class="box box-primary">
+			<div class="box-header with-border">
 			<form method="post" action="./review/savereview/">
 			<table>
 			<thead>
 			<tr>
 			<th>Name of the Faculty</th>
-			<th>Review (max 128 words)</th>
+			<th><center>Review (max 128 words)</center></th>
 			</tr>
 			</thead>
 			<tbody>
 			<?php
 			foreach ($rows as $data) {
 			echo "<tr>";
-			echo "<td>$data->NameOfFaculty</td>";
-			echo "<td><textarea required name=\"$data->fid\"></textarea></td>";
+			echo "<td><b>$data->NameOfFaculty</b>&nbsp&nbsp&nbsp&nbsp&nbsp</td>";
+			echo "<td><br><textarea rows='2' cols='100' maxlength='128' style='border-radius: 25px;  border: 2px solid ; padding: 20px; width: 450px;
+					height: 120px;   box-shadow: 8px 8px; resize: none; ' required name=\"$data->fid\"></textarea></td>";
 			echo "</tr>";
 			}
 			?>
 			</tbody>
 			</table>
-			<input type="submit">
+			<div style="padding-top:80px; text-align: center">
+			<input type="submit" class="w3-btn w3-round-large" style="padding:15px;   background-color: #ecf0f5; ">
+			<br><br>
+			</div>
 			</form>
+			</div>
+			</div>
+			</div>
+			<br>
 			<!-- /.content -->
 			</div>
 			<!-- /.content-wrapper -->
