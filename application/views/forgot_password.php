@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <b><?php echo $error ?></b>
         </div>
         
-        <button type="submit" name="login" class="button buttonBlue font-weight-bold mx-auto">Login
+        <button type="submit" name="login" class="button buttonBlue font-weight-bold mx-auto">Change Password
 			    <div class="ripples buttonRipples">
             <span class="ripplesCircle"></span>
           </div>
