@@ -201,33 +201,79 @@ class Process extends CI_Model
             $tmp = "chkbx_pracs" . $i;
             if (isset($post[$tmp])) {
                 $pr = 1;
-                $tmp = "chkbx_ba" . $i;
-                if (isset($post[$tmp])) {
-                    $a = 1;
-                } elseif (!isset($post[$tmp])) {
-                    $a = 0;
-                }
+                
+                $tmp="chkbx_ba1";
+				if(isset($_POST[$tmp]))
+				{
+					$a1=1;
+				}
+				elseif (!isset($_POST[$tmp])) {
+					$a1=0;
+				}
 
-                $tmp = "chkbx_bb" . $i;
-                if (isset($post[$tmp])) {
-                    $b = 1;
-                } elseif (!isset($post[$tmp])) {
-                    $b = 0;
-                }
+				$tmp="chkbx_ba2";
+				if(isset($_POST[$tmp]))
+				{
+					$a2=1;
+				}
+				elseif (!isset($_POST[$tmp])) {
+					$a2=0;
+				}
 
-                $tmp = "chkbx_bc" . $i;
-                if (isset($post[$tmp])) {
-                    $c = 1;
-                } elseif (!isset($post[$tmp])) {
-                    $c = 0;
-                }
+				$tmp="chkbx_ba3";
+				if(isset($_POST[$tmp]))
+				{
+					$a3=1;
+				}
+				elseif (!isset($_POST[$tmp])) {
+					$a3=0;
+				}
 
-                $tmp = "chkbx_bd" . $i;
-                if (isset($post[$tmp])) {
-                    $d = 1;
-                } elseif (!isset($post[$tmp])) {
-                    $d = 0;
-                }
+				$tmp="chkbx_ba4";
+				if(isset($_POST[$tmp]))
+				{
+					$a4=1;
+				}
+				elseif (!isset($_POST[$tmp])) {
+					$a4=0;
+				}
+	
+				$tmp="chkbx_bb1";
+				if(isset($_POST[$tmp]))
+				{
+					$b1=1;
+				}
+				elseif (!isset($_POST[$tmp])) {
+					$b1=0;
+				}
+	
+				$tmp="chkbx_bb2";
+				if(isset($_POST[$tmp]))
+				{
+					$b2=1;
+				}
+				elseif (!isset($_POST[$tmp])) {
+					$b2=0;
+				}
+	
+				$tmp="chkbx_bb3";
+				if(isset($_POST[$tmp]))
+				{
+					$b3=1;
+				}
+				elseif (!isset($_POST[$tmp])) {
+					$b3=0;
+				}
+
+				$tmp="chkbx_bb4";
+				if(isset($_POST[$tmp]))
+				{
+					$b4=1;
+				}
+				elseif (!isset($_POST[$tmp])) {
+					$b4=0;
+				}
+
             } elseif (!isset($post[$tmp])) {
                 $pr = 0;
             }
@@ -236,20 +282,20 @@ class Process extends CI_Model
                 $message = "Either theory or practical are compulsory!";
                 echo "<script type='text/javascript'>alert('$message');
 				window.location.href='application/views/loadmatrix_input.php';</script>";
-            } elseif ($pr == 1 && $a == 0 && $b == 0 && $c == 0 && $d == 0) {
+            } elseif ($pr == 1 && $a1==0 && $a2==0 && $a3==0 && $a4==0 && $b1==0 && $b2==0 && $b3==0 && $b4==0) {
                 $message = "Atleast one batch must be selected";
                 echo "<script type='text/javascript'>alert('$message');
 				window.location.href='application/views/loadmatrix_input.php';</script>";
             } else {
                 if ($pr == 1) {
 
-                    $data = array('Fid' => $fid, 'F_name' => $fname, 'sem' => $sem, 'Divi' => $divi, 'course' => $course, 'Theory' => $th, 'Prac' => $pr, 'A' => $a, 'B' => $b, 'C' => $c, 'D' => $d);
+                    $data = array('Fid' => $fid, 'F_name' => $fname, 'sem' => $sem, 'Divi' => $divi, 'course' => $course, 'Theory' => $th, 'Prac' => $pr, 'A1' => $a1,'A2' => $a2,'A3' => $a3,'A4' => $a4, 'B1' => $b1, 'B2' => $b2, 'B3' => $b3,'B4' => $b4);
                     $sql = $this->db->insert('load_mat', $data);
                     $errnum = $i + 1;
                     if (!$sql) {
                         die("Couldn't Insert row number:" . $errnum);
                     }
-                    $message = "Table Upadated!";
+                    $message = "Table Updated!";
                     echo "<script type='text/javascript'>alert('$message');</script>";
                 } else {
                     $data = array('Fid' => $fid, 'F_name' => $fname, 'sem' => $sem, 'Divi' => $divi, 'course' => $course, 'Theory' => $th, 'Prac' => $pr);
@@ -258,7 +304,7 @@ class Process extends CI_Model
                     if (!$sql) {
                         die("Couldn't Insert row number:" . $errnum);
                     }
-                    $message = "Table Upadated!";
+                    $message = "Table Updated!";
                     echo "<script type='text/javascript'>alert('$message');</script>";
                 }
             }
@@ -378,8 +424,8 @@ class Process extends CI_Model
 
         // To protect MySQL injection (more detail about MySQL injection)
         $myusername = stripslashes($myusername);
-        $mypassword = stripslashes($mypassword);
-        // $mypassword = md5($mypassword);
+        // $mypassword = stripslashes($mypassword);
+        $mypassword = md5($mypassword);
         // var_dump($mypassword);
 
         $query = $this->db->query("SELECT * FROM $tbl_name WHERE " . $userid . "='$myusername' and " . $pwd . "='$mypassword'");

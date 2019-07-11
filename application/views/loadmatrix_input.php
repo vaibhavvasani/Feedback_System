@@ -160,8 +160,8 @@
                          </td>
                         <td>
                             <select id="divi1" required="required" name="divi1">
-                                <option  id="opt1" value="5">5</option>
-                                <option  id="opt2" value="6">6</option>
+                                <option  id="opt1" value="5">A</option>
+                                <option  id="opt2" value="6">B</option>
                          </td>
                          <td>
                             <select id="course1" required="required" name="course1">
@@ -221,25 +221,10 @@
         </form>
 </center>
 
-
-
-
-
-                                                            <div class="col-sm-12 d-none d-md-block">
-                                                                <div id="out">
-                                                                    <canvas id="barChart" style="height:480px"></canvas>
-                                                                </div>
-
-                                                            </div>
-                                                            <!-- /.col sm-12 d-->
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div class="text-center">
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -290,7 +275,7 @@
             // $('#divi1').select2(); 
             // $('#course1').select2(); 
 
-            $('#dataTable').DataTable();
+            // $('#dataTable').DataTable();
         });
     </script>
 
