@@ -309,9 +309,9 @@ echo '</form>';*/
                     type:"POST",
                     async: false,
                     success:function(result){
-                        // console.log(typeof(result));
+                        console.log(result);
                       if(result != '0'){
-                        var json = JSON.parse(JSON.stringify(result));
+                        var json = JSON.parse(result);
                         var count = [];
                         var data = [];
 
