@@ -290,6 +290,9 @@ echo '</form>';*/
                             stepSize:10
                           }
                         }]
+                      },
+                      tooltips: {
+                        enabled: true
                       }
                     }
                 });
