@@ -279,13 +279,14 @@ if(!isset($_SESSION['user_id'])){
 		</main>
 	</div>
 	</div>
-	<br><br>
-    <footer class="app-footer" style="position: fixed; left: 0;  bottom: 0;   width: 100%; padding : 20px;">
+
+	<footer class="app-footer" style="position: fixed; left: 0;  bottom: 0;   width: 100%; padding : 20px;">
         <div>
-            <a href="#">KJSCE</a>
-            <span>&copy; 2019 All rights reserved.</span>
+            
+            <center><strong>Copyright&copy;<a href="#"style="color:rgb(48, 119, 180);">KJSCE </a></strong> <span>2019-2020 All rights reserved.</span></center>
         </div>
     </footer>
+	
     <!-- CoreUI and necessary plugins-->
     <script src="<?= base_url(); ?>assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/popper.min.js"></script>

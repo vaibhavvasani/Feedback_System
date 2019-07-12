@@ -227,10 +227,10 @@
         </main>
 
     </div>
+    <br><br>
     <footer class="app-footer">
-        <div class="text-center">
-            <a href="#">KJSCE</a>
-            <span>&copy; 2019 All rights reserved.</span>
+        <div class="text-center"style="position:static;">
+            <strong>Copyright&copy;<a href="#"style="color:rgb(48, 119, 180);">KJSCE </a></strong> <span>2019-2020 All rights reserved.</span>
         </div>
     </footer>
     <!-- CoreUI and necessary plugins-->

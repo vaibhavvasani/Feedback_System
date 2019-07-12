@@ -19,6 +19,7 @@
     <link href="<?= base_url(); ?>assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?= base_url(); ?>dist/css/skins/_all-skins.min.css"rel="stylesheet">
     <link href="<?= base_url(); ?>/dist/css/AdminLTE.min.css"rel="stylesheet">
+    
     <!-- Main styles for this application-->
     <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
