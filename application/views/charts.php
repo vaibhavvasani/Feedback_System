@@ -11,13 +11,13 @@
     
      <!-- Icons-->
    
-     <link href="<?= base_url(); ?>assets/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/css/coreui-icons.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/flag-icon.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/fontawesome.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/simple-line-icons.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/ionicons.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/bootstrap.css" rel="stylesheet">
-
+    <link href="<?= base_url(); ?>dist/css/skins/_all-skins.min.css"rel="stylesheet">
     <link href="<?= base_url(); ?>/dist/css/AdminLTE.min.css"rel="stylesheet">
     <!-- Main styles for this application-->
     <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
@@ -57,7 +57,7 @@
 
                 echo '<div class="box box-danger">';
                 echo '<div class="box-header with-border">';
-                echo '<h3 class="box-title col-xs-6">'.$Question[$i]->Qid.' '.$Question[$i]->Ques.'</h3>';
+                echo '<h3 class="box-title col-xs-11">'.$Question[$i]->Qid.' '.$Question[$i]->Ques.'</h3>';
 
               echo '<div class="box-tools pull-right">';
                 echo '<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>';
@@ -107,22 +107,22 @@
 </div>
     <footer class="app-footer">
         <div class="text-center"style="position:static;">
-            <a href="#">KJSCE</a>
-            <span>&copy; 2019 All rights reserved.</span>
+            <strong>Copyright&copy;<a href="#"style="color:rgb(48, 119, 180);">KJSCE </a></strong> <span>2019-2020 All rights reserved.</span>
         </div>
     </footer>
     
-<!-- CoreUI and necessary plugins-->
-  <script src="<?= base_url(); ?>assets/js/jquery-3.4.1.min.js"></script>
+    <!-- CoreUI and necessary plugins-->
+    <script src="<?= base_url(); ?>assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/popper.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/pace.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/perfect-scrollbar.min.js"></script>
-   
+    <script src="<?= base_url(); ?>assets/js/coreui.min.js"></script>
     <!-- Plugins and scripts required by this view-->
     <script src="<?= base_url(); ?>plugins/chartjs/Chart.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/custom-tooltips.min.js"></script>
-  
+         
+    <!-- charts hide and show -->
     <script src="<?= base_url(); ?>dist/js/app.min.js"></script>
     <script src=" <?= base_url(); ?>plugins/fastclick/fastclick.js"></script>
     
