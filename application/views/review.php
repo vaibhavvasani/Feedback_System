@@ -89,8 +89,8 @@ if(!isset($_SESSION['user_id'])){
 			?>
 			</tbody>
 			</table>
-			<div style="padding-top:80px; text-align: center">
-			<input type="submit" class="w3-btn w3-round-large" style="padding:15px;   background-color: #ecf0f5; ">
+			<div style="padding-top:80px; text-align: center;font-size:18px;">
+			<input type="submit" class="w3-btn w3-round-large" style="width:150px;height:50px;color:white;background-color:rgb(35, 113, 180); ">
 			<br><br>
 			</div>
 			</form>

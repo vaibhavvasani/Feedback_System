@@ -78,7 +78,7 @@ if ($_SESSION['user_type'] == 'admin') {
 
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;Timetable</a>
+                <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Timetable</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>index.php/Timetable">
@@ -89,12 +89,13 @@ if ($_SESSION['user_type'] == 'admin') {
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;Attendance</a>
+                
+                <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Attendance</a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_admin/table">
-                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Class Feedback</a>
+                <i class="fa fa-commenting" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Class Feedback</a>
             </li>
 <?php 
 }
