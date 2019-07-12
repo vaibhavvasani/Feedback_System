@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>KJSCE Feedback System | Faculty</title>
+    <title>KJSCE Feedback System | Faculty </title>
     
      <!-- Icons-->
    
@@ -15,6 +15,7 @@
     <link href="<?= base_url(); ?>assets/css/flag-icon.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/fontawesome.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/simple-line-icons.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/dist/css/AdminLTE.min.css"rel="stylesheet">
     <!-- Main styles for this application-->
     <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
@@ -41,7 +42,7 @@
     <div class="app-body">
         <?php $this->load->view('sidebar'); ?>
 <div class="top"style="margin-left: 20px;">
-         <div class="content-wrapper"style="padding:20px;">
+         <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
           <?php
