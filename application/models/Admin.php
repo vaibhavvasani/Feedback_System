@@ -23,6 +23,58 @@
 		{
 			$this->db->insert('load_mat_1', $data);
 		}
+
+		function getStudentsData($sem, $div)
+		{
+			$response = array();
+			
+			$arr = array('Sem' => $sem, 'div' => $div);
+		    
+		    $this->db->select('*');
+			$this->db->where($arr); 
+			$query = $this->db->get('list_of_student');
+		    $response = $query->result_array();
+		
+		    return $response;
+		}
+
+		function getStudentsDataStrict($sem, $div)
+		{
+			$response = array();
+			
+			$arr = array('Sem' => $sem, 'div' => $div, 'attendance >=' => '75');
+		    
+		    $this->db->select('*');
+			$this->db->where($arr); 
+			$query = $this->db->get('list_of_student');
+		    $response = $query->result_array();
+		
+		    return $response;
+		}
+
+		function getSems()
+		{
+		    $response = array();
+			
+		    $this->db->distinct();			
+		    $this->db->select('Sem');
+		    $query = $this->db->get('list_of_student');
+		    $response = $query->result_array();
+		 
+		    return $response;
+		}
+
+		function getDivs()
+		{
+		    $response = array();
+			
+		    $this->db->distinct();						
+		    $this->db->select('div');
+		    $query = $this->db->get('list_of_student');
+		    $response = $query->result_array();
+		 
+		    return $response;
+		}
 	}
 
 ?>

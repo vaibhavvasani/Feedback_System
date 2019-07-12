@@ -304,4 +304,106 @@ class Ctrl_admin extends CI_Controller
         fclose($file);
         exit;
     }
+
+    public function renderAttendance()
+    {
+        $this->load->view('attendance');
+    }
+
+    public function getSemesters() 
+    {
+        $this->load->model('Admin');
+
+        $raw = $this->Admin->getSems();
+
+        // var_dump($raw);
+
+        foreach ($raw as $data) {
+            $sem = $data['Sem'];
+            echo "<option value=\"$sem\">$sem</option>";
+        }
+    }
+
+    public function getDivisions() 
+    {
+        $this->load->model('Admin');
+
+        $raw = $this->Admin->getDivs();
+
+        // var_dump($raw);
+
+        foreach ($raw as $data) {
+            $div = $data['div'];
+            echo "<option value=\"$div\">$div</option>";
+        }
+    }
+
+    public function getStudentAttendance($sem, $div) 
+    {
+        $output = '<table id="example" class="display table-striped table-bordered table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>';
+
+        $this->load->model('Admin');
+
+        $raw = $this->Admin->getStudentsData($sem, $div);
+
+        // var_dump($raw);
+
+        $output .= "<tbody>";
+
+        foreach ($raw as $data) {
+            $fname = $data['Fname']; 
+            // var_dump
+            $lname = $data['Lname']; 
+            $attendance = $data['attendance'];
+            $output .= "<tr><td>".$fname."</td><td>".$lname."</td><td>".$attendance."</td></tr>";
+        }
+
+        $output .= '</tbody></table>';
+
+        // var_dump($output);
+
+        echo $output;
+    }
+
+    public function getStudentAttendanceStrict($sem, $div) 
+    {
+        $output = '<table id="example" class="display table-striped table-bordered table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>';
+
+        $this->load->model('Admin');
+
+        $raw = $this->Admin->getStudentsDataStrict($sem, $div);
+
+        // var_dump($raw);
+
+        $output .= "<tbody>";
+
+        foreach ($raw as $data) {
+            $fname = $data['Fname']; 
+            // var_dump
+            $lname = $data['Lname']; 
+            $attendance = $data['attendance'];
+            $output .= "<tr><td>".$fname."</td><td>".$lname."</td><td>".$attendance."</td></tr>";
+        }
+
+        $output .= '</tbody></table>';
+
+        // var_dump($output);
+
+        echo $output;
+    }
+    
 }

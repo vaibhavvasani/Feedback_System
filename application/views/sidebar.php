@@ -88,7 +88,7 @@ if ($_SESSION['user_type'] == 'admin') {
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_admin/renderAttendance">
                 
                 <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Attendance</a>
             </li>
