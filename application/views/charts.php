@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>KJSCE Feedback System | Faculty </title>
+    <title>KJSCE Feedback System | Faculty as </title>
     
      <!-- Icons-->
    
@@ -15,6 +15,9 @@
     <link href="<?= base_url(); ?>assets/css/flag-icon.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/fontawesome.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/simple-line-icons.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/css/ionicons.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/css/bootstrap.css" rel="stylesheet">
+
     <link href="<?= base_url(); ?>/dist/css/AdminLTE.min.css"rel="stylesheet">
     <!-- Main styles for this application-->
     <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
@@ -36,15 +39,16 @@
     gtag('config', 'UA-118965717-5');
     </script>
 </head>
+<!-- style="width: 50%;min-height:1px;padding-right:15;padding-left:15px;float:left;position: relative;" -->
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <?php $this->load->view('navbar'); ?>
     <div class="app-body">
         <?php $this->load->view('sidebar'); ?>
-<div class="top"style="margin-left: 20px;">
+<div class="top"style="margin-left:10px;">
          <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header"style="padding-right:50px;">
           <?php
           for($i=0;$i<(count($Question));$i=$i+2)
           {
@@ -102,7 +106,7 @@
     </div>
 </div>
     <footer class="app-footer">
-        <div class="text-center">
+        <div class="text-center"style="position:static;">
             <a href="#">KJSCE</a>
             <span>&copy; 2019 All rights reserved.</span>
         </div>
@@ -113,16 +117,15 @@
     <script src="<?= base_url(); ?>assets/js/popper.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/pace.min.js"></script>
-    <script src="<?= base_url(); ?>assets/js/perfect-scrollbar.min.js">
-    </script>
-    <script src="<?= base_url(); ?>assets/js/coreui.min.js"></script>
+    <script src="<?= base_url(); ?>assets/js/perfect-scrollbar.min.js"></script>
+   
     <!-- Plugins and scripts required by this view-->
     <script src="<?= base_url(); ?>plugins/chartjs/Chart.min.js"></script>
-    <script src="<?= base_url(); ?>assets/js/custom-tooltips.min.js">
+    <script src="<?= base_url(); ?>assets/js/custom-tooltips.min.js"></script>
   
-    </script>
-    <!-- <script src="<?=base_url();?>plugins/printer/printThis.js" charset="utf-8"></script> -->
-     <!-- <script src=" <?=base_url();?>plugins/fastclick/fastclick.js"></script> -->
+    <script src="<?= base_url(); ?>dist/js/app.min.js"></script>
+    <script src=" <?= base_url(); ?>plugins/fastclick/fastclick.js"></script>
+    
     <script src="<?= base_url(); ?>assets/js/main.js"></script>
     
 
