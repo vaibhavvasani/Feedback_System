@@ -424,8 +424,8 @@ class Process extends CI_Model
 
         // To protect MySQL injection (more detail about MySQL injection)
         $myusername = stripslashes($myusername);
-        // $mypassword = stripslashes($mypassword);
-        $mypassword = md5($mypassword);
+        $mypassword = stripslashes($mypassword);
+        // $mypassword = md5($mypassword);
         // var_dump($mypassword);
 
         $query = $this->db->query("SELECT * FROM $tbl_name WHERE " . $userid . "='$myusername' and " . $pwd . "='$mypassword'");
