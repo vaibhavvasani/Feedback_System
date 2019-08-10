@@ -50,7 +50,7 @@
             <div class="container-fluid mt-4">
                 <div class="animated fadeIn">
                     <!-- Content Wrapper. Contains page content -->
-                    <div class="content-wrapper" style="padding-left: 10px">
+                    <div class="content-wrapper" style="padding-left: 20px;position:relative;">
                         <!-- Content Header (Page header) -->
                         <section class="content-header">
                             <div class="row">
@@ -62,20 +62,20 @@ echo '<input type="submit" value="Generate">';
 echo '</form>';*/
                                     ?>
                                     <select name="class" id="class_select"
-                                        style="margin: 5px; width: 140px; height: 38px; Border: none;">
+                                        style="margin: 5px; width: 200px; height: 38px; Border: none;">
                                         <option value="0">Select Class</option>                                    </select>
                                     <select name="divion" id="div_select"
-                                        style="margin: 5px; width: 150px; height: 38px; Border: none;">
+                                        style="margin: 5px; width: 200px; height: 38px; Border: none;">
                                         <option value="0">Select Division</option>
                                     </select>
                                     
                                     <button type="button" name="button" id="genresult" class="btn btn-primary"
-                                        style=" margin-left:50px; margin-top: 20px;height:2.8em">Display Data</button>
+                                        style="width:10em; margin-right:10px; margin-left:50px;height:2.8em">Display Data</button>
                                     <button type="button" name="button" id="print" class="btn btn-primary"
-                                        style=" margin-top: 20px;width:10em;height:2.8em">Print Report</button>
+                                        style="margin-right:10px; width:10em;height:2.8em">Print Report</button>
 
                                     <button type="button" name="button" id="strictness" class="btn btn-primary"
-                                        style=" margin-top: 20px;width:10em;height:2.8em">Above 75%</button>
+                                        style="width:10em;height:2.8em">Above 75%</button>
                                 </div>
                             </div>
                             <br> <!--add spacing between ---->
@@ -91,35 +91,38 @@ echo '</form>';*/
                                                 
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <div class="row" id="printdiv">
+                                                        <div class="row" id="printdiv"style="margin: 5px">
                                                             <div class="col-sm-5">
                                                                 <h4 class="card-title mb-0">Class Data</h4>
                                                             </div>
-                                                            <!-- /.col sm 5-->
-                                                            <div class="col-sm-12 d-none d-md-block">
-                                                                <div id="out" style="height:480px">
-                                                                </div>
-                                                            </div>
-                                                            <!-- /.col sm-12 d-->
-                                                        </div>
-                                                        <!-- /.row-->
-                                                        <div class="chart-wrapper"
-                                                            style="height:300px;margin-top:40px;">
-                                                            <canvas class="chart" id="main-chart" height="300"></canvas>
-                                                        </div>
+                                                            <div class="row" id="printdiv">
+          <div class="col-xs-7 charts">
+            <div class="box-body">
+              <canvas style="height:500px"></canvas>
+            </div>
+            <br />
+            <div class="text-center">
+                <h2 id="chart-name"></h1>
+            </div>
+          </div>
+            <div class="col-xs-7">
+              <div class="" id="questions">
+                <!--<p style="font-size:16px">Questions List</p>-->
+              </div>
+            </div>
+          </div>
+          
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <br />
-                                        <div class="text-center">
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                        </section>
-                        <!-- /.content -->
-                    </div>
+                             
+
+                                                           
+
+        </section>
+        <!-- /.content -->
+      </div>
 
                 </div>
             </div>

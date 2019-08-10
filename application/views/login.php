@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 <input type="text" id="username" name="username" class="text-dark" autocomplete="off" required>
        <span class="highlight"></span>
        <span class="bar"></span>
-			<label>Username</label>
+      <label>Username</label>
 		</div>
 		<div class="group password">
 			<input type="password" id="password" name="password" class="text-dark" required>
