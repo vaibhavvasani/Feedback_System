@@ -80,18 +80,26 @@
 			<div class="container" style="width: 50%;margin: 0 auto;padding-top: 30px;">
            <?php $attr = array('name' => 'form1','method' => 'POST');
               echo form_open('Ctrl_admin/loadTTMatrixPage',$attr); ?>
+              
    <div class="inner-width"style="font-size: 20px;text-transform: uppercase;display: inline-block;border-bottom: 4px solid;padding-bottom:0px;color: #333;text-align: center;margin-bottom:20px">
                 <p>Add Timetable</p>
+</td>
+  <td style="width: 50%;">
+  <a class="btn btn-primary" href="<?php echo base_url(); ?>samples/Load_Matrix.csv" download>Download Sample File</a>
+  </td>
+             </tr>
     </div>
-   <div class="form-group">
+    <tr>
+      <td style="width: 50%;">
+   <div class="form-group ml-4">
     <label for="exampleInputFid" class="bmd-label-floating">Enter Faculty-ID : </label>
     <input type="text" name="Fid" class="form-control" id="Fid" pattern=".{4,4}" oninvalid="this.setCustomValidity('Please enter your 4 digit Fid')" oninput="setCustomValidity('')" required>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">Enter Name : </label>
     <input type="text" name="FName" class="form-control" id="FName" oninvalid="this.setCustomValidity('Please enter Faculty Name')" oninput="setCustomValidity('')" required>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">Select Semester : </label>
     <select name="Semester" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select Semester')" oninput="setCustomValidity('')" required>
     <option value="" selected>Choose Semester</option>
@@ -105,7 +113,7 @@
     <option value="8">8</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">Select Division : </label>
     <select name="Division" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select Division')" oninput="setCustomValidity('')" required>
     <option value="" selected>Choose Division</option>
@@ -121,7 +129,7 @@
     <option value="J">J</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">Select Department : </label>
     <select name="Department" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select Department')" oninput="setCustomValidity('')" required>
     <option value="" selected>Choose Department</option>
@@ -132,7 +140,7 @@
     <option value="Mech">Mech</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is Theory ? : </label>
     <select name="Theory" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -140,7 +148,7 @@
     <option value="N">No</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is Practicals ? : </label>
     <select name="Practicals" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -148,7 +156,7 @@
     <option value="N">No</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is A1 ? : </label>
     <select name="A1" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -156,7 +164,7 @@
     <option value="N">No</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is A2 ? : </label>
     <select name="A2" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -164,7 +172,7 @@
     <option value="N">No</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group  ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is A3 ? : </label>
     <select name="A3" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -172,7 +180,7 @@
     <option value="N">No</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is A4 ? : </label>
     <select name="A4" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -180,7 +188,7 @@
     <option value="N">No</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is B1 ? : </label>
     <select name="B1" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -188,7 +196,7 @@
     <option value="N">No</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is B2 ? : </label>
     <select name="B2" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -196,7 +204,7 @@
     <option value="N">No</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is B3 ? : </label>
     <select name="B3" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -204,7 +212,7 @@
     <option value="N">No</option>
 </select>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <label for="exampleInputName" class="bmd-label-floating">is B4 ? : </label>
     <select name="B4" class="form-control" id="abbre" oninvalid="this.setCustomValidity('Please select your answer')" oninput="setCustomValidity('')" required>
     <option value="" selected>Your answer</option>
@@ -216,7 +224,7 @@
   
 						  
 
-               <button class="button new btn-lg round" style="width:80%;background-color: #83919c;" align="center" type="submit"><span></span><b style="color : #fafafa;"> Add </b></button>
+               <button class="button new btn-lg round ml-4" style="width:80%;background-color: #83919c;" align="center" type="submit"><span></span><b style="color : #fafafa;"> Add </b></button>
         
 </form>
 		<?php 

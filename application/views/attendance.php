@@ -89,16 +89,16 @@ echo '</form>';*/
                                         <div class="box-body">
                                             <div id="rep">
                                                 
-                                                <div class="card">
+                                                <div class="card"  id="class-data-title" style="display:none;">
                                                     <div class="card-body">
                                                         <div class="row" id="printdiv"style="margin: 5px">
-                                                            <div class="col-sm-5">
+                                                            <div class="col-md-5"  >
                                                                 <h4 class="card-title mb-0">Class Data</h4>
                                                             </div>
                                                             <div class="row" id="printdiv">
           <div class="col-xs-7 charts">
             <div class="box-body">
-              <canvas style="height:500px"></canvas>
+              <div class="col-md-12" id="out"></div>
             </div>
             <br />
             <div class="text-center">
@@ -209,7 +209,10 @@ echo '</form>';*/
                     type:"POST",
                     async: false,
                     success:function(result){
-                        // console.log(result);
+                        console.log(result);
+
+                        $("#class-data-title").css('display', 'block');
+
                         $("#out").empty();
                         
                         $("#out").append(result);

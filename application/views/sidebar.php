@@ -123,6 +123,15 @@ if ($_SESSION['user_type'] == 'admin') {
             </li>
             <?php } ?>
 
+            <?php
+            if ($_SESSION['user_type'] == 'faculty') {
+    ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_faculty_chart/load_page/<?php echo $_SESSION['user_id']; ?>">
+                    Display Feedback</a>
+                </li>
+            <?php } ?>
+
             <li class="divider"></li>
 
         </ul>

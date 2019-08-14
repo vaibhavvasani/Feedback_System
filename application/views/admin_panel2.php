@@ -23,6 +23,15 @@
   <!-- Select2 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 
+  <link href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" rel="stylesheet">
+
+  <style>
+  
+    .text-center {
+      position: initial !important;
+    }
+  </style>
+
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -117,7 +126,7 @@
                                   <br />
                                   <div class="text-center">
                                     <h2 id="chart-name">
-                                      </h1>
+                                      </h2>
                                   </div>
                                 </div>
                                 <div class="col-xs-7">
@@ -166,10 +175,14 @@
   <!-- Select2 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
+
   <script>
     $(function() {
 
       $('.faculty_select').select2();
+
+     
 
       // Get class of faculty
       $("#faculty_select").on('change', function() {
@@ -212,6 +225,7 @@
           type: "POST",
           async: false,
           success: function(result) {
+            console.log(result);
             if (result != '0') {
               $("#sub_select").html(result);
             } else {
@@ -228,6 +242,7 @@
           type: "POST",
           async: false,
           success: function(result) {
+            
             if (result != '0') {
               $("#thpr_select").html(result);
             } else {
@@ -248,6 +263,10 @@
         }]
       };
       $("#genresult").on('click', function() {
+        console.log("hello");
+        $.busyLoadFull('show')
+
+
         $(".charts").empty();
         $(this).attr('selected', true);
         $(this).trigger("change");
@@ -278,6 +297,7 @@
                     backgroundColor: '#0066cc'
                   }]
                 };
+                
                 var ctx = $("canvas").last().get(0).getContext("2d");
                 window.myBar = new Chart(ctx, {
                   type: 'bar',
@@ -302,18 +322,20 @@
                     }
                   }
                 });
+                
                 var tmp = $("#class_select").val();
                 if (tmp == '1' || tmp == '2') yr = "FE";
                 if (tmp == '3' || tmp == '4') yr = "SE";
                 if (tmp == '5' || tmp == '6') yr = "TE";
                 if (tmp == '7' || tmp == '8') yr = "BE";
-                if ($("#thpr_select").val() == 1) str = "<?= base_url(); ?>/index.php/ctrl_admin/gendatath/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val();
-                if ($("#thpr_select").val() == 2) str = "<?= base_url(); ?>/index.php/ctrl_admin/gendatapr/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val();
+                if ($("#thpr_select").val() == 1) str = "<?= base_url(); ?>index.php/ctrl_admin/gendatath/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val();
+                if ($("#thpr_select").val() == 2) str = "<?= base_url(); ?>index.php/ctrl_admin/gendatapr/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val();
                 $.ajax({
                   url: str,
                   type: "POST",
                   async: false,
                   success: function(result) {
+                    $.busyLoadFull('hide')
                     if (result != '0') {
                       var json = jQuery.parseJSON(result);
                       var count = [];
@@ -326,7 +348,7 @@
                       barChartData.datasets[0].data = data;
                       barChartData.datasets[0].label = $("#faculty_select option:selected").text();
                       window.myBar.update();
-                      $(".chart-name").last().html(yr + "-" + $("#div_select").val() + " " + $("#sub_select").val() + " " + $("#thpr_select option:selected").text());
+                      $(".chart-name").last().text(yr + "-" + $("#div_select").val() + " " + $("#sub_select").val() + " " + $("#thpr_select option:selected").text());
                       str = undefined;
                     } else {
                       alert("Faculty Doesn't Teach to any class");
