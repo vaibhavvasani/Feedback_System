@@ -44,6 +44,7 @@ class Ctrl_admin extends CI_Controller
         $data['staffListPr'] = $pr_list;
         $thdata = array();
         $prdata = array();
+
         foreach ($th_list as $row) {
             $thdata[$row->Fid] = $this->process->gendatath($row->Fid, $sem, $div, 0);
         }

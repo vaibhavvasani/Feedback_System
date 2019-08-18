@@ -79,7 +79,6 @@ class Process extends CI_Model
         foreach ($data as $key => $value) {
             $data[$key] = ($data[$key] * 100) / ($count[$key] * 4);
         }
-        // var_dump($data);
         return $data;
     }
     public function gendatapr($fname, $sem, $div, $course)

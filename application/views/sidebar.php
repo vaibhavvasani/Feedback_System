@@ -135,7 +135,8 @@ if ($_SESSION['user_type'] == 'admin') {
                     Practical Feedback</a>
                 </li>
             <?php } ?>
-            <li class="nav-item">
+                <li class="nav-item">
+                    <!-- <i class="fa fa-sign-out-alt" aria-hidden="true"></i> -->
                     <a class="nav-link" href="<?=base_url();?>index.php/Ctrl_feedback/logout">
                     Logout</a>
                 </li>

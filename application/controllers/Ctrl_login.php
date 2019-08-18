@@ -54,7 +54,7 @@ class Ctrl_login extends CI_Controller {
             else if ($logintype=="faculty") {
                 $arr = array('user_id'=> $data['0']->Fid ,'fname'=> $data['0']->NameOfFaculty,'lname'=> " ",'user_type'=>'faculty');
                 $this->session->set_userdata($arr);
-                redirect('Ctrl_faculty_chart/load_page/' . $data['0']->Fid);
+                redirect('Ctrl_faculty_chart/');
             }
             else if($logintype=='admin'){
                 $arr = array('user_id'=> $data['0']->UserId ,'fname'=> $data['0']->AName,'lname'=> " ",'user_type'=>'admin');
