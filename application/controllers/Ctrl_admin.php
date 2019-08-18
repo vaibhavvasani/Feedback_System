@@ -19,7 +19,7 @@ class Ctrl_admin extends CI_Controller
 
     public function getalldiv($sem)
     {
-        $res = $this->db->query("Select Distinct divi from load_mat where sem='$sem'");
+        $res = $this->db->query("Select Distinct divi from load_mat where Sem='$sem'");
         $res = $res->result();
         foreach ($res as $key => $value) {
             echo "<option value=\"" . $value->divi . "\">" . $value->divi . "</option>";

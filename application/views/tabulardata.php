@@ -105,14 +105,14 @@ if(!isset($_SESSION['user_id'])){
               <div class="row">
                 <div class="col">
                   <select id="sem"  style="margin: 5px; width: 140px; height: 38px; Border: none;">
-                    <option  value="0">Select SEM</option>
+                    <option value="0">Select SEM</option>
                     <?php
                     foreach ($sem as $key => $value) {
                       echo "<option value=\"".$value->Sem."\">".$value->Sem."</>";
                     }
                     ?>
                   </select>
-                  <select id="divi" style="margin: 5px; width: 140px; height: 38px; Border: none;">
+                  <select id="divi">
                     <option value="0">Select Division</option>
                   </select>
                   <button type="button" class="btn btn-primary" style=" margin-left:50px; width:10em;height:2.8em; margin-right: 5px;" id="final">Display  Data</button>
@@ -152,11 +152,17 @@ if(!isset($_SESSION['user_id'])){
                                       </tr>
                                       <?php
                                       foreach ($staffListTh as $key => $value) {
+                                        $sum = 0;
+                                        $count = 8;
                                         echo "<tr>";
                                         echo "<td>".$value->F_name."</td>";
                                         foreach ($thdata[$value->Fid] as $key => $value) {
-                                          echo "<td>".$value."</td>";
+                                          $sum += $value; 
+                                          
+                                          echo "<td>".round($value, 2)."</td>";
+                                          // $count = $key;
                                         }
+                                        echo "<td>".round($sum / $count, 2)."</td>";
                                         echo "</tr>";
                                       }
                                       ?>
@@ -184,11 +190,14 @@ if(!isset($_SESSION['user_id'])){
                                       </tr>
                                       <?php
                                       foreach ($staffListPr as $key => $value) {
+                                        $sum = 0;
+                                        $count = 5;
                                         echo "<tr>";
                                         echo "<td>".$value->F_name."</td>";
-                                        foreach ($prdata[$value->Fid] as $key => $value) {
-                                          echo "<td>".$value."</td>";
+                                        foreach ($prdata[$value->Fid] as $key => $value) {$sum += $value; 
+                                          echo "<td>".round($value, 2)."</td>";
                                         }
+                                        echo "<td>".round($sum / $count, 2)."</td>";
                                         echo "</tr>";
                                       }
                                       ?>
@@ -259,22 +268,25 @@ if(!isset($_SESSION['user_id'])){
       $('#sem').select2();
       $('#divi').select2();
 
-      $("table").DataTable();
+      // $("#questions_pr_table").DataTable();
 
       
       $("#final").on('click',function(){
-        window.location.href = "<?=base_url();?>index.php/ctrl_admin/table/"+$("#sem").val()+"/"+$("#divi").val();
+        window.location.href = "<?=base_url();?>/index.php/ctrl_admin/table/"+$("#sem").val()+"/"+$("#divi").val();
       });
 
       $("#sem").on('change',function(){
         $.ajax({
-          url:"<?=base_url();?>index.php/ctrl_admin/getalldiv/"+$("#sem").val(),
+          url:"<?=base_url();?>/index.php/ctrl_admin/getalldiv/"+$("#sem").val(),
           type:"POST",
           success:function(result){
-            //alert(result);
+            // alert(result);
             if(result != '0'){
-              $("#divi").html("<option value=\"0\">Select Division</option>"+result);
+              $("#divi").html("<option value='0'>Select Division</option>" + result);
             }
+          },
+          error: function(res) {
+            console.log(res);            
           }
         });
       });

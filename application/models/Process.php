@@ -97,16 +97,16 @@ class Process extends CI_Model
         $result = $res->result();
         // var_dump($result);
 
-        for ($i = 0; $i < sizeof($result); $i++)
-        {
-            $generatedData = get_object_vars($result[$i]);
-            $data[$generatedData['Question_id']] += $generatedData['benchmark'] * $const[$generatedData['ans_opt']];
-            $count[$generatedData['Question_id']] += $generatedData['benchmark'];
-        }
-        // foreach ( $res->result()as $row) {
-        //     $data[$row->Question_id] += $row->benchmark * $const[$row->ans_opt];
-        //     $count[$row->Question_id] += $row->benchmark;
+        // for ($i = 0; $i < sizeof($result); $i++)
+        // {
+        //     $generatedData = get_object_vars($result[$i]);
+        //     $data[$generatedData['Question_id']] += $generatedData['benchmark'] * $const[$generatedData['ans_opt']];
+        //     $count[$generatedData['Question_id']] += $generatedData['benchmark'];
         // }
+        foreach ( $res->result()as $row) {
+            $data[$row->Question_id] += $row->benchmark * $const[$row->ans_opt];
+            $count[$row->Question_id] += $row->benchmark;
+        }
         foreach ($data as $key => $value) {
             $data[$key] = ($data[$key] * 100) / ($count[$key] * 4);
         }
