@@ -80,6 +80,7 @@ if(!isset($_SESSION['user_id'])){
 					$div=$_SESSION['divi'];
 					$batch=$_SESSION['batch'];
 
+
 					if ($counter==null) {
 					echo "<b>Question No: ".$Question['0']->Qid ."</b><br/>" ;
 					echo "<br/><b>".$Question['0']->Ques." ?</b> <br/>";
@@ -300,6 +301,5 @@ if(!isset($_SESSION['user_id'])){
     <script src="<?= base_url(); ?>assets/js/main.js"></script>
     <!-- Select2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
-	<script>
 </body>
 </html>
