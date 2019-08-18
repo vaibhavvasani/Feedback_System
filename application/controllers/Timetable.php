@@ -27,6 +27,9 @@ class Timetable extends CI_Controller {
         $data=$this->process->getfacultyid($b);
         $a=$data['0']->Fid;
         
-		$this->process->updateLoadMat1($post,$a);
+		$data['message'] = $this->process->updateLoadMat1($post, $a);
+		$data['NameOfFaculty']=$this->process->getfaculty();
+		$data['Cname']=$this->process->getcourse();
+		$this->load->view('loadmatrix_input', $data);
 	}
 }

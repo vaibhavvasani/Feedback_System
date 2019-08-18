@@ -11,7 +11,6 @@
 		{
 		    $response = array();
 		    
-		    
 		    $this->db->select('*');
 		    $query = $this->db->get($table);
 		    $response = $query->result_array();
@@ -21,7 +20,7 @@
 
 		function insert($data)
 		{
-			$this->db->insert('load_mat_1', $data);
+			$this->db->insert('load_mat', $data);
 		}
 
 		function getStudentsData($sem, $div)

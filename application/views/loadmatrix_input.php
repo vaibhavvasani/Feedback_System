@@ -74,7 +74,7 @@
 
                             <!--<h3 class="box-title col-xs-11">Select Fields and Click Generate</h3>-->
                             <div class="row" id="printdiv">
-                                <div class="col-xs-6">
+                                <div class="col">
                                     <div class="box-box-danger">
                                         <div class="box-header with-border">
                                         </div>
@@ -92,22 +92,16 @@
 
 <!-- time table-->
                                                             <center>
-<div class="login1" style="text-align: center;">                                                                          
-    
-        <?php 
-            $attr = array('class' => 'register','method' => 'POST');
-            echo form_open('Timetable/updateLoadMat',$attr);
-        ?>
-        <!-- <form action=<?php echo base_url(); ?>"updateLoadMat/updateLoadMat1/" class="register" method="POST"> -->
-                                
+                            <div class="login1" style="text-align: center;">
+                            <?php 
+                                $attr = array('class' => 'register','method' => 'POST');
+                                echo form_open('Timetable/updateLoadMat',$attr);
+                            ?>
                             Faculty Name:
-
-                            
-
                             <select id="F_Name" required="required" name="F_name" required="true">
                                 <?php
                                 foreach ($NameOfFaculty as $object) {
-                                    echo '<option value="'.$object->NameOfFaculty.'">'.$object->NameOfFaculty.'</option>';
+                                    echo '<option value="'.$object->Fid.'">'.$object->NameOfFaculty.'</option>';
                                 }
                                 
                                 ?>
@@ -116,11 +110,11 @@
                                     
                     
                     
-                    <input type="button" value="Add Class" onClick="addRow('dataTable')" /> 
-                    <input type="button" value="Remove Class" onClick="deleteRow('dataTable')"  /> 
+                    <input type="button" id="addRow" value="Add Class" /> 
+                    <input type="button" id="deleteRow" value="Remove Class"  /> 
                     
         <center>    
-               <table id="dataTable" class="form" border="1">
+               <table id="dataTable" class="form table-striped table-bordered table-hover mb-4 ">
                   <tbody>
             <tr bgcolor="#f6f6f6">
             <th rowspan="2">Semester</th>
@@ -148,28 +142,24 @@
                                         
                              <td>
                             <select id="sem1" required="required" name="sem1">
-                                <option id="opt3" value="3">3</option>
+                                <!-- <option id="opt3" value="3">3</option>
                                 <option id="opt4" value="4">4</option>
                                 <option id="opt5" value="5">5</option>
                                 <option id="opt6" value="6">6</option>
                                 <option id="opt7" value="7">7</option>
-                                <option id="opt8" value="8">8</option>
+                                <option id="opt8" value="8">8</option> -->
                             </select>   
 
                             
                          </td>
                         <td>
                             <select id="divi1" required="required" name="divi1">
-                                <option  id="opt1" value="5">A</option>
-                                <option  id="opt2" value="6">B</option>
+                                <!-- <option  id="opt1" value="5">A</option>
+                                <option  id="opt2" value="6">B</option> -->
                          </td>
                          <td>
                             <select id="course1" required="required" name="course1">
-                                <?php
-                                    foreach ($Cname as $object) {
-                                        echo '<option value="'.$object->Cname.'">'.$object->Cname.'</option>';
-                                    }
-                                ?>
+                            </select>
                          </td>
                         <td>
                             <input type="checkbox" id="chkbx_theory1" name="chkbx_theory1"/>
@@ -217,7 +207,18 @@
             <input type="textbox" id="numrow" value="1" hidden="true" name="numrow"/>
             <input class="submit" type="submit" value="Confirm &raquo;" />
                         
-            <div class="clear"></div>
+            <div class="clear mt-4">
+                <?php
+                    if ($message) 
+                    {
+                ?>
+                    <div class="alert alert-success">
+                        <?php echo $message; ?>
+                    </div>
+                <?php
+                    }
+                 ?>
+            </div>
         </form>
 </center>
 
@@ -239,7 +240,7 @@
     </div>
   <footer class="app-footer">
         <div class="text-center"style="position:static;">
-            <strong>Copyright&copy;<a href="#"style="color:rgb(48, 119, 180);">KJSCE </a></strong> <span>2019-2020 All rights reserved.</span>
+            <strong>Copyright &copy; <a href="#"style="color:rgb(48, 119, 180);">KJSCE </a></strong> <span>2019-2020 All rights reserved.</span>
         </div>
     </footer>
     <!-- CoreUI and necessary plugins-->
@@ -263,19 +264,78 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
     <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 
 
     <!-- Custom AJAX Calls -->
     <script type="text/javascript">
         $(function() {
             $('#F_Name').select2(); 
-            // $('#sem1').select2(); 
-            // $('#divi1').select2(); 
-            // $('#course1').select2(); 
+            
+            // $("#dataTable").DataTable();
 
-            // $('#dataTable').DataTable();
-        });
+            $("#addRow").click((e) => {
+                var table = $('#dataTable');
+                var lastrow = $('tr:last-child', table).html();
+                table.append('<tr>' + lastrow + '</tr>');
+            });
+
+            $("#deleteRow").click((e) => {
+                var table = $('#dataTable');
+                // var table = document.getElementById(tableID);
+                var lastrow = $('tr:last-child', table).remove();
+                // table.deleteRow(rowCount - 1);
+            });
+
+            // Ajax Calls
+            $("#F_Name").on('change', function() {
+                // console.log($("#F_Name").val())
+                $.ajax({
+                  url: "<?= base_url(); ?>/index.php/ctrl_admin/getc/" + $("#F_Name").val(),
+                  type: "POST",
+                  async: false,
+                  success: function(result) {
+                    // alert(result);
+                    if (result != '0') {
+                      $("#sem1").html("<option value=\"0\">Select Class</option>" + result);
+                    } else {
+                      alert("Faculty Doesn't Teach to any class");
+                    }
+                  }
+                });
+            });
+
+            // Get Division for a class
+            $("#sem1").on('change', function() {
+                $.ajax({
+                  url: "<?= base_url(); ?>/index.php/ctrl_admin/getdiv/" + $("#F_Name").val() + "/" + $("#sem1").val(),
+                  type: "POST",
+                  async: false,
+                  success: function(result) {
+                    if (result != '0') {
+                      $("#divi1").html("<option value=\"0\">Select Division</option>" + result);
+                    } else {
+                      alert("Faculty Doesn't Teach to any class");
+                    }
+                  }
+                });
+            });
+
+          // Get subjects for a division
+          $("#divi1").on('change', function() {
+            $.ajax({
+              url: "<?= base_url(); ?>/index.php/ctrl_admin/getsub/" + $("#F_Name").val() + "/" + $("#sem1").val() + "/" + $("#divi1").val(),
+              type: "POST",
+              async: false,
+              success: function(result) {
+                if (result != '0') {
+                  $("#course1").html("<option value=\"0\">Select Subject</option>" + result);
+                } else {
+                  alert("Faculty Doesn't Teach to any class");
+                }
+              }
+            });
+          });
+    });
     </script>
 
             

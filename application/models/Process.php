@@ -6,6 +6,7 @@ class Process extends CI_Model
     {
         parent::__construct();
     }
+    
     public function getTheoryStaff($sem, $div)
     {
         $sql = "Select * from load_mat where sem='$sem' AND divi='$div' AND Theory=1";
@@ -20,7 +21,7 @@ class Process extends CI_Model
     }
     public function getcourse()
     {
-        $query = $this->db->query('select Cname from list_of_course;');
+        $query = $this->db->query('select Cname from list_of_course');
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {
@@ -178,6 +179,8 @@ class Process extends CI_Model
 
         $no = $post['numrow'];
 
+        $message = "";
+
         for ($i = 1; $i <= $no; $i++) {
             $fname = $post['F_name'];
 
@@ -279,12 +282,8 @@ class Process extends CI_Model
 
             if ($th == 0 && $pr == 0) {
                 $message = "Either theory or practical are compulsory!";
-                echo "<script type='text/javascript'>alert('$message');
-				window.location.href='application/views/loadmatrix_input.php';</script>";
             } elseif ($pr == 1 && $a1==0 && $a2==0 && $a3==0 && $a4==0 && $b1==0 && $b2==0 && $b3==0 && $b4==0) {
                 $message = "Atleast one batch must be selected";
-                echo "<script type='text/javascript'>alert('$message');
-				window.location.href='application/views/loadmatrix_input.php';</script>";
             } else {
                 if ($pr == 1) {
 
@@ -295,21 +294,22 @@ class Process extends CI_Model
                         die("Couldn't Insert row number:" . $errnum);
                     }
                     $message = "Table Updated!";
-                    echo "<script type='text/javascript'>alert('$message');</script>";
+
                 } else {
                     $data = array('Fid' => $fid, 'F_name' => $fname, 'sem' => $sem, 'Divi' => $divi, 'course' => $course, 'Theory' => $th, 'Prac' => $pr);
+
                     $sql = $this->db->insert('load_mat', $data);
                     $errnum = $i + 1;
                     if (!$sql) {
                         die("Couldn't Insert row number:" . $errnum);
                     }
                     $message = "Table Updated!";
-                    echo "<script type='text/javascript'>alert('$message');</script>";
                 }
             }
 
         }
 
+        return $message;
     }
 
     public function fetch_question_th()
