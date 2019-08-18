@@ -38,9 +38,10 @@ class Ctrl_feedback extends CI_Controller {
         $data['counter']= 0;
         else
         $data['counter']= $check;
-        $data['Question'] = $this->process->fetch_question();
+        $data['Question'] = $this->process->fetch_question_th();
         $data['loadmat'] = $this->process->fetch_loadmat();
-        $this->load->view('feedback_form1', $data);
+        // var_dump($data['loadmat']);
+        $this->load->view('feedback_form_th', $data);
     }
 
     public function insert_fb()

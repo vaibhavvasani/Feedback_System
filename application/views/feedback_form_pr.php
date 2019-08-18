@@ -80,7 +80,6 @@ if(!isset($_SESSION['user_id'])){
 					$div=$_SESSION['divi'];
 					$batch=$_SESSION['batch'];
 
-
 					if ($counter==null) {
 					echo "<b>Question No: ".$Question['0']->Qid ."</b><br/>" ;
 					echo "<br/><b>".$Question['0']->Ques." ?</b> <br/>";
@@ -136,7 +135,7 @@ if(!isset($_SESSION['user_id'])){
 					echo '<th >Sr.no</th>';
 					echo '<th>Course</th>';
 					echo '<th>Faculty</th>';
-					//               echo '<th>Theory/Practicals</th>';
+					              // echo '<th>Theory/Practicals</th>';
 					echo '<th colspan="4">Select option</th>';
 					echo '</tr>';
 
@@ -153,16 +152,15 @@ if(!isset($_SESSION['user_id'])){
 
 					$i=1;
 					foreach ($loadmat as $row) {
-
+					var_dump($row);
 					echo '<input type="hidden" name="fid'.$i.'" value="'.$row->Fid.'">';
 
-					if((($row->Prac==1)&&(($batch=='A' && $row->A==1) || ($batch=='B' && $row->B==1) || ($batch=='C' && $row->C==1) || ($batch=='D' && $row->D==1))))
+					if((($row->Prac==1)&&(($batch=='A1' && $row->A1==1) || ($batch=='A2' && $row->A2==1) || ($batch=='A3' && $row->A3==1) || ($batch=='A4' && $row->A4==1) || ($batch=='B1' && $row->B1==1) || ($batch=='B2' && $row->B2==1) || ($batch=='B3' && $row->B3==1) || ($batch=='B4' && $row->B4==1))))
 					{
-
 					echo '<tr>';
 					echo '<td>'.$i.'</td>' ;
-					echo'<td>'.$row->course .'</td>';
-					echo'<td>'.$row->F_name .'</td>';
+					echo '<td>'.$row->course .'</td>';
+					echo '<td>'.$row->F_name .'</td>';
 					/*if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A==1) || ($batch=='B' && $row->B==1) || ($batch=='C' && $row->C==1) || ($batch=='D' && $row->D==1)))
 					{
 					$text='Theory & Practical';
@@ -208,13 +206,13 @@ if(!isset($_SESSION['user_id'])){
 
 					echo '<input type="hidden" name="fid'.$i.'" value="'.$row->Fid.'">';
 
-					if((($row->Prac==1)&&($batch=='A' && $row->A==1) || ($batch=='B' && $row->B==1) || ($batch=='C' && $row->C==1) || ($batch=='D' && $row->D==1)))
+					if((($row->Prac==1)&&(($batch=='A1' && $row->A1==1) || ($batch=='A2' && $row->A2==1) || ($batch=='A3' && $row->A3==1) || ($batch=='A4' && $row->A4==1) || ($batch=='B1' && $row->B1==1) || ($batch=='B2' && $row->B2==1) || ($batch=='B3' && $row->B3==1) || ($batch=='B4' && $row->B4==1))))
 					{
-
+						
 					echo '<tr>';
 					echo '<td>'.$i.'</td>' ;
-					echo'<td>'.$row->course .'</td>';
-					echo'<td>'.$row->F_name .'</td>';
+					echo '<td>'.$row->course .'</td>';
+					echo '<td>'.$row->F_name .'</td>';
 					/* if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A==1) || ($batch=='B' && $row->B==1) || ($batch=='C' && $row->C==1) || ($batch=='D' && $row->D==1)))
 					{
 					$text='Theory & Practical';
@@ -300,6 +298,6 @@ if(!isset($_SESSION['user_id'])){
     <script src="<?= base_url(); ?>assets/js/custom-tooltips.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/main.js"></script>
     <!-- Select2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script> -->
 </body>
 </html>
