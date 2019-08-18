@@ -23,6 +23,14 @@
   <!-- Select2 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 
+  <!-- PrintThis -->
+  <link href="<?= base_url(); ?>assets/css/PrintThis/print.min.css" rel="stylesheet">
+  <script src="<?= base_url(); ?>assets/js/PrintThis/print.min.js"></script>
+
+  <!-- Loader -->
+  <link href="<?= base_url(); ?>assets/css/Loader/loader.min.css" rel="stylesheet">
+
+
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -81,7 +89,7 @@ echo '</form>';*/
                     <option value="0">Select TH/PR</option>
                   </select>
                   <button type="button" name="button" id="genresult" class="btn btn-primary" style=" margin-left:650px; margin-top: 20px;width:10em;height:2.8em">Display Data</button>
-                  <button type="button" name="button" id="print" class="btn btn-primary" style=" margin-top: 20px;width:10em;height:2.8em">Print Report</button>
+                  <button type="button" name="button" id="print" class="btn btn-primary" style=" margin-top: 20px;width:10em;height:2.8em" onclick="printJS('printdiv', 'html')">Print Report</button>
                   <a class="btn btn-red " style="margin-top:20px;width:13em;height:2.8em;    background-color: #f86c6b;
     padding-top: 8px;color:white;background: #fc2340;" href="./Ctrl_admin/admin2">Staff
                     Wise Display</a>
@@ -99,7 +107,7 @@ echo '</form>';*/
                     <div class="box-body">
                       <div id="rep">
 
-                        <div class="card">
+                        <div class="card" id="faculty-card" style="display: none;">
                           <div class="card-body">
                             <div class="row" id="printdiv">
                               <div class="col-sm-5">
@@ -125,11 +133,6 @@ echo '</form>';*/
                     <br />
                     <div class="text-center">
 
-                    </div>
-                  </div>
-                  <div class="col-xs-6">
-                    <div class="" id="questions">
-                      <p style="font-size:16px">Questions List</p>
                     </div>
                   </div>
                 </div>
@@ -167,17 +170,12 @@ echo '</form>';*/
   <!-- Select2 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
+  <script src="<?= base_url(); ?>assets/js/Loader/loader.min.js"></script>
+
+
   <!-- Custom AJAX Calls -->
   <script type="text/javascript">
     $(function() {
-      // Print Report
-      // $("#print").on('click',function() {
-      //   var img = new Image;
-      //   img.src = ($("#barChart")[0]).toDataURL("image/png");
-      //   var tmp = $("#out").html();
-      //   $("#rep").html("<img src=\""+($("#barChart")[0]).toDataURL("image/png")+"\"></img>");
-      //   $("#printdiv").printThis();
-      // });
 
       $('#faculty_select').select2();
       $('#class_select').select2();
@@ -299,6 +297,7 @@ echo '</form>';*/
           async: false,
           success: function(result) {
             console.log(result);
+            $("#faculty-card").css('display', 'block');
             if (result != '0') {
               var json = JSON.parse(result);
               var count = [];

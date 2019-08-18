@@ -25,6 +25,12 @@
 
     
     <link href="<?= base_url(); ?>assets/css/DataTables/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!-- PrintThis -->
+    <link href="<?= base_url(); ?>assets/css/PrintThis/print.min.css" rel="stylesheet">
+
+    <script src="<?= base_url(); ?>assets/js/PrintThis/print.min.js"></script>
+
     
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -72,7 +78,7 @@ echo '</form>';*/
                                     <button type="button" name="button" id="genresult" class="btn btn-primary"
                                         style="width:10em; margin-right:10px; margin-left:50px;height:2.8em">Display Data</button>
                                     <button type="button" name="button" id="print" class="btn btn-primary"
-                                        style="margin-right:10px; width:10em;height:2.8em">Print Report</button>
+                                        style="margin-right:10px; width:10em;height:2.8em" onclick="printJS('printdiv', 'html')">Print Report</button>
 
                                     <button type="button" name="button" id="strictness" class="btn btn-primary"
                                         style="width:10em;height:2.8em">Above 75%</button>
@@ -88,29 +94,28 @@ echo '</form>';*/
                                         </div>
                                         <div class="box-body">
                                             <div id="rep">
-                                                
                                                 <div class="card"  id="class-data-title" style="display:none;">
                                                     <div class="card-body">
                                                         <div class="row" id="printdiv"style="margin: 5px">
-                                                            <div class="col-md-5"  >
-                                                                <h4 class="card-title mb-0">Class Data</h4>
+                                                            <div class="col-md-5 mb-2 pb-2">
+                                                                <h4 class="card-title mb-0 font-weight-normal">Class Data</h4>
                                                             </div>
                                                             <div class="row" id="printdiv">
-          <div class="col-xs-7 charts">
-            <div class="box-body">
-              <div class="col-md-12" id="out"></div>
-            </div>
-            <br />
-            <div class="text-center">
-                <h2 id="chart-name"></h1>
-            </div>
-          </div>
-            <div class="col-xs-7">
-              <div class="" id="questions">
-                <!--<p style="font-size:16px">Questions List</p>-->
-              </div>
-            </div>
-          </div>
+                                                                <div class="col-xs-7 charts">
+                                                                    <div class="box-body">
+                                                                        <div class="col-md-12" id="out"></div>
+                                                                        </div>
+                                                                    <br />
+                                                                    <div class="text-center">
+                                                                        <h2 id="chart-name"></h1>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-7">
+                                                                  <div class="" id="questions">
+                                                                    <!--<p style="font-size:16px">Questions List</p>-->
+                                                                  </div>
+                                                                </div>
+                                                              </div>
           
                                                     </div>
                                                 </div>
@@ -160,18 +165,9 @@ echo '</form>';*/
     <!-- Custom AJAX Calls -->
     <script type="text/javascript">
         $(function() {
-            // Print Report
-            // $("#print").on('click',function() {
-            //   var img = new Image;
-            //   img.src = ($("#barChart")[0]).toDataURL("image/png");
-            //   var tmp = $("#out").html();
-            //   $("#rep").html("<img src=\""+($("#barChart")[0]).toDataURL("image/png")+"\"></img>");
-            //   $("#printdiv").printThis();
-            // });
-
             $('#class_select').select2();
             $('#div_select').select2();
-            
+            $("#example").DataTable();
 
             $.ajax({
                 url:"<?=base_url();?>/index.php/ctrl_admin/getSemesters",
@@ -233,7 +229,7 @@ echo '</form>';*/
                 });
             });
 
-            $("#example").DataTable();
+            
         });
     </script>
 

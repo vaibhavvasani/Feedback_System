@@ -313,7 +313,7 @@ class Process extends CI_Model
 
     }
 
-    public function fetch_question()
+    public function fetch_question_th()
     {
         $query = $this->db->query("SELECT * FROM questions_th order by Qid");
         if ($query->num_rows() > 0) {
@@ -474,6 +474,16 @@ class Process extends CI_Model
     public function getChartValues($fid, $opt, $qid)
     {
         $query = $this->db->query("select count(*) as res,Sid from feedback_th where Question_id=" . $qid . " and Ans_opt='" . $opt . "' and Fid='" . $fid . "'");
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+    }
+
+    public function getChartValuesPR($fid, $opt, $qid)
+    {
+        $query = $this->db->query("select count(*) as res,Sid from feedback_pr where Question_id=" . $qid . " and Ans_opt='" . $opt . "' and Fid='" . $fid . "'");
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {

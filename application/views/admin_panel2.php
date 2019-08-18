@@ -23,14 +23,17 @@
   <!-- Select2 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 
-  <link href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" rel="stylesheet">
+  <!-- PrintThis -->
+  <link href="<?= base_url(); ?>assets/css/PrintThis/print.min.css" rel="stylesheet">
 
+  <script src="<?= base_url(); ?>assets/js/PrintThis/print.min.js"></script>
   <style>
   
     .text-center {
       position: initial !important;
     }
   </style>
+  
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -92,7 +95,7 @@
                     <option value="practical">Practal</option>
                   </select>
                   <button type="button" name="button" id="genresult" class="btn btn-primary" style=" margin-left:40px;width:10em;height:2.8em;">Generate Data </button>
-                  <button type="button" name="button" id="print" class="btn btn-primary" style="width:10em;height:2.8em">Print Report </button>
+                  <button type="button" name="button" id="print" class="btn btn-primary" style="width:10em;height:2.8em" onclick="printJS('printdiv', 'html')">Print Report </button>
                   <a class="btn btn-outline-danger " style="width:13em;height:2.8em;    background-color: #f86c6b;
     padding-top: 8px;color:white;background: #fc2340;" href="../"> Subject Wise Display</a>
 
@@ -112,7 +115,7 @@
                     <div class="box-body">
                       <div id="rep">
 
-                        <div class="card">
+                        <div class="card" id="faculty-card" style="display: none;">
                           <div class="card-body">
                             <div class="row" id="printdiv" style="margin: 5px">
                               <div class="col-sm-5">
@@ -175,13 +178,10 @@
   <!-- Select2 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
-
   <script>
     $(function() {
 
       $('.faculty_select').select2();
-
      
 
       // Get class of faculty
@@ -264,7 +264,6 @@
       };
       $("#genresult").on('click', function() {
         console.log("hello");
-        $.busyLoadFull('show')
 
 
         $(".charts").empty();
@@ -335,7 +334,7 @@
                   type: "POST",
                   async: false,
                   success: function(result) {
-                    $.busyLoadFull('hide')
+                    $("#faculty-card").css('display', 'block');
                     if (result != '0') {
                       var json = jQuery.parseJSON(result);
                       var count = [];

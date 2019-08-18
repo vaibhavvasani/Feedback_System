@@ -71,18 +71,18 @@ if ($_SESSION['user_type'] == 'admin') {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_admin/loadTTMatrixPage">
-                            Timetable</a>
+                            Load Matrix</a>
                     </li>
                 </ul>
             </li>
 
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Timetable</a>
+                <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Load Matrix</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>index.php/Timetable">
-                            Update</a>
+                            Update Load Matrix</a>
                     </li>
                 </ul>
             </li>
@@ -95,7 +95,7 @@ if ($_SESSION['user_type'] == 'admin') {
 
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_admin/table">
-                <i class="fa fa-commenting" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Class Feedback</a>
+                <i class="fa fa-commenting mr-3"></i>Class Wise</a>
             </li>
 <?php 
 }
@@ -127,10 +127,19 @@ if ($_SESSION['user_type'] == 'admin') {
             if ($_SESSION['user_type'] == 'faculty') {
     ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_faculty_chart/load_page/<?php echo $_SESSION['user_id']; ?>">
-                    Display Feedback</a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_faculty_chart/load_page_th/<?php echo $_SESSION['user_id']; ?>">
+                    Theory Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ctrl_faculty_chart/load_page_pr/<?php echo $_SESSION['user_id']; ?>">
+                    Practical Feedback</a>
                 </li>
             <?php } ?>
+            <li class="nav-item">
+                    <a class="nav-link" href="<?=base_url();?>index.php/Ctrl_feedback/logout">
+                    Logout</a>
+                </li>
+            
 
             <li class="divider"></li>
 
