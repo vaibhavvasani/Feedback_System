@@ -188,7 +188,7 @@
       $("#faculty_select").on('change', function() {
 
         $.ajax({
-          url: "<?= base_url(); ?>/index.php/ctrl_admin/getc/" + $("#faculty_select").val(),
+          url: "<?= base_url(); ?>index.php/ctrl_admin/getc/" + $("#faculty_select").val(),
           type: "POST",
           async: false,
           success: function(result) {
@@ -205,7 +205,7 @@
       // Get divisions of class
       $("#class_select").on('change', function() {
         $.ajax({
-          url: "<?= base_url(); ?>/index.php/ctrl_admin/getdiv/" + $("#faculty_select").val() + "/" + $("#class_select").val(),
+          url: "<?= base_url(); ?>index.php/ctrl_admin/getdiv/" + $("#faculty_select").val() + "/" + $("#class_select").val(),
           type: "POST",
           async: false,
           success: function(result) {
@@ -221,7 +221,7 @@
       // Get subjects of a division
       $("#div_select").on('change', function() {
         $.ajax({
-          url: "<?= base_url(); ?>/index.php/ctrl_admin/getsub/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val(),
+          url: "<?= base_url(); ?>index.php/ctrl_admin/getsub/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val(),
           type: "POST",
           async: false,
           success: function(result) {
@@ -238,7 +238,7 @@
       // Get subject type (TH or PR)
       $("#sub_select").on('change', function() {
         $.ajax({
-          url: "<?= base_url(); ?>/index.php/ctrl_admin/checkthpr/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val(),
+          url: "<?= base_url(); ?>index.php/ctrl_admin/checkthpr/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val(),
           type: "POST",
           async: false,
           success: function(result) {
@@ -358,7 +358,7 @@
             });
           });
         });
-        str = "<?= base_url(); ?>/index.php/ctrl_admin/getq";
+        str = "<?= base_url(); ?>index.php/ctrl_admin/getq";
         $("#questions").empty();
         $.ajax({
           url: str,
@@ -373,7 +373,7 @@
             }
           }
         });
-        str = "<?= base_url(); ?>/index.php/ctrl_admin/getq_pr";
+        str = "<?= base_url(); ?>index.php/ctrl_admin/getq_pr";
         $.ajax({
           url: str,
           type: "POST",

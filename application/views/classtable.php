@@ -74,11 +74,11 @@ if(!isset($_SESSION['user_id'])){
   <script type="text/javascript">
     $(document).ready(function(){
       $("#final").on('click',function(){
-        window.location.href = "<?=base_url();?>/index.php/ctrl_admin/ctable/"+$("#sem").val()+"/"+$("#divi").val();
+        window.location.href = "<?=base_url();?>index.php/ctrl_admin/ctable/"+$("#sem").val()+"/"+$("#divi").val();
       });
       $("#sem").on('change',function(){
         $.ajax({
-          url:"<?=base_url();?>/index.php/ctrl_admin/getalldiv/"+$("#sem").val(),
+          url:"<?=base_url();?>index.php/ctrl_admin/getalldiv/"+$("#sem").val(),
           type:"POST",
           success:function(result){
             //alert(result);

@@ -91,7 +91,7 @@ echo '</form>';*/
                   <button type="button" name="button" id="genresult" class="btn btn-primary" style=" margin-left:650px; margin-top: 20px;width:10em;height:2.8em">Display Data</button>
                   <button type="button" name="button" id="print" class="btn btn-primary" style=" margin-top: 20px;width:10em;height:2.8em" onclick="printJS('printdiv', 'html')">Print Report</button>
                   <a class="btn btn-red " style="margin-top:20px;width:13em;height:2.8em;    background-color: #f86c6b;
-    padding-top: 8px;color:white;background: #fc2340;" href="./Ctrl_admin/admin2">Staff
+    padding-top: 8px;color:white;background: #fc2340;" href="<?= base_url(); ?>index.php/Ctrl_admin/admin2">Staff
                     Wise Display</a>
                 </div>
               </div>
@@ -186,7 +186,7 @@ echo '</form>';*/
       // Get Classes for a faculty
       $("#faculty_select").on('change', function() {
         $.ajax({
-          url: "<?= base_url(); ?>/index.php/ctrl_admin/getc/" + $("#faculty_select").val(),
+          url: "<?= base_url(); ?>index.php/ctrl_admin/getc/" + $("#faculty_select").val(),
           type: "POST",
           async: false,
           success: function(result) {
@@ -203,7 +203,7 @@ echo '</form>';*/
       // Get Division for a class
       $("#class_select").on('change', function() {
         $.ajax({
-          url: "<?= base_url(); ?>/index.php/ctrl_admin/getdiv/" + $("#faculty_select").val() + "/" + $("#class_select").val(),
+          url: "<?= base_url(); ?>index.php/ctrl_admin/getdiv/" + $("#faculty_select").val() + "/" + $("#class_select").val(),
           type: "POST",
           async: false,
           success: function(result) {
@@ -219,7 +219,7 @@ echo '</form>';*/
       // Get subjects for a division
       $("#div_select").on('change', function() {
         $.ajax({
-          url: "<?= base_url(); ?>/index.php/ctrl_admin/getsub/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val(),
+          url: "<?= base_url(); ?>index.php/ctrl_admin/getsub/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val(),
           type: "POST",
           async: false,
           success: function(result) {
@@ -235,7 +235,7 @@ echo '</form>';*/
       // Get theory or practical as per subject
       $("#sub_select").on('change', function() {
         $.ajax({
-          url: "<?= base_url(); ?>/index.php/ctrl_admin/checkthpr/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val(),
+          url: "<?= base_url(); ?>index.php/ctrl_admin/checkthpr/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val(),
           type: "POST",
           async: false,
           success: function(result) {
@@ -289,8 +289,8 @@ echo '</form>';*/
         if (tmp == '3' || tmp == '4') yr = "SE";
         if (tmp == '5' || tmp == '6') yr = "TE";
         if (tmp == '7' || tmp == '8') yr = "BE";
-        if ($("#thpr_select").val() == 1) str = "<?= base_url(); ?>/index.php/ctrl_admin/gendatath/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val();
-        if ($("#thpr_select").val() == 2) str = "<?= base_url(); ?>/index.php/ctrl_admin/gendatapr/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val();
+        if ($("#thpr_select").val() == 1) str = "<?= base_url(); ?>index.php/ctrl_admin/gendatath/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val();
+        if ($("#thpr_select").val() == 2) str = "<?= base_url(); ?>index.php/ctrl_admin/gendatapr/" + $("#faculty_select").val() + "/" + $("#class_select").val() + "/" + $("#div_select").val() + "/" + $("#sub_select").val();
         $.ajax({
           url: str,
           type: "POST",

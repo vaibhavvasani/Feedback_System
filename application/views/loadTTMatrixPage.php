@@ -84,9 +84,7 @@
    <div class="inner-width"style="font-size: 20px;text-transform: uppercase;display: inline-block;border-bottom: 4px solid;padding-bottom:0px;color: #333;text-align: center;margin-bottom:20px">
                 <p>Add Timetable</p>
 </td>
-  <td style="width: 50%;">
-  <a class="btn btn-primary" href="<?php echo base_url(); ?>samples/Load_Matrix.csv" download>Download Sample File</a>
-  </td>
+  
              </tr>
     </div>
     <tr>
@@ -258,7 +256,9 @@
             </div>
 
 <button class="button new btn-lg round" style="width:80%;background-color: #83919c;" align="center" type="submit"><span></span><b style="color : #fafafa;"> Add </b></button>
-        </div></center>
+        <a class="btn btn-info" style="margin-top: 60px;" href="<?php echo base_url(); ?>samples/Load_Matrix.csv" download>Download Sample CSV File</a>
+		
+		</div></center>
         </form>
         <?php 
 			if(isset($_POST['success']))
@@ -275,7 +275,8 @@
 				}
 		}
 		?>
-        </td>
+		
+		</td>
         </tr>
         </table>
         </main>

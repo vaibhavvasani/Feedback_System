@@ -168,7 +168,10 @@
     <label for="exampleInputPassword" class="bmd-label-floating">Enter Password : </label>
     <input type="password" name="password" class="form-control" id="password" pattern=".{8,15}" oninvalid="this.setCustomValidity('Please enter 8-15 digit password ')" oninput="setCustomValidity('')" required>
   </div>
-  
+  <div class="form-group">
+    <label for="exampleInputPassword" class="bmd-label-floating">Enter Attendance : </label>
+    <input type="number" name="attendance" class="form-control" id="attendance" pattern=".{1,3}" oninvalid="this.setCustomValidity('Please enter 1-3 digit password ')" oninput="setCustomValidity('')" required>
+  </div>
 						  
 
                <button class="button new btn-lg round" style="width:80%;background-color: #83919c;" align="center" type="submit"><span></span><b style="color : #fafafa;"> Add </b></button>

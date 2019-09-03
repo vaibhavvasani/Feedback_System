@@ -209,6 +209,7 @@ class add_data extends CI_Model
 		$div=$_POST['div'];
 		$batch=$_POST['batch'];
 		$password=md5($_POST['password']);
+		$attendance=$_POST['attendance'];
 		
 		$_POST = array(); //to remove data from POST
 		$this->db->select('reg_no');
@@ -234,7 +235,7 @@ class add_data extends CI_Model
 		}
 		else
 		{
-			$aquery="INSERT INTO list_of_student VALUES ($reg_no, '$Sid', '$FName', '$LName', '$MName', '$Branch',$Year,$Sem,$div, '$batch', '$password')";
+			$aquery="INSERT INTO list_of_student VALUES ($reg_no, '$Sid', '$FName', '$LName', '$MName', '$Branch',$Year,$Sem,$div, '$batch', '$password', '$attendance')";
 			$this->db->query($aquery);
 			$resp = 'Student added';
 			$succ=1;

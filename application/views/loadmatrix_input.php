@@ -99,7 +99,8 @@
                             ?>
                             Faculty Name:
                             <select id="F_Name" required="required" name="F_name" required="true">
-                                <?php
+                                <option value="">Select Faculty</option>
+								<?php
                                 foreach ($NameOfFaculty as $object) {
                                     echo '<option value="'.$object->Fid.'">'.$object->NameOfFaculty.'</option>';
                                 }
@@ -269,11 +270,13 @@
     <!-- Custom AJAX Calls -->
     <script type="text/javascript">
         $(function() {
+			var nor = 1;
             $('#F_Name').select2(); 
             
             // $("#dataTable").DataTable();
 
             $("#addRow").click((e) => {
+				nor++;
                 var table = $('#dataTable');
                 var lastrow = $('tr:last-child', table).html();
                 table.append('<tr>' + lastrow + '</tr>');
@@ -282,7 +285,11 @@
             $("#deleteRow").click((e) => {
                 var table = $('#dataTable');
                 // var table = document.getElementById(tableID);
-                var lastrow = $('tr:last-child', table).remove();
+				if(nor != 1)
+				{
+					var lastrow = $('tr:last-child', table).remove();
+					nor--;
+				}
                 // table.deleteRow(rowCount - 1);
             });
 
@@ -290,7 +297,7 @@
             $("#F_Name").on('change', function() {
                 // console.log($("#F_Name").val())
                 $.ajax({
-                  url: "<?= base_url(); ?>/index.php/ctrl_admin/getc/" + $("#F_Name").val(),
+                  url: "<?= base_url(); ?>index.php/ctrl_admin/getc/" + $("#F_Name").val(),
                   type: "POST",
                   async: false,
                   success: function(result) {
@@ -307,7 +314,7 @@
             // Get Division for a class
             $("#sem1").on('change', function() {
                 $.ajax({
-                  url: "<?= base_url(); ?>/index.php/ctrl_admin/getdiv/" + $("#F_Name").val() + "/" + $("#sem1").val(),
+                  url: "<?= base_url(); ?>index.php/ctrl_admin/getdiv/" + $("#F_Name").val() + "/" + $("#sem1").val(),
                   type: "POST",
                   async: false,
                   success: function(result) {
@@ -323,7 +330,7 @@
           // Get subjects for a division
           $("#divi1").on('change', function() {
             $.ajax({
-              url: "<?= base_url(); ?>/index.php/ctrl_admin/getsub/" + $("#F_Name").val() + "/" + $("#sem1").val() + "/" + $("#divi1").val(),
+              url: "<?= base_url(); ?>index.php/ctrl_admin/getsub/" + $("#F_Name").val() + "/" + $("#sem1").val() + "/" + $("#divi1").val(),
               type: "POST",
               async: false,
               success: function(result) {

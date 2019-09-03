@@ -272,12 +272,12 @@ if(!isset($_SESSION['user_id'])){
 
       
       $("#final").on('click',function(){
-        window.location.href = "<?=base_url();?>/index.php/ctrl_admin/table/"+$("#sem").val()+"/"+$("#divi").val();
+        window.location.href = "<?=base_url();?>index.php/ctrl_admin/table/"+$("#sem").val()+"/"+$("#divi").val();
       });
 
       $("#sem").on('change',function(){
         $.ajax({
-          url:"<?=base_url();?>/index.php/ctrl_admin/getalldiv/"+$("#sem").val(),
+          url:"<?=base_url();?>index.php/ctrl_admin/getalldiv/"+$("#sem").val(),
           type:"POST",
           success:function(result){
             // alert(result);

@@ -170,7 +170,7 @@ echo '</form>';*/
             $("#example").DataTable();
 
             $.ajax({
-                url:"<?=base_url();?>/index.php/ctrl_admin/getSemesters",
+                url:"<?=base_url();?>index.php/ctrl_admin/getSemesters",
                 type:"POST",
                 async: false,
                 success:function(result){
@@ -185,7 +185,7 @@ echo '</form>';*/
             });
 
             $.ajax({
-                url:"<?=base_url();?>/index.php/ctrl_admin/getDivisions",
+                url:"<?=base_url();?>index.php/ctrl_admin/getDivisions",
                 type:"POST",
                 async: false,
                 success:function(result){
@@ -201,7 +201,7 @@ echo '</form>';*/
             
             $("#genresult").on('click',function() {
                 $.ajax({
-                    url:"<?=base_url();?>/index.php/ctrl_admin/getStudentAttendance/"+$("#class_select").val()+"/"+$("#div_select").val(),
+                    url:"<?=base_url();?>index.php/ctrl_admin/getStudentAttendance/"+$("#class_select").val()+"/"+$("#div_select").val(),
                     type:"POST",
                     async: false,
                     success:function(result){
@@ -218,7 +218,7 @@ echo '</form>';*/
 
             $("#strictness").on('click',function() {
                 $.ajax({
-                    url:"<?=base_url();?>/index.php/ctrl_admin/getStudentAttendanceStrict/"+$("#class_select").val()+"/"+$("#div_select").val(),
+                    url:"<?=base_url();?>index.php/ctrl_admin/getStudentAttendanceStrict/"+$("#class_select").val()+"/"+$("#div_select").val(),
                     type:"POST",
                     async: false,
                     success:function(result){
