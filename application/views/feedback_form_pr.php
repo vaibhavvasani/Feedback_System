@@ -80,37 +80,40 @@ if(!isset($_SESSION['user_id'])){
 					$div=$_SESSION['divi'];
 					$batch=$_SESSION['batch'];
 
+					// var_dump($counter);
+					$counter['0']->count = (int)$counter['0']->count1;
+
 					if ($counter==null) {
-					echo "<b>Question No: ".$Question['0']->Qid ."</b><br/>" ;
-					echo "<br/><b>".$Question['0']->Ques." ?</b> <br/>";
+						echo "<b>Question No: ".$Question['0']->Qid ."</b><br/>" ;
+						echo "<br/><b>".$Question['0']->Ques." ?</b> <br/>";
 					}
 					else{
-					if (($counter['0']->count1)>(count($Question)-1)) {
-					echo 'Thank you! Your feedback has already been submitted.';
-					}
-					else{
-					echo "<b>Question No: ".$Question[$counter['0']->count1]->Qid ."</b><br/>" ;
-					echo "</br><b>".$Question[$counter['0']->count1]->Ques." ?</b> <br/>";
-					}
+						if (($counter['0']->count1)>(count($Question)-1)) {
+							echo 'Thank you! Your feedback has already been submitted.';
+						}
+						else{
+							echo "<b>Question No: ".$Question[$counter['0']->count1]->Qid ."</b><br/>" ;
+							echo "</br><b>".$Question[$counter['0']->count1]->Ques." ?</b> <br/>";
+						}
 					}
 					?>
 					</h3>
 					<br><br>
 					<?php
 					if ($counter==null) {
-					echo '<b>A:</b> '.$Question['0']->opt_a."&nbsp;&nbsp;";
-					echo '<b>B:</b> '.$Question['0']->opt_b."&nbsp;&nbsp;";
-					echo '<b>C:</b> '.$Question['0']->opt_c."&nbsp;&nbsp;";
-					echo '<b>D:</b> '.$Question['0']->opt_d."<br/>";
+						echo '<b>A:</b> '.$Question['0']->opt_a."&nbsp;&nbsp;";
+						echo '<b>B:</b> '.$Question['0']->opt_b."&nbsp;&nbsp;";
+						echo '<b>C:</b> '.$Question['0']->opt_c."&nbsp;&nbsp;";
+						echo '<b>D:</b> '.$Question['0']->opt_d."<br/>";
 					}
 					else{
-					if (($counter['0']->count1)>(count($Question)-1)) {}
-					else{
-					echo '<b>A:</b> '.$Question[$counter['0']->count1]->opt_a."&nbsp;&nbsp;";
-					echo '<b>B:</b> '.$Question[$counter['0']->count1]->opt_b."&nbsp;&nbsp;";
-					echo '<b>C:</b> '.$Question[$counter['0']->count1]->opt_c."&nbsp;&nbsp;";
-					echo '<b>D:</b> '.$Question[$counter['0']->count1]->opt_d."<br/>";
-					}
+						if (($counter['0']->count1)>(count($Question)-1)) {}
+						else{
+							echo '<b>A:</b> '.$Question[$counter['0']->count1]->opt_a."&nbsp;&nbsp;";
+							echo '<b>B:</b> '.$Question[$counter['0']->count1]->opt_b."&nbsp;&nbsp;";
+							echo '<b>C:</b> '.$Question[$counter['0']->count1]->opt_c."&nbsp;&nbsp;";
+							echo '<b>D:</b> '.$Question[$counter['0']->count1]->opt_d."<br/>";
+						}
 					}
 					$attr = array('class' => 'form-horizontal','method' => 'POST');
 					echo form_open('ctrl_feedback_pr/insert_fb',$attr);
@@ -124,120 +127,124 @@ if(!isset($_SESSION['user_id'])){
 					<!-- /.box-header -->
 					<!-- form start -->
 					<?php
-					if (($counter==null)|| !((($counter['0']->count1)>(count($Question)-1)))) {
-					echo '<table class="table table-hover" >';
-					echo '<div class="">';
+
+					if (($counter==null)|| !((($counter['0']->count1)>(count($Question)-1)))) 
+					{
+						echo '<table class="table table-hover" >';
+						echo '<div class="">';
 
 
-					echo '<div class="nav" cellspacing=10px>';
+						echo '<div class="nav" cellspacing=10px>';
 
-					echo '<center><tr>';
-					echo '<th >Sr.no</th>';
-					echo '<th>Course</th>';
-					echo '<th>Faculty</th>';
-					              // echo '<th>Theory/Practicals</th>';
-					echo '<th colspan="4">Select option</th>';
-					echo '</tr>';
-
-
+						echo '<center><tr>';
+						echo '<th >Sr.no</th>';
+						echo '<th>Course</th>';
+						echo '<th>Faculty</th>';
+						              // echo '<th>Theory/Practicals</th>';
+						echo '<th colspan="4">Select option</th>';
+						echo '</tr>';
 					}
 
 					$count = 0;
-					if ($counter==null) {
-
-					echo '<input type="hidden" name="sid" value='.$sid.'>';
-					echo '<input type="hidden" name="Qid" value='.$Question['0']->Qid.'>';
-					echo '<input type="hidden" name="counter" value="0">';
-
-
-					$i=1;
-					foreach ($loadmat as $row) {
-					var_dump($row);
-					echo '<input type="hidden" name="fid'.$i.'" value="'.$row->Fid.'">';
-
-					if((($row->Prac==1)&&(($batch=='A1' && $row->A1==1) || ($batch=='A2' && $row->A2==1) || ($batch=='A3' && $row->A3==1) || ($batch=='A4' && $row->A4==1) || ($batch=='B1' && $row->B1==1) || ($batch=='B2' && $row->B2==1) || ($batch=='B3' && $row->B3==1) || ($batch=='B4' && $row->B4==1))))
+					if ($counter==null) 
 					{
-					echo '<tr>';
-					echo '<td>'.$i.'</td>' ;
-					echo '<td>'.$row->course .'</td>';
-					echo '<td>'.$row->F_name .'</td>';
-					/*if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A==1) || ($batch=='B' && $row->B==1) || ($batch=='C' && $row->C==1) || ($batch=='D' && $row->D==1)))
+
+						echo '<input type="hidden" name="sid" value='.$sid.'>';
+						echo '<input type="hidden" name="Qid" value='.$Question['0']->Qid.'>';
+						echo '<input type="hidden" name="counter" value="0">';
+
+
+						$i=1;
+						foreach ($loadmat as $row) 
+						{
+							// var_dump($row);
+							echo '<input type="hidden" name="fid'.$i.'" value="'.$row->Fid.'">';
+
+							if((($row->Prac==1)&&(($row->A1==1) || ($row->A2==1) || ($row->A3==1) || ($row->A4==1) || ($row->B1==1) || ($row->B2==1) || ($row->B3==1) || ($row->B4==1))))
+							{
+							echo '<tr>';
+							echo '<td>'.$i.'</td>' ;
+							echo '<td>'.$row->course .'</td>';
+							echo '<td>'.$row->F_name .'</td>';
+							/*if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A==1) || ($batch=='B' && $row->B==1) || ($batch=='C' && $row->C==1) || ($batch=='D' && $row->D==1)))
+							{
+							$text='Theory & Practical';
+							}
+							else if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A!=1) || ($batch=='B' && $row->B!=1) || ($batch=='C' && $row->C!=1) || ($batch=='D' && $row->D!=1)))
+							{
+							$text='Theory';
+							}
+							else if($row->Theory==1 && $row->Prac==0)
+							{
+							$text='Theory';
+							}
+							else if($row->Theory==0 && $row->Prac==1)
+							{
+							$text='Practical';
+							}
+							echo'<td>'.$text .'</td>';*/
+
+
+							$count++;
+							echo '<td>A:<input type="radio" value = "A" name="r'.$count.'" required></td>';
+							echo '<td>B:<input type="radio" value = "B" name="r'.$count.'"required></td>';
+							echo '<td>C:<input type="radio" value = "C" name="r'.$count.'"required></td>';
+							echo '<td>D:<input type="radio" value = "D" name="r'.$count.'"required></td>';
+							echo '</tr>';
+							$i++;
+							}
+						}
+						echo '<input type="hidden" name="count" value='.$count.'/>';
+					}
+
+					elseif ((($counter['0']->count1)>(count($Question)-1))) 
 					{
-					$text='Theory & Practical';
 					}
-					else if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A!=1) || ($batch=='B' && $row->B!=1) || ($batch=='C' && $row->C!=1) || ($batch=='D' && $row->D!=1)))
+					else
 					{
-					$text='Theory';
-					}
-					else if($row->Theory==1 && $row->Prac==0)
-					{
-					$text='Theory';
-					}
-					else if($row->Theory==0 && $row->Prac==1)
-					{
-					$text='Practical';
-					}
-					echo'<td>'.$text .'</td>';*/
+						echo '<input type="hidden" name="sid" value='.$sid.'>';
+						echo '<input type="hidden" name="Qid" value='.$Question[$counter['0']->count1]->Qid.'>';
+						echo '<input type="hidden" name="counter" value='.$counter['0']->count1.'>';
 
 
-					$count++;
-					echo '<td>A:<input type="radio" value = "A" name="r'.$count.'" required></td>';
-					echo '<td>B:<input type="radio" value = "B" name="r'.$count.'"required></td>';
-					echo '<td>C:<input type="radio" value = "C" name="r'.$count.'"required></td>';
-					echo '<td>D:<input type="radio" value = "D" name="r'.$count.'"required></td>';
-					echo '</tr>';
-					$i++;
-					}
-					}
-					echo '<input type="hidden" name="count" value='.$count.'/>';
-					}
+						$i=1;
+						// var_dump($loadmat);	
+						foreach ($loadmat as $row) 
+						{
+							echo '<input type="hidden" name="fid'.$i.'" value="'.$row->Fid.'">';
 
-					elseif ((($counter['0']->count1)>(count($Question)-1))) {}
-					else{
-
-					echo '<input type="hidden" name="sid" value='.$sid.'>';
-					echo '<input type="hidden" name="Qid" value='.$Question[$counter['0']->count1]->Qid.'>';
-					echo '<input type="hidden" name="counter" value='.$counter['0']->count1.'>';
-
-
-					$i=1;
-
-					foreach ($loadmat as $row) {
-
-					echo '<input type="hidden" name="fid'.$i.'" value="'.$row->Fid.'">';
-
-					if((($row->Prac==1)&&(($batch=='A1' && $row->A1==1) || ($batch=='A2' && $row->A2==1) || ($batch=='A3' && $row->A3==1) || ($batch=='A4' && $row->A4==1) || ($batch=='B1' && $row->B1==1) || ($batch=='B2' && $row->B2==1) || ($batch=='B3' && $row->B3==1) || ($batch=='B4' && $row->B4==1))))
-					{
-						
-					echo '<tr>';
-					echo '<td>'.$i.'</td>' ;
-					echo '<td>'.$row->course .'</td>';
-					echo '<td>'.$row->F_name .'</td>';
-					/* if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A==1) || ($batch=='B' && $row->B==1) || ($batch=='C' && $row->C==1) || ($batch=='D' && $row->D==1)))
-					{
-					$text='Theory & Practical';
-					}
-					else if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A!=1) || ($batch=='B' && $row->B!=1) || ($batch=='C' && $row->C!=1) || ($batch=='D' && $row->D!=1)))
-					{
-					$text='Theory';
-					}
-					else if($row->Theory==0 && $row->Prac==1)
-					{
-					$text='Practical';
-					}
-					echo'<td>'.$text .'</td>';*/
+							if((($row->Prac==1)&&(($row->A1==1) || ($row->A2==1) || ($row->A3==1) || ($row->A4==1) || ($row->B1==1) || ($row->B2==1) || ($row->B3==1) || ($row->B4==1))))
+							{
+								
+								echo '<tr>';
+								echo '<td>'.$i.'</td>' ;
+								echo '<td>'.$row->course .'</td>';
+								echo '<td>'.$row->F_name .'</td>';
+								/* if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A==1) || ($batch=='B' && $row->B==1) || ($batch=='C' && $row->C==1) || ($batch=='D' && $row->D==1)))
+								{
+								$text='Theory & Practical';
+								}
+								else if($row->Theory==1 && ($row->Prac==1&&($batch=='A' && $row->A!=1) || ($batch=='B' && $row->B!=1) || ($batch=='C' && $row->C!=1) || ($batch=='D' && $row->D!=1)))
+								{
+								$text='Theory';
+								}
+								else if($row->Theory==0 && $row->Prac==1)
+								{
+								$text='Practical';
+								}
+								echo'<td>'.$text .'</td>';*/
 
 
-					$count++;
+								$count++;
 
-					echo '<td>A:<input type="radio" value = "A" name="r'.$count.'" required></td>';
-					echo '<td>B:<input type="radio" value = "B" name="r'.$count.'" required></td>';
-					echo '<td>C:<input type="radio" value = "C" name="r'.$count.'" required></td>';
-					echo '<td>D:<input type="radio" value = "D" name="r'.$count.'" required></td>';
-					echo '</tr>';
-					$i++;
-					}
-					}
+								echo '<td>A:<input type="radio" value = "A" name="r'.$count.'" required></td>';
+								echo '<td>B:<input type="radio" value = "B" name="r'.$count.'" required></td>';
+								echo '<td>C:<input type="radio" value = "C" name="r'.$count.'" required></td>';
+								echo '<td>D:<input type="radio" value = "D" name="r'.$count.'" required></td>';
+								echo '</tr>';
+								$i++;
+							}
+						}
 					echo '<input type="hidden" name="count" value='.$count.'/>';
 					}
 					?>
@@ -246,17 +253,19 @@ if(!isset($_SESSION['user_id'])){
 
 					</table>
 					<?php
-					if ($counter==null) {
-					echo '<div class="box-footer">';
-					echo '<input type="submit" value="Next >" class="btn btn-info pull-right"  >';
-					echo '</div>';
-					echo '</center>';
+					if ($counter==null) 
+					{
+						echo '<div class="box-footer">';
+						echo '<input type="submit" value="Next >" class="btn btn-info pull-right"  >';
+						echo '</div>';
+						echo '</center>';
 					}
-					elseif ((!(($counter['0']->count1)>(count($Question)-1)))) {
-					echo '<div class="box-footer">';
-					echo '<input type="submit" value="Next >" class="btn btn-info pull-right"  >';
-					echo '</div>';
-					echo '</center>';
+					elseif ((!(($counter['0']->count1)>(count($Question)-1)))) 
+					{
+						echo '<div class="box-footer">';
+						echo '<input type="submit" value="Next >" class="btn btn-info pull-right"  >';
+						echo '</div>';
+						echo '</center>';
 					}
 
 					?>

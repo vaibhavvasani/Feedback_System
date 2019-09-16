@@ -31,7 +31,6 @@ class Ctrl_feedback_pr extends CI_Controller {
     
     public function load_page($sid)
     {
-        
         $this->load->model('process');
         $check = $this->process->check_q_pr($sid);
         if($check==null)
@@ -40,6 +39,7 @@ class Ctrl_feedback_pr extends CI_Controller {
         $data['counter']= $check;
         $data['Question'] = $this->process->fetch_question_pr();
         $data['loadmat'] = $this->process->fetch_loadmat();
+        // var_dump($data['loadmat']);
         $this->load->view('feedback_form_pr', $data);
     }
     

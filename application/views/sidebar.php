@@ -3,9 +3,9 @@
         <ul class="nav">
             <li class="nav-title">Menu</li>
             <?php
-            if ($_SESSION['user_type'] == 'student') {
+            //if ($_SESSION['user_type'] == 'student') {
     ?>
-            <li class="nav-item nav-dropdown">
+            <!-- <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="fa fa-star" aria-hidden="true"></i>
  &nbsp;&nbsp; Test</a>
@@ -19,8 +19,8 @@
                             Upcoming Tests</a>
                     </li>
                 </ul>
-            </li>
-            <?php } ?>
+            </li> -->
+            <?php //} ?>
             <?php
 if ($_SESSION['user_type'] == 'admin') {
     ?>
