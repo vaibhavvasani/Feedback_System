@@ -31,3 +31,19 @@ records from Test section.
 ### <u>Faculty</u>
 The faculty can view the pie chart for the feedback received from the students along with
 their remarks individually for each question related to Theory and Practical according to their subject.
+
+### Technologies used
+
+
+* [x] HTML5
+* [x] CSS3
+* [x] Javascript
+* [x] jquery
+* [x] Boostrap
+* [x] PHP
+* [x] MySQL
+
+
+---
+
+<h3 align="center"><b>Developed with :heart: by <a href="https://github.com/nachiketbhuta">Nachiket bhuta </a> , <a href="https://github.com/praneeta92115"> Praneeta desai </a> , <a href="https://github.com/hritik5102">Hritik Jaiswal</a> , <a href="https://github.com/swatiabc">Swati</a> , <a href="https://github.com/vikasg603">Vikas gupta</a> , and <a href="https://github.com/Vinit-Mundra">Vinit mundra</a>.</b></h1>
